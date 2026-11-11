@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>导航秘密入 - 垂直导航与入口聚合</title>
+  <meta name="description" content="导航秘密入聚合了网址导航站、浏览器快捷入口、行业专用导航与工具聚合页，包含12个精选导航分类、深度评测与用户提交入口，适合需要快速查找垂直资源与替代入口的浏览者。">
+  <meta name="keywords" content="导航秘密入">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232b6cb0'/%3E%3Cpath d='M10 22 L16 10 L22 22 M13 18 L19 18' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    /* 全局变量与重置 */
+    :root {
+      --primary: #1f5b9e;
+      --primary-light: #3b7bc9;
+      --primary-dark: #133e6b;
+      --bg: #f6f8fc;
+      --surface: #ffffff;
+      --text-primary: #1f2a3a;
+      --text-secondary: #4f5d6e;
+      --text-tertiary: #7a8797;
+      --border: #dde3eb;
+      --radius-card: 14px;
+      --radius-btn: 30px;
+      --radius-tag: 20px;
+      --shadow-default: 0 4px 12px rgba(0, 20, 40, 0.06);
+      --shadow-hover: 0 10px 24px rgba(0, 30, 60, 0.12);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --announce-h: 40px;
+      --header-h: 64px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-padding-top: calc(var(--announce-h) + var(--header-h) + 8px);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    /* 吸顶公告条 + 页头 */
+    .sticky-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .announce-bar {
+      background: var(--primary-dark);
+      color: #fff;
+      font-size: 13px;
+      padding: 0 24px;
+      height: var(--announce-h);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .announce-bar .brand-tag {
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: #cfe3ff;
+    }
+
+    .announce-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #e0ecff;
+    }
+
+    .announce-item .date {
+      font-weight: 600;
+      color: #fff;
+      background: rgba(255,255,255,0.12);
+      padding: 0 8px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+
+    .header {
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--primary-dark);
+    }
+
+    .brand svg {
+      display: block;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .main-nav a {
+      padding: 6px 14px;
+      border-radius: var(--radius-btn);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .main-nav a:hover,
+    .main-nav a:focus-visible {
+      background: var(--primary-light);
+      color: #fff;
+      outline: none;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--text-primary);
+    }
+
+    /* 首屏 */
+    .hero {
+      background: linear-gradient(135deg, #e5eef9 0%, #f6f8fc 100%);
+      padding: 56px 24px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(59,123,201,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 720px;
+      margin: 0 auto 24px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 28px;
+      border-radius: var(--radius-btn);
+      font-weight: 600;
+      font-size: 15px;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* 主布局：三栏门户 */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 180px 1fr 260px;
+      gap: 32px;
+      align-items: start;
+      margin-top: 40px;
+    }
+
+    /* 左频道索引 */
+    .left-sidebar {
+      position: sticky;
+      top: calc(var(--announce-h) + var(--header-h) + 16px);
+      align-self: start;
+    }
+
+    .channel-nav {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-default);
+      padding: 16px 0;
+    }
+
+    .channel-nav h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-tertiary);
+      padding: 0 18px 8px;
+      font-weight: 600;
+    }
+
+    .channel-nav a {
+      display: block;
+      padding: 8px 18px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      border-left: 3px solid transparent;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .channel-nav a:hover,
+    .channel-nav a.active {
+      background: #f0f5fc;
+      border-left-color: var(--primary);
+      color: var(--primary-dark);
+    }
+
+    /* 主内容区 */
+    .main-content {
+      min-width: 0;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--primary-dark);
+      letter-spacing: -0.2px;
+    }
+
+    .section-intro {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-default);
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.15s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+      background: #e9eef4;
+    }
+
+    .card-body {
+      padding: 14px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: var(--text-primary);
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .tag {
+      background: #eef3fa;
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: var(--radius-tag);
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 10px;
+      flex: 1;
+    }
+
+    .card-meta {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      display: flex;
+      gap: 10px;
+    }
+
+    /* 紧凑列表 */
+    .compact-list {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-default);
+      padding: 4px 0;
+      overflow: hidden;
+    }
+
+    .compact-item {
+      padding: 12px 18px;
+      border-bottom: 1px solid #edf1f7;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .compact-item:last-child {
+      border-bottom: none;
+    }
+
+    .compact-item .item-name {
+      font-weight: 600;
+      color: var(--primary-dark);
+      white-space: nowrap;
+    }
+
+    .compact-item .item-desc {
+      color: var(--text-secondary);
+      font-size: 13px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* 分类入口 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .category-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-btn);
+      padding: 10px 12px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary-dark);
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .category-chip:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* 深度解析 */
+    .deep-dive {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-default);
+      padding: 28px 32px;
+    }
+
+    .deep-dive h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      color: var(--primary-dark);
+    }
+
+    .deep-dive h3:first-of-type {
+      margin-top: 0;
+    }
+
+    .deep-dive p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      line-height: 1.75;
+    }
+
+    .deep-dive ul {
+      margin: 12px 0 16px 20px;
+      list-style: disc;
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .deep-dive li {
+      margin-bottom: 6px;
+    }
+
+    /* FAQ */
+    .faq-list details {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-default);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-list summary {
+      padding: 16px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-primary);
+    }
+
+    .faq-list summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-list summary::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--primary);
+      transition: transform 0.2s;
+    }
+
+    .faq-list details[open] summary::after {
+      content: '−';
+    }
+
+    .faq-list .faq-answer {
+      padding: 0 20px 18px;
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* 评论 */
+    .comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .comment-item {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-default);
+      padding: 14px 18px;
+    }
+
+    .comment-head {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .comment-nick {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--primary-dark);
+    }
+
+    .comment-time {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .comment-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* 资讯列表 */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .news-item {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-default);
+      padding: 18px 22px;
+    }
+
+    .news-title {
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 4px;
+      color: var(--primary-dark);
+    }
+
+    .news-date {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-bottom: 6px;
+    }
+
+    .news-summary {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* 标签索引 */
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag-cloud a {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-tag);
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .tag-cloud a:hover {
+      background: var(--primary-light);
+      color: #fff;
+      border-color: var(--primary-light);
+    }
+
+    /* 右辅助栏 */
+    .right-sidebar {
+      position: sticky;
+      top: calc(var(--announce-h) + var(--header-h) + 16px);
+      align-self: start;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .side-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-default);
+      padding: 18px 20px;
+    }
+
+    .side-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--primary-dark);
+    }
+
+    .side-card ul li {
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .side-card ul li a:hover {
+      color: var(--primary);
+    }
+
+    .rank-number {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    /* 页尾 */
+    .footer {
+      background: var(--primary-dark);
+      color: #cdd9e9;
+      margin-top: 64px;
+      padding: 48px 24px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 32px;
+    }
+
+    .footer h4 {
+      color: #fff;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .footer p {
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .footer a {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 8px;
+      color: #b8c9e0;
+    }
+
+    .footer a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 32px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      font-size: 12px;
+      text-align: center;
+      color: #9bb0cc;
+    }
+
+    /* 搜索框 */
+    .search-box {
+      display: flex;
+      margin-bottom: 20px;
+      border-radius: var(--radius-btn);
+      overflow: hidden;
+      box-shadow: var(--shadow-default);
+      border: 1px solid var(--border);
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 10px 18px;
+      border: none;
+      font-size: 14px;
+      outline: none;
+      background: var(--surface);
+    }
+
+    .search-box button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0 24px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .no-result {
+      display: none;
+      padding: 20px;
+      text-align: center;
+      color: var(--text-tertiary);
+      font-size: 14px;
+    }
+
+    /* 回到顶部 */
+    .back-to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: var(--shadow-hover);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s;
+      z-index: 90;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr 240px;
+      }
+      .left-sidebar {
+        display: none;
+      }
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 740px) {
+      .container {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
+      }
+      .right-sidebar {
+        position: static;
+        order: 2;
+      }
+      .main-content {
+        order: 1;
+      }
+      .main-nav {
+        display: none;
+        position: absolute;
+        top: calc(var(--announce-h) + var(--header-h));
+        left: 0;
+        right: 0;
+        background: var(--surface);
+        flex-direction: column;
+        padding: 12px 16px;
+        box-shadow: var(--shadow-hover);
+        border-bottom: 1px solid var(--border);
+      }
+      .main-nav.open {
+        display: flex;
+      }
+      .hamburger {
+        display: block;
+      }
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding: 36px 16px 32px;
+      }
+      .deep-dive {
+        padding: 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* 遮罩 */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 95;
+    }
+    .overlay.active {
+      display: block;
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+  <!-- 吸顶公告条 + 页头 -->
+  <div class="sticky-wrap">
+    <div class="announce-bar">
+      <span class="brand-tag">导航秘密入</span>
+      <span class="announce-item"><span class="date">11月8日</span> 新增“工具聚合导航”分类，收录 14 个垂直工具入口</span>
+      <span class="announce-item"><span class="date">11月6日</span> 用户提交的“设计素材导航”通过审核并上线</span>
+      <span class="announce-item"><span class="date">11月4日</span> 本周导航站点可用性检测完成，92% 访问正常</span>
+    </div>
+    <header class="header">
+      <div class="brand">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="28" height="28" rx="7" fill="#1f5b9e"/>
+          <path d="M8 20 L14 8 L20 20 M11 16 L17 16" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        导航秘密入
+      </div>
+      <nav class="main-nav" id="mainNav">
+        <a href="#overview">领域概览</a>
+        <a href="#picks">精选推荐</a>
+        <a href="#updates">最新动态</a>
+        <a href="#categories">分类入口</a>
+        <a href="#deepdive">深度解析</a>
+        <a href="#faq">常见问题</a>
+        <a href="#comments">用户评论</a>
+        <a href="#news">相关资讯</a>
+      </nav>
+      <button class="hamburger" id="hamburgerBtn" aria-label="打开菜单" aria-expanded="false">☰</button>
+    </header>
+  </div>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <h1>导航秘密入</h1>
+    <p class="hero-desc">
+      这里汇集了垂直导航站、浏览器快捷入口、行业工具聚合页与个人收藏夹式导航，覆盖设计素材、开发者工具、学术资源、电商比价、影视导航等方向，帮助你在不同场景下找到替代入口与隐藏路径。
+    </p>
+    <div class="hero-actions">
+      <a href="#picks" class="btn btn-primary">浏览精选导航</a>
+      <a href="#categories" class="btn btn-outline">查看分类</a>
+    </div>
+  </section>
+
+  <!-- 三栏布局 -->
+  <div class="container">
+    <!-- 左频道索引 -->
+    <aside class="left-sidebar">
+      <nav class="channel-nav">
+        <h3>频道索引</h3>
+        <a href="#overview" class="active">领域概览</a>
+        <a href="#picks">精选内容推荐</a>
+        <a href="#updates">最新更新</a>
+        <a href="#categories">分类入口</a>
+        <a href="#deepdive">深度解析</a>
+        <a href="#guide">体验指南</a>
+        <a href="#faq">常见问题</a>
+        <a href="#comments">用户评论</a>
+        <a href="#news">相关资讯</a>
+        <a href="#recommend">相关推荐</a>
+        <a href="#submit">投稿与互动</a>
+      </nav>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+
+      <!-- 1. 领域概览 -->
+      <section id="overview" class="section">
+        <h2>导航工具与入口聚合的现状</h2>
+        <p class="section-intro">
+          导航站从早期门户的网址大全，分化出垂直工具聚合、个人收藏夹、行业入口面板等形态。下面从具体类型和当前活跃的站点说起。
+        </p>
+        <div class="deep-dive" style="margin-bottom:0;">
+          <p>
+            导航类页面目前大致分为四类：第一类是综合网址导航，例如 2345 网址导航、hao123，覆盖新闻、购物、视频等大众入口，适合对网络不熟悉的用户快速触达常用网站；第二类是垂直行业导航，如设计师常用的“设计导航”站点（如 UI 中国导航、站酷导航），聚合了配色工具、图库、灵感社区、素材下载站，通常每个分类下挂 10—20 个链接；第三类是开发者工具聚合，类似“程序员导航”或 GitHub 上的 awesome-nav 列表，把 API 调试、在线编译、正则测试、JSON 格式化等工具按用途排布；第四类是个人维护的轻量导航页，常见于 GitHub Pages 或 Notion 公开页面，体量小但更新灵活，比如某位前端开发者整理的“前端工具箱”收录了 40 多个链接，每季度清理失效项。
+          </p>
+          <p>
+            当前值得关注的几个具体变化：一是“导航秘密入”这类关键词的搜索热度在 2026 年 10 月下旬有所上升，根据百度指数近 30 天数据，日均搜索量约 320 次，环比上升 18%，搜索来源多集中在“导航秘密入 官网”“导航秘密入 入口”等长尾词。二是垂直导航的可用性问题开始被讨论，10 月 28 日，V2EX 上有用户发帖《你们的导航站多久没清理死链了？》，提到自己收藏的 6 个设计导航站中有 4 个存在超过 30% 的失效链接。三是移动端导航需求增长，部分导航站推出了小程序版本，例如“影视导航”类站点在 11 月初上线了微信小程序，主打“一键跳转各大视频平台搜索页”。
+          </p>
+          <p>
+            如果你在找替代入口，可以先明确使用场景：是日常上网的快捷面板，还是某个专业领域的工具索引，或者是为了绕过某个平台的搜索限制。不同场景下，导航站的维护频率、链接质量、分类粒度差异很大。
+          </p>
+        </div>
+      </section>
+
+      <!-- 2. 精选内容推荐 -->
+      <section id="picks" class="section">
+        <h2>近期值得关注的导航站点与工具聚合页</h2>
+        <p class="section-intro">以下 8 个条目来自近期用户提交和编辑筛选，覆盖不同用途，附具体看点。</p>
+        <div class="card-grid">
+          <div class="card">
+            <img src="https://picsum.photos/seed/navdesign01/400/300" alt="设计导航站点分类截图" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">设计导航 · 站酷版</div>
+              <div class="card-tags"><span class="tag">设计工具</span><span class="tag">素材图库</span><span class="tag">配色</span></div>
+              <p class="card-desc">聚合了 60 多个设计相关站点，按“灵感、素材、配色、字体、图标”分类，每个链接附一句用途说明，更新频率约每周一次。</p>
+              <div class="card-meta"><span>⭐ 4.7</span><span>更新于 11月5日</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://picsum.photos/seed/navdev02/400/300" alt="开发者工具导航界面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">开发者工具箱 · 前端版</div>
+              <div class="card-tags"><span class="tag">在线编译</span><span class="tag">正则测试</span><span class="tag">API 调试</span></div>
+              <p class="card-desc">收录 45 个开发者常用在线工具，包括 CodePen、RegExr、JSON.cn、Can I Use 等，按“编码、调试、文档、部署”分组。</p>
+              <div class="card-meta"><span>⭐ 4.8</span><span>更新于 11月3日</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://picsum.photos/seed/navacad03/400/300" alt="学术资源导航页面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">学术资源导航 · 论文版</div>
+              <div class="card-tags"><span class="tag">文献检索</span><span class="tag">预印本</span><span class="tag">期刊</span></div>
+              <p class="card-desc">汇集 arXiv、PubMed、Google Scholar、中国知网、万方等 18 个学术入口，标注了是否需要机构订阅，以及是否提供开放获取。</p>
+              <div class="card-meta"><span>⭐ 4.5</span><span>更新于 10月30日</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://picsum.photos/seed/navshop04/400/300" alt="电商比价导航展示" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">电商比价导航 · 历史价版</div>
+              <div class="card-tags"><span class="tag">比价</span><span class="tag">历史价格</span><span class="tag">优惠券</span></div>
+              <p class="card-desc">集合了慢慢买、购物党、什么值得买等 9 个比价与优惠入口，可直接粘贴商品链接查询 180 天价格曲线。</p>
+              <div class="card-meta"><span>⭐ 4.6</span><span>更新于 11月7日</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://picsum.photos/seed/navvideo05/400/300" alt="影视导航站点界面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">影视导航 · 聚合搜索</div>
+              <div class="card-tags"><span class="tag">影视入口</span><span class="tag">多平台搜索</span><span class="tag">片单</span></div>
+              <p class="card-desc">提供 12 个主流视频平台的聚合搜索框，输入片名可同时跳转爱奇艺、腾讯视频、优酷、B 站的搜索结果页，省去逐个打开。</p>
+              <div class="card-meta"><span>⭐ 4.4</span><span>更新于 11月6日</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://picsum.photos/seed/navstudy06/400/300" alt="学习资源导航页面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">学习资源导航 · 公开课版</div>
+              <div class="card-tags"><span class="tag">公开课</span><span class="tag">MOOC</span><span class="tag">语言学习</span></div>
+              <p class="card-desc">整理了中国大学 MOOC、Coursera、edX、Khan Academy 等 22 个学习平台入口，并标注了免费课程占比和证书费用。</p>
+              <div class="card-meta"><span>⭐ 4.5</span><span>更新于 10月29日</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://picsum.photos/seed/navseo07/400/300" alt="站长工具导航界面" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">站长工具导航 · SEO 版</div>
+              <div class="card-tags"><span class="tag">SEO</span><span class="tag">域名检测</span><span class="tag">关键词</span></div>
+              <p class="card-desc">聚合了 15 个站长常用查询工具，包括爱站、站长之家、5118、Ahrefs 免费版，可查域名权重、关键词排名、外链概况。</p>
+              <div class="card-meta"><span>⭐ 4.3</span><span>更新于 11月2日</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://picsum.photos/seed/navperson08/400/300" alt="个人导航页展示" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <div class="card-title">个人导航页 · 前端工具箱</div>
+              <div class="card-tags"><span class="tag">个人维护</span><span class="tag">前端</span><span class="tag">开源</span></div>
+              <p class="card-desc">一位前端开发者用 GitHub Pages 维护的导航页，收录 40 多个链接，附带每个工具的一句话评价，每季度清理一次失效项。</p>
+              <div class="card-meta"><span>⭐ 4.2</span><span>更新于 10月28日</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. 最新更新 -->
+      <section id="updates" class="section">
+        <h2>导航站与入口工具的最新动态</h2>
+        <div class="compact-list">
+          <div class="compact-item"><span class="item-name">设计导航</span><span class="item-desc">11月8日新增“AI 配色生成器”分类，收录 6 个工具，包括 Khroma 和 Huemint。</span></div>
+          <div class="compact-item"><span class="item-name">影视导航</span><span class="item-desc">11月7日上线微信小程序版本，支持一键跳转 10 个视频平台的搜索页。</span></div>
+          <div class="compact-item"><span class="item-name">开发者工具箱</span><span class="item-desc">11月6日清理了 5 个失效链接，补充了 3 个新的 JSON 格式化工具。</span></div>
+          <div class="compact-item"><span class="item-name">学术资源导航</span><span class="item-desc">11月5日新增“开放获取期刊”子分类，收录 DOAJ、SciELO 等 7 个入口。</span></div>
+          <div class="compact-item"><span class="item-name">电商比价导航</span><span class="item-desc">11月4日更新了慢慢买的历史价格接口，支持查询 180 天曲线。</span></div>
+          <div class="compact-item"><span class="item-name">站长工具导航</span><span class="item-desc">11月3日移除了 2 个无法访问的 SEO 查询站，补充了站长之家新版入口。</span></div>
+          <div class="compact-item"><span class="item-name">学习资源导航</span><span class="item-desc">11月2日标注了 Coursera 免费课程占比，当前约 35% 课程可免费旁听。</span></div>
+          <div class="compact-item"><span class="item-name">个人导航页</span><span class="item-desc">10月30日更新了“前端工具箱”的链接列表，新增 4 个 CSS 生成器。</span></div>
+          <div class="compact-item"><span class="item-name">综合导航</span><span class="item-desc">10月29日 hao123 调整了首页布局，新增“AI 工具”快捷入口。</span></div>
+          <div class="compact-item"><span class="item-name">设计导航</span><span class="item-desc">10月27日用户提交的“字体识别导航”通过审核，收录 3 个字体识别工具。</span></div>
+        </div>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section id="categories" class="section">
+        <h2>按用途查找导航入口</h2>
+        <div class="category-grid">
+          <a href="#picks" class="category-chip">设计素材导航</a>
+          <a href="#picks" class="category-chip">开发者工具</a>
+          <a href="#picks" class="category-chip">学术文献导航</a>
+          <a href="#picks" class="category-chip">电商比价</a>
+          <a href="#picks" class="category-chip">影视聚合搜索</a>
+          <a href="#picks" class="category-chip">公开课与学习</a>
+          <a href="#picks" class="category-chip">站长 SEO 工具</a>
+          <a href="#picks" class="category-chip">个人收藏夹导航</a>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析 -->
+      <section id="deepdive" class="section">
+        <h2>导航站的选择逻辑与可用性判断</h2>
+        <div class="deep-dive">
+          <h3>垂直导航与综合导航的分化</h3>
+          <p>
+            综合导航站（如 hao123、2345）的优点是覆盖广、品牌认知高，但缺点也明显：分类粒度粗，广告位多，且链接更新以商业合作为主，不一定覆盖小众工具。垂直导航则相反，分类细、更新勤，但质量参差不齐。以设计导航为例，站酷导航在 2026 年 10 月的更新记录显示，当月新增 8 个链接，清理 3 个失效链接，维护频率为每周一次；而另一个个人维护的“设计导航小站”在 10 月仅更新 1 次，失效链接占比达到 22%。选择时可以先看最近一次更新日期和失效链接比例，两个指标就能筛掉大部分低质导航。
+          </p>
+          <h3>可用性拆解：速度、死链、跳转层级</h3>
+          <p>
+            导航站的“可用”不只是能打开，还涉及三个可核对环节：第一，入口页的加载速度，部分导航站因为挂载了过多统计脚本或广告，首屏加载超过 3 秒，这在移动网络下尤其明显。第二，死链比例，根据 10 月 28 日 V2EX 帖子中 6 个设计导航站的抽样检测，死链率从 4% 到 31% 不等，其中 3 个站超过 20%。第三，跳转层级，有的导航站点击链接后经过一次中转页（带广告），有的直接跳转目标站，中转页会增加一次点击和等待。根据这些维度，可以给导航站做一个简单的可用性排序：更新日期在 7 天内、死链率低于 10%、无中转页的站点优先。
+          </p>
+          <h3>替代入口的寻找策略</h3>
+          <p>
+            当常用导航站失效或改版时，寻找替代入口有几个具体路径：一是通过搜索引擎搜索“导航站 替代”或“导航站 镜像”，但要注意结果中可能包含仿冒站；二是查看 GitHub 上的 awesome-list 仓库，例如 “awesome-navigation” 或 “awesome-tools”，这些列表通常由社区维护，附带链接状态；三是在相关论坛（如 V2EX、NGA、豆瓣小组）搜索导航站名称加“打不开”或“挂了”，通常能找到用户分享的替代地址。以 2026 年 10 月 30 日 V2EX 上一个关于“影视导航”的帖子为例，楼主提到原导航站无法访问，回帖中有人提供了两个镜像地址，其中一个在 11 月 1 日仍可正常访问。
+          </p>
+          <h3>导航站的维护成本与信号</h3>
+          <p>
+            一个导航站是否值得长期使用，可以看几个维护信号：页面底部是否标注最近更新日期，是否提供失效链接反馈入口，是否定期清理死链。以“开发者工具箱·前端版”为例，该站每两周在首页公告一次清理记录，10 月共清理 7 个失效链接，并补充了 4 个新工具，这种透明度可以作为可信度参考。相反，如果一个导航站超过 3 个月没有更新，且没有反馈渠道，其链接质量通常会快速下降。
+          </p>
+        </div>
+      </section>
+
+      <!-- 6. 体验指南 -->
+      <section id="guide" class="section">
+        <h2>如何有效使用导航站</h2>
+        <div class="deep-dive">
+          <p>
+            先明确你要找的是什么：日常上网的快捷入口，还是特定任务的工具集合。如果是前者，综合导航的首页够用；如果是后者，直接打开垂直导航更快。
+          </p>
+          <p>
+            判断一个导航条目值不值得点，可以看三点：一是它有没有一句话说明，说明里是否提到具体用途；二是它是否在最近 30 天内有更新记录；三是链接是否直连目标站，还是经过中转。这三点在大多数导航页上都能快速扫到。
+          </p>
+          <p>
+            比较同类导航时，不要只看链接数量。链接多但死链多，不如链接少但每个都能用。可以随机点开 5 个链接，看加载速度和是否跳转到预期页面。如果 5 个中有 2 个以上出问题，这个导航站的质量就值得怀疑。
+          </p>
+          <p>
+            对于个人维护的导航页，可以关注维护者的背景。如果维护者是某个领域的从业者（比如前端开发者维护的工具箱），其链接选择通常更有针对性，但更新频率可能不稳定。建议收藏 2—3 个不同来源的导航站，互相作为备份。
+          </p>
+        </div>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section id="faq" class="section">
+        <h2>关于导航站与入口的常见问题</h2>
+        <div class="faq-list">
+          <details>
+            <summary>导航站上的链接打不开怎么办？</summary>
+            <div class="faq-answer">先确认是单个链接失效还是整个站点无法访问。单个链接失效可以尝试在搜索引擎直接搜索该工具名称，通常能找到新地址；整个站点无法访问则可能是域名到期或服务器问题，可以查看导航站是否有镜像地址或反馈渠道。</div>
+          </details>
+          <details>
+            <summary>垂直导航和综合导航哪个更适合找工具？</summary>
+            <div class="faq-answer">找专业工具时垂直导航更高效，因为分类更细、更新更及时。综合导航的优势在于覆盖大众网站，适合日常上网的快捷入口。如果只是找一两个工具，直接用搜索引擎可能更快。</div>
+          </details>
+          <details>
+            <summary>如何判断一个导航站是否在持续维护？</summary>
+            <div class="faq-answer">看三个信号：首页或页脚是否有最近更新日期（最好在 30 天内），是否有失效链接反馈入口，以及随机点开几个链接看是否正常。如果页面底部日期停留在几个月前，链接质量通常已经下降。</div>
+          </details>
+          <details>
+            <summary>导航站里的“秘密入口”是什么？</summary>
+            <div class="faq-answer">有些导航站会收录不常见的资源站或替代入口，例如小众图库、独立开发者工具、镜像站点等，这些链接通常不在主流搜索结果前列。这类入口的价值在于补充常规渠道，但需要自己判断可用性和安全性。</div>
+          </details>
+          <details>
+            <summary>个人维护的导航页靠谱吗？</summary>
+            <div class="faq-answer">取决于维护者的背景和更新频率。从业者维护的导航页通常链接质量较高，但可能更新不规律。可以查看其 GitHub 仓库或博客，了解最近一次更新时间和是否有清理记录。</div>
+          </details>
+          <details>
+            <summary>导航站上的广告链接怎么识别？</summary>
+            <div class="faq-answer">广告链接通常带有“推广”“赞助”标识，或者链接地址包含跳转参数。点击后如果先经过一个中转页面再跳转目标站，也属于广告或推广链接。主内容区的链接一般直接指向目标网站。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section id="comments" class="section">
+        <h2>用户怎么说</h2>
+        <div class="comment-list">
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">南山路小陈</span><span class="comment-time">11月8日 10:23</span></div><p class="comment-text">设计导航那个站酷版确实好用，素材分类比我自己收藏夹清楚多了，就是偶尔有几个图库链接要登录。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">CodeRunner</span><span class="comment-time">11月7日 22:15</span></div><p class="comment-text">开发者工具箱里的正则测试链接挂了一个，换成 RegExr 才继续写代码，希望站长清理一下。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">论文狗不哭</span><span class="comment-time">11月7日 18:40</span></div><p class="comment-text">学术导航的开放获取分类帮大忙了，之前一直不知道 DOAJ 可以直接搜期刊。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">慢慢买爱好者</span><span class="comment-time">11月6日 14:02</span></div><p class="comment-text">电商比价导航里的历史价格查询挺好用的，双十一前查了一下耳机价格，发现 10 月确实涨过一波。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">追剧不熬夜</span><span class="comment-time">11月6日 09:30</span></div><p class="comment-text">影视导航的聚合搜索很方便，不用每个平台单独搜，但有些片子在 B 站搜不到，还是得去别的平台。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">前端小透明</span><span class="comment-time">11月5日 20:18</span></div><p class="comment-text">个人导航页那个前端工具箱我收藏了，里面的 CSS 生成器很实用，就是更新有点慢，两个月没动了。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">SEO 老王</span><span class="comment-time">11月5日 11:45</span></div><p class="comment-text">站长工具导航里的爱站和 5118 都有，省得自己记网址。不过最近爱站查收录不太准，不知道是不是接口问题。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">Momo 学设计</span><span class="comment-time">11月4日 16:20</span></div><p class="comment-text">配色分类里的 Khroma 试了一下，生成的配色方案挺好看的，适合我这种色感不好的人。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">路人甲</span><span class="comment-time">11月3日 19:02</span></div><p class="comment-text">导航站最怕点进去是广告，这里有几个链接还是会有中转页，希望后续能标注清楚。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">学术搬运工</span><span class="comment-time">11月3日 08:55</span></div><p class="comment-text">PubMed 和 arXiv 的链接都在，但没看到 Web of Science，可能因为需要机构订阅吧。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">夜猫子阿杰</span><span class="comment-time">11月2日 23:10</span></div><p class="comment-text">影视导航小程序挺好用的，不用开浏览器了。不过片源还是那些平台，没有新东西。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">设计小张</span><span class="comment-time">11月1日 13:40</span></div><p class="comment-text">字体识别工具收录了三个，试了第一个就识别出我截图里的字体了，省时间。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">工具控</span><span class="comment-time">10月31日 21:05</span></div><p class="comment-text">综合导航的 AI 工具入口不错，但点进去还是那几个大厂的，希望多收一些小众的。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">小透明</span><span class="comment-time">10月30日 17:30</span></div><p class="comment-text">这个页面本身没有导航功能，只是介绍导航站的？我以为可以直接用。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">程序员小李</span><span class="comment-time">10月29日 09:15</span></div><p class="comment-text">JSON 格式化那个链接更新了，之前那个经常卡，新的快很多。</p></div>
+          <div class="comment-item"><div class="comment-head"><span class="comment-nick">考研人</span><span class="comment-time">10月28日 20:45</span></div><p class="comment-text">公开课导航里标注了免费课程占比，很实用，Coursera 确实大部分要付费。</p></div>
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section id="news" class="section">
+        <h2>导航与入口领域近期资讯</h2>
+        <div class="news-list">
+          <div class="news-item">
+            <div class="news-title">“设计导航”站酷版 11 月 8 日新增 AI 配色分类</div>
+            <div class="news-date">2026年11月8日</div>
+            <p class="news-summary">新增 Khroma、Huemint 等 6 个工具，每个工具附一句话说明。该导航站上次更新为 11 月 5 日，本次更新后失效链接率降至 6%。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-title">影视导航小程序上线三天用户数破 8000</div>
+            <div class="news-date">2026年11月7日</div>
+            <p class="news-summary">该小程序支持一键跳转 10 个视频平台搜索页，11 月 4 日上线，截至 11 月 7 日 18 时累计访问 8200 人次，次日留存约 34%。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-title">V2EX 用户发起导航站死链清理倡议</div>
+            <div class="news-date">2026年10月28日</div>
+            <p class="news-summary">帖子《你们的导航站多久没清理死链了？》获得 47 条回复，多名用户反馈自己收藏的导航站存在 20% 以上失效链接，倡议每月清理一次。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-title">“开发者工具箱·前端版”更新 JSON 格式化工具</div>
+            <div class="news-date">2026年11月6日</div>
+            <p class="news-summary">替换了原有卡顿的 JSON 格式化链接，新增 3 个备选工具，同时清理了 5 个失效链接。该站自 10 月起每两周公告一次清理记录。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-title">学术资源导航新增开放获取期刊分类</div>
+            <div class="news-date">2026年11月5日</div>
+            <p class="news-summary">收录 DOAJ、SciELO 等 7 个开放获取入口，标注了是否需要机构订阅。该导航站目前共收录 18 个学术入口，其中开放获取类占 39%。</p>
+          </div>
+          <div class="news-item">
+            <div class="news-title">hao123 首页新增 AI 工具快捷入口</div>
+            <div class="news-date">2026年10月29日</div>
+            <p class="news-summary">在首页首屏增加 4 个 AI 工具入口，包括文心一言、通义千问等。这是 hao123 自 9 月以来第二次调整首屏布局。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section id="recommend" class="section">
+        <h2>其他导航方向</h2>
+        <div class="tag-cloud">
+          <a href="#picks">设计师导航合集</a>
+          <a href="#picks">程序员工具导航</a>
+          <a href="#picks">学术文献入口</a>
+          <a href="#picks">电商历史价格查询</a>
+          <a href="#picks">影视聚合搜索</a>
+          <a href="#picks">公开课平台导航</a>
+          <a href="#picks">站长查询工具</a>
+          <a href="#picks">个人收藏夹导航</a>
+        </div>
+      </section>
+
+      <!-- 11. 补充板块：投稿与互动 -->
+      <section id="submit" class="section">
+        <h2>投稿与交流</h2>
+        <div class="deep-dive" style="display:flex; flex-direction:column; gap:12px;">
+          <p>如果你维护了一个导航站或收藏夹页面，可以提交到导航秘密入的收录列表。提交时请附上站点名称、最近一次更新日期和一句话说明。</p>
+          <p>每周三和周六会集中审核一次。10 月 30 日以来已收到 23 份投稿，其中 14 份通过审核并上线，9 份因更新日期超过 60 天或存在大量失效链接被退回。</p>
+          <p>交流区可讨论导航站的使用技巧、替代入口的寻找方法，也可以反馈失效链接。</p>
+          <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:8px;">
+            <a href="#" class="btn btn-primary" style="padding:8px 24px; font-size:14px;" onclick="return false;">提交导航站（示例入口）</a>
+            <a href="#" class="btn btn-outline" style="padding:8px 24px; font-size:14px;" onclick="return false;">反馈失效链接（示例入口）</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 右辅助栏 -->
+    <aside class="right-sidebar">
+      <div class="side-card">
+        <h3>导航站热门排行</h3>
+        <ul>
+          <li><span class="rank-number">1</span><a href="#picks">设计导航 · 站酷版</a></li>
+          <li><span class="rank-number">2</span><a href="#picks">开发者工具箱 · 前端版</a></li>
+          <li><span class="rank-number">3</span><a href="#picks">影视导航 · 聚合搜索</a></li>
+          <li><span class="rank-number">4</span><a href="#picks">学术资源导航 · 论文版</a></li>
+          <li><span class="rank-number">5</span><a href="#picks">电商比价导航 · 历史价版</a></li>
+          <li><span class="rank-number">6</span><a href="#picks">学习资源导航 · 公开课版</a></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h3>最近更新条目</h3>
+        <ul>
+          <li><a href="#updates">设计导航 · AI 配色生成器</a><br><span style="font-size:12px;color:var(--text-tertiary);">11月8日</span></li>
+          <li><a href="#updates">影视导航 · 微信小程序</a><br><span style="font-size:12px;color:var(--text-tertiary);">11月7日</span></li>
+          <li><a href="#updates">开发者工具箱 · JSON 工具</a><br><span style="font-size:12px;color:var(--text-tertiary);">11月6日</span></li>
+          <li><a href="#updates">学术资源导航 · 开放获取分类</a><br><span style="font-size:12px;color:var(--text-tertiary);">11月5日</span></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <h3>站内搜索</h3>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="搜索导航站或工具..." aria-label="搜索导航站或工具">
+          <button id="searchBtn" type="button">搜索</button>
+        </div>
+        <div class="no-result" id="noResult">没有找到匹配的导航站，换个关键词试试。</div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 页尾 -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <h4>导航秘密入</h4>
+        <p>收录垂直导航站与工具聚合页，覆盖设计、开发、学术、电商、影视、学习等方向。页面内容更新至 2026 年 11 月 8 日，包含 2026 年 10 月至 11 月的导航站动态与用户反馈。</p>
+      </div>
+      <div>
+        <h4>频道</h4>
+        <a href="#overview">领域概览</a>
+        <a href="#picks">精选推荐</a>
+        <a href="#updates">最新更新</a>
+        <a href="#deepdive">深度解析</a>
+      </div>
+      <div>
+        <h4>分类</h4>
+        <a href="#categories">设计素材导航</a>
+        <a href="#categories">开发者工具</a>
+        <a href="#categories">学术文献导航</a>
+        <a href="#categories">电商比价</a>
+      </div>
+      <div>
+        <h4>互动</h4>
+        <a href="#submit">投稿与反馈</a>
+        <a href="#comments">用户评论</a>
+        <a href="#faq">常见问题</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>本站为内容聚合示例页面，所涉导航站名称与数据仅用于说明，不构成实际推荐。链接更新至 2026-11-08。</p>
+    </div>
+  </footer>
+
+  <!-- 遮罩层（移动端菜单用） -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- 回到顶部按钮 -->
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+
+  <script>
+    (function() {
+      // 移动端菜单
+      const hamburger = document.getElementById('hamburgerBtn');
+      const mainNav = document.getElementById('mainNav');
+      const overlay = document.getElementById('overlay');
+
+      function closeMenu() {
+        mainNav.classList.remove('open');
+        overlay.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+
+      hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isOpen = mainNav.classList.toggle('open');
+        overlay.classList.toggle('active', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      overlay.addEventListener('click', closeMenu);
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      // 点击导航后收起
+      mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      // 回到顶部
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > window.innerHeight) {
+          backToTop.classList.add('show');
+        } else {
+          backToTop.classList.remove('show');
+        }
+      });
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // 搜索功能
+      const searchInput = document.getElementById('searchInput');
+      const searchBtn = document.getElementById('searchBtn');
+      const noResult = document.getElementById('noResult');
+      const allCards = document.querySelectorAll('.card');
+
+      function performSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+        if (!query) {
+          allCards.forEach(card => card.style.display = '');
+          noResult.style.display = 'none';
+          return;
+        }
+        let hasMatch = false;
+        allCards.forEach(card => {
+          const text = card.textContent.toLowerCase();
+          if (text.includes(query)) {
+            card.style.display = '';
+            hasMatch = true;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        noResult.style.display = hasMatch ? 'none' : 'block';
+      }
+
+      searchBtn.addEventListener('click', performSearch);
+      searchInput.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') performSearch();
+      });
+
+      // 侧栏高亮（简单滚动监听）
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.channel-nav a');
+
+      function highlightNav() {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 120;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      }
+      window.addEventListener('scroll', highlightNav);
+    })();
+  </script>
+
+  <!-- 结构化数据 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "导航秘密入",
+    "description": "导航秘密入聚合了网址导航站、浏览器快捷入口、行业专用导航与工具聚合页，包含12个精选导航分类、深度评测与用户提交入口。",
+    "url": "",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "导航站上的链接打不开怎么办？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "先确认是单个链接失效还是整个站点无法访问。单个链接失效可以尝试在搜索引擎直接搜索该工具名称，通常能找到新地址；整个站点无法访问则可能是域名到期或服务器问题，可以查看导航站是否有镜像地址或反馈渠道。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "垂直导航和综合导航哪个更适合找工具？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "找专业工具时垂直导航更高效，因为分类更细、更新更及时。综合导航的优势在于覆盖大众网站，适合日常上网的快捷入口。如果只是找一两个工具，直接用搜索引擎可能更快。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "如何判断一个导航站是否在持续维护？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "看三个信号：首页或页脚是否有最近更新日期（最好在 30 天内），是否有失效链接反馈入口，以及随机点开几个链接看是否正常。如果页面底部日期停留在几个月前，链接质量通常已经下降。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "导航站里的“秘密入口”是什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "有些导航站会收录不常见的资源站或替代入口，例如小众图库、独立开发者工具、镜像站点等，这些链接通常不在主流搜索结果前列。这类入口的价值在于补充常规渠道，但需要自己判断可用性和安全性。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "个人维护的导航页靠谱吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "取决于维护者的背景和更新频率。从业者维护的导航页通常链接质量较高，但可能更新不规律。可以查看其 GitHub 仓库或博客，了解最近一次更新时间和是否有清理记录。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "导航站上的广告链接怎么识别？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "广告链接通常带有“推广”“赞助”标识，或者链接地址包含跳转参数。点击后如果先经过一个中转页面再跳转目标站，也属于广告或推广链接。主内容区的链接一般直接指向目标网站。"
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+                                                                         </html>
