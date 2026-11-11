@@ -1,0 +1,1289 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>艾彩原创视频 - 原创短片与微短剧聚合</title>
+  <meta name="description" content="艾彩原创视频汇聚独立短片、微短剧、实验影像与幕后纪录，涵盖剧情、动画、纪实等类型。精选片单、更新动态、深度解析与观众评论，适合影视爱好者与创作者日常浏览。">
+  <meta name="keywords" content="艾彩原创视频">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a1a2e'/%3E%3Cpath d='M12 9l10 7-10 7V9z' fill='%23e94560'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --primary: #e94560;
+      --primary-light: #ff6b81;
+      --primary-dark: #b82a42;
+      --bg: #f7f7fa;
+      --panel: #ffffff;
+      --text-1: #1a1a2e;
+      --text-2: #4a4a5e;
+      --text-3: #8888a0;
+      --border: #e8e8f0;
+      --radius-card: 12px;
+      --radius-btn: 8px;
+      --radius-tag: 6px;
+      --radius-banner: 16px;
+      --shadow: 0 2px 12px rgba(26,26,46,0.06);
+      --shadow-hover: 0 6px 24px rgba(26,26,46,0.12);
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --sticky-offset: 104px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--sticky-offset); }
+    body { font-family: var(--font); background: var(--bg); color: var(--text-1); line-height: 1.65; font-size: 15px; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* 吸顶公告条 */
+    .announce-bar {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--primary-dark);
+      color: #fff;
+      font-size: 13px;
+      padding: 8px 0;
+    }
+    .announce-inner {
+      max-width: 1380px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .announce-brand { font-weight: 700; letter-spacing: 0.5px; opacity: 0.9; }
+    .announce-item { display: inline-flex; align-items: center; gap: 4px; }
+    .announce-item .date { font-variant-numeric: tabular-nums; opacity: 0.75; }
+    .announce-divider { opacity: 0.4; }
+
+    /* 吸顶页头 */
+    .site-header {
+      position: sticky; top: 41px; z-index: 99;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    }
+    .header-inner {
+      max-width: 1380px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; gap: 28px; height: 62px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .logo svg { display: block; }
+    .logo-text { font-size: 20px; font-weight: 800; letter-spacing: 0.5px; color: var(--text-1); }
+    .header-nav { display: flex; gap: 4px; flex: 1; }
+    .header-nav a {
+      padding: 6px 14px; border-radius: var(--radius-btn); font-size: 14px;
+      color: var(--text-2); transition: background 0.2s, color 0.2s;
+    }
+    .header-nav a:hover, .header-nav a:focus-visible { background: #f0f0f6; color: var(--text-1); }
+    .header-nav a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+    .header-search {
+      display: flex; align-items: center; background: #f0f0f6; border-radius: 20px;
+      padding: 0 4px 0 14px; height: 36px;
+    }
+    .header-search input {
+      border: none; background: transparent; width: 130px; font-size: 13px;
+      outline: none; color: var(--text-1);
+    }
+    .header-search input::placeholder { color: var(--text-3); }
+    .header-search button {
+      width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+      color: var(--text-3); transition: color 0.2s;
+    }
+    .header-search button:hover { color: var(--primary); }
+    .hamburger { display: none; width: 40px; height: 40px; border-radius: 8px; place-items: center; }
+    .hamburger:focus-visible { outline: 2px solid var(--primary); }
+    .hamburger span { display: block; width: 20px; height: 2px; background: var(--text-1); margin: 4px 0; transition: 0.2s; border-radius: 2px; }
+
+    /* 首屏 */
+    .hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 45%, #0f3460 100%);
+      color: #fff;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 20%, rgba(233,69,96,0.25) 0%, transparent 60%),
+                  radial-gradient(ellipse 50% 60% at 15% 85%, rgba(15,52,96,0.6) 0%, transparent 55%);
+    }
+    .hero-inner {
+      position: relative; max-width: 1380px; margin: 0 auto; padding: 64px 24px 56px;
+      display: grid; grid-template-columns: 1fr 380px; gap: 48px; align-items: center;
+    }
+    .hero h1 { font-size: clamp(32px, 4vw, 48px); font-weight: 900; letter-spacing: 1px; margin-bottom: 18px; }
+    .hero-desc { font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.78); max-width: 540px; margin-bottom: 28px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 26px; border-radius: var(--radius-btn);
+      background: var(--primary); color: #fff; font-weight: 600; font-size: 15px;
+      transition: background 0.2s, transform 0.2s; box-shadow: 0 4px 16px rgba(233,69,96,0.35);
+    }
+    .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 26px; border-radius: var(--radius-btn);
+      border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.9); font-size: 15px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); }
+    .hero-visual { position: relative; display: grid; place-items: center; }
+    .hero-visual svg { width: 100%; max-width: 340px; height: auto; }
+    .hero-meta {
+      position: relative; margin-top: 36px; display: flex; gap: 32px; flex-wrap: wrap;
+      font-size: 13px; color: rgba(255,255,255,0.6);
+    }
+    .hero-meta strong { display: block; font-size: 22px; color: #fff; font-weight: 800; }
+
+    /* 主容器 - 三栏门户 */
+    .container {
+      max-width: 1380px; margin: 0 auto; padding: 32px 24px 48px;
+    }
+    .portal-grid {
+      display: grid; grid-template-columns: 175px 1fr 240px; gap: 28px;
+      align-items: start;
+    }
+    /* 左频道索引 */
+    .channel-index { position: sticky; top: var(--sticky-offset); }
+    .channel-index h2 {
+      font-size: 13px; font-weight: 700; color: var(--text-3);
+      text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; padding-left: 10px;
+    }
+    .channel-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .channel-list a {
+      display: flex; align-items: center; gap: 10px; padding: 8px 10px;
+      border-radius: var(--radius-btn); font-size: 14px; color: var(--text-2);
+      transition: background 0.2s, color 0.2s;
+    }
+    .channel-list a:hover, .channel-list a.active { background: #fff; color: var(--primary); box-shadow: var(--shadow); }
+    .channel-list a:focus-visible { outline: 2px solid var(--primary); outline-offset: -1px; }
+    .channel-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); flex-shrink: 0; transition: background 0.2s; }
+    .channel-list a:hover .channel-dot, .channel-list a.active .channel-dot { background: var(--primary); }
+
+    /* 中间主内容 */
+    .main-col { min-width: 0; display: flex; flex-direction: column; gap: 40px; }
+
+    /* 通用板块 */
+    .section { scroll-margin-top: var(--sticky-offset); }
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 18px; }
+    .section-header h2 { font-size: 22px; font-weight: 800; letter-spacing: 0.3px; }
+    .section-header .more-link { font-size: 13px; color: var(--text-3); transition: color 0.2s; }
+    .section-header .more-link:hover { color: var(--primary); }
+    .section-intro { font-size: 14px; color: var(--text-3); margin-top: 2px; }
+
+    /* 领域概览 */
+    .overview-text { font-size: 15px; color: var(--text-2); line-height: 1.85; }
+    .overview-text p + p { margin-top: 14px; }
+    .overview-text strong { color: var(--text-1); }
+
+    /* 精选卡片网格 */
+    .card-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px;
+    }
+    .card {
+      background: var(--panel); border-radius: var(--radius-card); overflow: hidden;
+      box-shadow: var(--shadow); transition: box-shadow 0.25s, transform 0.25s;
+      display: flex; flex-direction: column;
+    }
+    .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+    .card-img { position: relative; overflow: hidden; aspect-ratio: 4/3; background: #eee; }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s; }
+    .card:hover .card-img img { transform: scale(1.04); }
+    .card-type {
+      position: absolute; top: 10px; left: 10px;
+      background: rgba(26,26,46,0.78); backdrop-filter: blur(4px);
+      color: #fff; font-size: 11px; padding: 3px 9px; border-radius: var(--radius-tag);
+    }
+    .card-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .card-title { font-size: 16px; font-weight: 700; line-height: 1.4; }
+    .card-title a:hover { color: var(--primary); }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag {
+      font-size: 11px; padding: 2px 8px; border-radius: var(--radius-tag);
+      background: #f0f0f6; color: var(--text-3); transition: background 0.2s, color 0.2s;
+    }
+    .tag:hover { background: #ffe4e8; color: var(--primary); }
+    .card-note { font-size: 13px; color: var(--text-2); line-height: 1.6; flex: 1; }
+    .card-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-3); padding-top: 4px; border-top: 1px solid var(--border); }
+
+    /* 最新更新列表 */
+    .update-list { display: flex; flex-direction: column; gap: 2px; background: var(--panel); border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow); }
+    .update-item {
+      display: flex; align-items: flex-start; gap: 14px; padding: 14px 18px;
+      transition: background 0.2s; border-bottom: 1px solid var(--border);
+    }
+    .update-item:last-child { border-bottom: none; }
+    .update-item:hover { background: #fafafc; }
+    .update-time { font-size: 12px; color: var(--text-3); white-space: nowrap; padding-top: 2px; font-variant-numeric: tabular-nums; min-width: 42px; }
+    .update-content { flex: 1; }
+    .update-title { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+    .update-title a:hover { color: var(--primary); }
+    .update-desc { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+    .update-badge { font-size: 11px; padding: 2px 7px; border-radius: var(--radius-tag); background: #ffe4e8; color: var(--primary); white-space: nowrap; margin-top: 2px; flex-shrink: 0; }
+
+    /* 分类入口 */
+    .category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+    .category-item {
+      background: var(--panel); border-radius: var(--radius-card); padding: 18px 16px;
+      text-align: center; box-shadow: var(--shadow); transition: box-shadow 0.2s, transform 0.2s;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    .category-item:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+    .category-icon { font-size: 26px; line-height: 1; }
+    .category-name { font-size: 14px; font-weight: 600; }
+    .category-count { font-size: 11px; color: var(--text-3); }
+
+    /* 深度解析 */
+    .deep-analysis { background: var(--panel); border-radius: var(--radius-card); padding: 28px 30px; box-shadow: var(--shadow); }
+    .deep-analysis h2 { font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+    .deep-analysis .lead { font-size: 14px; color: var(--text-3); margin-bottom: 20px; }
+    .deep-analysis h3 { font-size: 17px; font-weight: 700; margin: 24px 0 10px; color: var(--text-1); }
+    .deep-analysis p { font-size: 14.5px; color: var(--text-2); line-height: 1.85; margin-bottom: 12px; }
+    .deep-analysis ul { padding-left: 20px; margin: 8px 0 14px; font-size: 14px; color: var(--text-2); line-height: 1.8; }
+    .deep-analysis li { margin-bottom: 4px; }
+    .deep-analysis li::marker { color: var(--primary); }
+    .deep-analysis .callout {
+      background: #fafafc; border-left: 3px solid var(--primary);
+      padding: 14px 18px; border-radius: 0 var(--radius-tag) var(--radius-tag) 0;
+      font-size: 14px; color: var(--text-2); margin: 16px 0;
+    }
+
+    /* 体验指南 */
+    .guide-steps { display: flex; flex-direction: column; gap: 0; }
+    .guide-step { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .guide-step:last-child { border-bottom: none; }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: #fff;
+      display: grid; place-items: center; font-weight: 800; font-size: 15px; flex-shrink: 0;
+    }
+    .step-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .step-body p { font-size: 14px; color: var(--text-2); line-height: 1.7; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 8px; }
+    .faq-item { background: var(--panel); border-radius: var(--radius-card); box-shadow: var(--shadow); overflow: hidden; }
+    .faq-item summary {
+      padding: 16px 20px; font-weight: 600; font-size: 15px; cursor: pointer;
+      list-style: none; display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.2s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: #fafafc; }
+    .faq-item summary::after { content: '+'; font-size: 20px; color: var(--text-3); font-weight: 400; transition: transform 0.2s; }
+    .faq-item[open] summary::after { content: '−'; color: var(--primary); }
+    .faq-item summary:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+    .faq-answer { padding: 0 20px 18px; font-size: 14px; color: var(--text-2); line-height: 1.8; }
+
+    /* 用户评论 */
+    .comment-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+    .comment-card {
+      background: var(--panel); border-radius: var(--radius-card); padding: 14px 16px;
+      box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 6px;
+    }
+    .comment-user { display: flex; align-items: center; gap: 8px; }
+    .comment-avatar {
+      width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      display: grid; place-items: center; color: #fff; font-size: 12px; font-weight: 700; flex-shrink: 0;
+    }
+    .comment-name { font-size: 13px; font-weight: 600; color: var(--text-2); }
+    .comment-text { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+    .comment-text .mention { color: var(--primary); }
+
+    /* 相关资讯 */
+    .news-list { display: flex; flex-direction: column; gap: 12px; }
+    .news-item {
+      background: var(--panel); border-radius: var(--radius-card); padding: 16px 18px;
+      box-shadow: var(--shadow); display: flex; gap: 16px; align-items: flex-start;
+      transition: box-shadow 0.2s;
+    }
+    .news-item:hover { box-shadow: var(--shadow-hover); }
+    .news-date { font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; white-space: nowrap; padding-top: 2px; min-width: 60px; }
+    .news-body h3 { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+    .news-body h3 a:hover { color: var(--primary); }
+    .news-body p { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+    /* 相关推荐 */
+    .rec-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .rec-tag {
+      display: inline-block; padding: 6px 14px; border-radius: 20px;
+      background: var(--panel); font-size: 13px; color: var(--text-2);
+      box-shadow: var(--shadow); transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .rec-tag:hover { background: #ffe4e8; color: var(--primary); box-shadow: var(--shadow-hover); }
+
+    /* 热门榜单 */
+    .rank-list { display: flex; flex-direction: column; gap: 8px; }
+    .rank-item {
+      background: var(--panel); border-radius: var(--radius-card); padding: 14px 18px;
+      display: flex; align-items: center; gap: 14px; box-shadow: var(--shadow);
+      transition: box-shadow 0.2s;
+    }
+    .rank-item:hover { box-shadow: var(--shadow-hover); }
+    .rank-num {
+      width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center;
+      font-weight: 800; font-size: 13px; background: #f0f0f6; color: var(--text-3); flex-shrink: 0;
+    }
+    .rank-num.top1 { background: var(--primary); color: #fff; }
+    .rank-num.top2 { background: var(--primary-light); color: #fff; }
+    .rank-num.top3 { background: #ffb3c1; color: var(--text-1); }
+    .rank-info { flex: 1; }
+    .rank-name { font-size: 14px; font-weight: 600; }
+    .rank-meta { font-size: 12px; color: var(--text-3); }
+    .rank-score { font-size: 14px; font-weight: 700; color: var(--primary); font-variant-numeric: tabular-nums; }
+
+    /* 右辅助栏 */
+    .aux-col { display: flex; flex-direction: column; gap: 28px; position: sticky; top: var(--sticky-offset); }
+    .aux-card { background: var(--panel); border-radius: var(--radius-card); padding: 18px 16px; box-shadow: var(--shadow); }
+    .aux-card h2 { font-size: 15px; font-weight: 800; margin-bottom: 12px; letter-spacing: 0.3px; }
+    .hot-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .hot-list li { display: flex; gap: 10px; font-size: 13px; align-items: baseline; }
+    .hot-num { font-size: 12px; font-weight: 700; color: var(--text-3); width: 18px; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+    .hot-list li:nth-child(1) .hot-num { color: var(--primary); }
+    .hot-list li:nth-child(2) .hot-num { color: var(--primary-light); }
+    .hot-list li:nth-child(3) .hot-num { color: #ffb3c1; }
+    .hot-list a { color: var(--text-2); line-height: 1.45; transition: color 0.2s; }
+    .hot-list a:hover { color: var(--primary); }
+
+    .update-stream { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .update-stream li { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+    .update-stream .stream-time { font-size: 11px; color: var(--text-3); display: block; margin-top: 1px; font-variant-numeric: tabular-nums; }
+
+    .submit-cta {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      border-radius: var(--radius-card); padding: 20px 18px; color: #fff; text-align: center;
+    }
+    .submit-cta h2 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .submit-cta p { font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 14px; line-height: 1.5; }
+    .submit-cta .btn-white {
+      display: inline-block; padding: 9px 22px; border-radius: var(--radius-btn);
+      background: #fff; color: var(--primary-dark); font-weight: 700; font-size: 13px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .submit-cta .btn-white:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,0.2); }
+
+    /* 页尾 */
+    .site-footer {
+      background: #1a1a2e; color: rgba(255,255,255,0.65); font-size: 13px;
+      padding: 48px 0 28px; margin-top: 20px;
+    }
+    .footer-inner { max-width: 1380px; margin: 0 auto; padding: 0 24px; }
+    .footer-top { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 36px; margin-bottom: 32px; }
+    .footer-brand .logo-text { color: #fff; font-size: 18px; margin-bottom: 8px; display: block; }
+    .footer-brand p { font-size: 13px; line-height: 1.7; max-width: 300px; }
+    .footer-col h3 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 10px; letter-spacing: 0.5px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .footer-col a { transition: color 0.2s; }
+    .footer-col a:hover { color: var(--primary-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+      font-size: 12px; color: rgba(255,255,255,0.4);
+    }
+    .footer-bottom .update-note { color: rgba(255,255,255,0.55); }
+
+    /* 回到顶部 */
+    .back-top {
+      position: fixed; bottom: 28px; right: 28px; z-index: 90;
+      width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: #fff;
+      display: grid; place-items: center; box-shadow: 0 4px 16px rgba(233,69,96,0.4);
+      opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+      transform: translateY(10px);
+    }
+    .back-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .back-top:hover { background: var(--primary-light); }
+    .back-top:focus-visible { outline: 2px solid var(--text-1); outline-offset: 2px; }
+
+    /* 搜索无结果 */
+    .no-result { display: none; padding: 32px; text-align: center; color: var(--text-3); font-size: 14px; }
+    .no-result.show { display: block; }
+
+    /* 移动遮罩 */
+    .mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 95; }
+    .mobile-overlay.show { display: block; }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .portal-grid { grid-template-columns: 1fr 240px; }
+      .channel-index { display: none; }
+      .hero-inner { grid-template-columns: 1fr; gap: 28px; }
+      .hero-visual { display: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 740px) {
+      .portal-grid { grid-template-columns: 1fr; }
+      .aux-col { position: static; }
+      .header-nav { display: none; }
+      .hamburger { display: grid; }
+      .header-search input { width: 90px; }
+      .header-inner { gap: 12px; }
+      .hero-inner { padding: 40px 20px 36px; }
+      .container { padding: 24px 16px 36px; }
+      .comment-grid { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 24px; }
+      .announce-inner { font-size: 12px; gap: 8px; }
+      .site-header { top: 37px; }
+      .header-nav.mobile-open {
+        display: flex; flex-direction: column; position: fixed;
+        top: 99px; left: 0; right: 0; background: #fff; padding: 16px 20px 24px;
+        border-bottom: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        z-index: 98; gap: 2px;
+      }
+      .header-nav.mobile-open a { padding: 12px 10px; font-size: 15px; }
+      .back-top { bottom: 16px; right: 16px; width: 40px; height: 40px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶公告条 -->
+<div class="announce-bar" aria-label="站内公告">
+  <div class="announce-inner">
+    <span class="announce-brand">艾彩原创视频</span>
+    <span class="announce-divider">|</span>
+    <span class="announce-item"><span class="date">11月7日</span> 新增《暗房来信》第4集</span>
+    <span class="announce-divider">|</span>
+    <span class="announce-item"><span class="date">11月6日</span> 短片竞赛单元开放投稿</span>
+  </div>
+</div>
+
+<!-- 吸顶页头 -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/#hero" class="logo" aria-label="艾彩原创视频首页">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect width="32" height="32" rx="8" fill="#1a1a2e"/>
+        <path d="M12 9l10 7-10 7V9z" fill="#e94560"/>
+      </svg>
+      <span class="logo-text">艾彩原创视频</span>
+    </a>
+    <nav class="header-nav" id="headerNav" aria-label="主导航">
+      <a href="/#featured">精选</a>
+      <a href="/#updates">最新</a>
+      <a href="/#categories">分类</a>
+      <a href="/#deep">深度</a>
+      <a href="/#guide">指南</a>
+      <a href="/#faq">问答</a>
+      <a href="/#community">评论</a>
+    </nav>
+    <div class="header-search">
+      <input type="search" id="searchInput" placeholder="搜片名或类型" aria-label="搜索站内内容">
+      <button id="searchBtn" aria-label="搜索">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+      </button>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="打开菜单" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<!-- 首屏 -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>艾彩原创视频</h1>
+      <p class="hero-desc">汇集独立剧情短片、微短剧、实验动画与幕后纪录，覆盖悬疑、科幻、家庭、女性叙事等方向。每周更新片单与创作者访谈，附观众真实评分与分集讨论。</p>
+      <div class="hero-actions">
+        <a href="/#featured" class="btn-primary">浏览精选片单 →</a>
+        <a href="/#submit" class="btn-ghost">投稿原创作品</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>128</strong>部在架作品</div>
+        <div><strong>36</strong>位合作创作者</div>
+        <div><strong>11月7日</strong>最近更新</div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 340 280" fill="none">
+        <rect x="30" y="40" width="280" height="170" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+        <circle cx="170" cy="125" r="30" fill="rgba(233,69,96,0.85)"/>
+        <path d="M162 113l18 12-18 12V113z" fill="#fff"/>
+        <rect x="55" y="180" width="90" height="6" rx="3" fill="rgba(255,255,255,0.12)"/>
+        <rect x="55" y="192" width="140" height="5" rx="2.5" fill="rgba(255,255,255,0.07)"/>
+        <rect x="55" y="202" width="60" height="5" rx="2.5" fill="rgba(255,255,255,0.07)"/>
+        <circle cx="265" cy="70" r="6" fill="#ffb3c1" opacity="0.6"/>
+        <circle cx="60" cy="60" r="4" fill="#e94560" opacity="0.5"/>
+        <circle cx="290" cy="190" r="8" fill="rgba(255,255,255,0.04)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 主内容区 三栏门户 -->
+<div class="container">
+  <div class="portal-grid">
+
+    <!-- 左频道索引 -->
+    <aside class="channel-index" aria-label="频道索引">
+      <h2>频道</h2>
+      <ul class="channel-list">
+        <li><a href="/#featured" class="active"><span class="channel-dot"></span>精选片单</a></li>
+        <li><a href="/#updates"><span class="channel-dot"></span>最新更新</a></li>
+        <li><a href="/#categories"><span class="channel-dot"></span>分类导航</a></li>
+        <li><a href="/#deep"><span class="channel-dot"></span>深度解析</a></li>
+        <li><a href="/#guide"><span class="channel-dot"></span>观看指南</a></li>
+        <li><a href="/#faq"><span class="channel-dot"></span>常见问答</a></li>
+        <li><a href="/#community"><span class="channel-dot"></span>观众评论</a></li>
+        <li><a href="/#news"><span class="channel-dot"></span>相关资讯</a></li>
+        <li><a href="/#rec"><span class="channel-dot"></span>相关推荐</a></li>
+        <li><a href="/#rank"><span class="channel-dot"></span>热门榜单</a></li>
+      </ul>
+    </aside>
+
+    <!-- 中间主内容 -->
+    <main class="main-col">
+
+      <!-- 主题领域概览 -->
+      <section class="section" id="overview">
+        <div class="section-header">
+          <h2>原创短片与微短剧的生态版图</h2>
+        </div>
+        <div class="overview-text">
+          <p>独立短片和微短剧正在形成一套区别于长视频平台的制作与观看逻辑。片长从3分钟到25分钟不等，常见形态包括单集闭环的剧情短片、每集3—5分钟的竖屏微短剧、以及10分钟左右的实验动画。制作方以个人创作者、小型工作室和影视院校毕业作品为主，发行渠道分散在各类展映、线上视频社区和节展竞赛单元。</p>
+          <p>从题材看，悬疑反转和都市情感占据近六成内容量，科幻与家庭伦理次之。2026年秋季值得关注的方向包括：<strong>伪纪录片式恐怖短片</strong>在低成本制作中回潮，<strong>单场景多人对话剧</strong>因拍摄周期短而产量上升，<strong>AI辅助分镜</strong>开始出现在部分实验作品的幕后记录里。观众评分主要受剧本完成度和表演自然度影响，特效并非核心变量。</p>
+          <p>创作者收入来源大致分为平台分成、品牌定制短片、节展奖金和观众打赏四类。其中品牌定制短片在2026年下半年明显增多，集中在美妆、数码和本地生活三个品类。竞赛单元方面，本季度有“48小时短片挑战”和“命题创作季”两个活动正在进行投稿。</p>
+        </div>
+      </section>
+
+      <!-- 精选内容推荐 -->
+      <section class="section" id="featured">
+        <div class="section-header">
+          <h2>本周精选片单</h2>
+          <a href="/#recommend" class="more-link">查看全部 →</a>
+        </div>
+        <div class="card-grid" id="cardGrid">
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/anfang1/400/300" width="400" height="300" alt="《暗房来信》剧照：红色暗房灯光下的洗照片场景" loading="lazy">
+              <span class="card-type">悬疑短片</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title"><a href="/#featured">暗房来信</a></h3>
+              <div class="card-tags"><span class="tag">单场景</span><span class="tag">反转</span><span class="tag">胶片摄影</span></div>
+              <p class="card-note">冲洗店老板收到一卷没有拍摄者的底片，冲出来的画面全是他自己家。第4集把时间线拉回三年前的一场火灾。</p>
+              <div class="card-meta"><span>评分 8.7</span><span>更新至第4集</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/weidu1/400/300" width="400" height="300" alt="《微都》片头画面：霓虹灯牌与窄巷中的行人" loading="lazy">
+              <span class="card-type">都市微短剧</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title"><a href="/#featured">微都</a></h3>
+              <div class="card-tags"><span class="tag">竖屏</span><span class="tag">职场</span><span class="tag">每集5分钟</span></div>
+              <p class="card-note">外卖骑手和写字楼保安交换身份过周末，各自撞见对方生活里的烂摊子。台词密度高，场景基本在电梯和楼道完成。</p>
+              <div class="card-meta"><span>评分 8.2</span><span>全12集完结</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/haiyan1/400/300" width="400" height="300" alt="《海岸线以北》空镜：灰色海面与远处灯塔" loading="lazy">
+              <span class="card-type">家庭剧情</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title"><a href="/#featured">海岸线以北</a></h3>
+              <div class="card-tags"><span class="tag">实景拍摄</span><span class="tag">母女关系</span><span class="tag">方言对白</span></div>
+              <p class="card-note">母亲把老房子卖了搬去女儿的城市，两人在出租屋里住了七天。全片用闽南语对白，没有配乐，环境音保留完整。</p>
+              <div class="card-meta"><span>评分 9.1</span><span>22分钟</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/shikong1/400/300" width="400" height="300" alt="《时空修补员》动画帧：手绘风格的钟表齿轮与人物剪影" loading="lazy">
+              <span class="card-type">实验动画</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title"><a href="/#featured">时空修补员</a></h3>
+              <div class="card-tags"><span class="tag">手绘</span><span class="tag">循环叙事</span><span class="tag">无对白</span></div>
+              <p class="card-note">一个修表匠每天醒来都在同一天，但他修好的每只表会带来细微变化。第3集开始出现第二个循环者。</p>
+              <div class="card-meta"><span>评分 8.9</span><span>更新至第5集</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/wangzhe1/400/300" width="400" height="300" alt="《王者不加班》剧照：办公室内两人对峙的广角镜头" loading="lazy">
+              <span class="card-type">喜剧短片</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title"><a href="/#featured">王者不加班</a></h3>
+              <div class="card-tags"><span class="tag">办公室</span><span class="tag">黑色幽默</span><span class="tag">单集完结</span></div>
+              <p class="card-note">产品经理为了准点下班，用需求文档写了一封辞职信，结果被全公司传阅。15分钟一镜到底，只在会议室里发生。</p>
+              <div class="card-meta"><span>评分 8.4</span><span>15分钟</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/yehang1/400/300" width="400" height="300" alt="《夜航船》画面：深夜渡轮甲板上的两个人影" loading="lazy">
+              <span class="card-type">悬疑短片</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title"><a href="/#featured">夜航船</a></h3>
+              <div class="card-tags"><span class="tag">密闭空间</span><span class="tag">对白驱动</span><span class="tag">江面实拍</span></div>
+              <p class="card-note">凌晨两点的渡轮上只有三个乘客，其中一个人说这艘船三年前已经沉了。剧本改了十一稿，表演全部即兴。</p>
+              <div class="card-meta"><span>评分 8.8</span><span>18分钟</span></div>
+            </div>
+          </article>
+        </div>
+        <div class="no-result" id="noResult">没有找到匹配的片名或类型，试试其他关键词。</div>
+      </section>
+
+      <!-- 最新更新 -->
+      <section class="section" id="updates">
+        <div class="section-header">
+          <h2>最新更新与动态</h2>
+          <span class="section-intro">11月5日—11月7日</span>
+        </div>
+        <div class="update-list">
+          <div class="update-item">
+            <span class="update-time">11-07</span>
+            <div class="update-content">
+              <div class="update-title"><a href="/#featured">《暗房来信》第4集上线</a></div>
+              <div class="update-desc">第4集“火灾”揭开三年前时间线，片尾字幕确认第5集为大结局。</div>
+            </div>
+            <span class="update-badge">新集</span>
+          </div>
+          <div class="update-item">
+            <span class="update-time">11-07</span>
+            <div class="update-content">
+              <div class="update-title"><a href="/#featured">《时空修补员》第5集更新</a></div>
+              <div class="update-desc">第二个循环者身份曝光，导演在评论区确认本季共8集。</div>
+            </div>
+            <span class="update-badge">新集</span>
+          </div>
+          <div class="update-item">
+            <span class="update-time">11-06</span>
+            <div class="update-content">
+              <div class="update-title"><a href="/#submit">48小时短片挑战赛投稿通道开启</a></div>
+              <div class="update-desc">11月8日00:00截止，命题关键词为“门”和“回声”，成片限时5分钟以内。</div>
+            </div>
+            <span class="update-badge">活动</span>
+          </div>
+          <div class="update-item">
+            <span class="update-time">11-06</span>
+            <div class="update-content">
+              <div class="update-title"><a href="/#featured">《海岸线以北》上线导演评论音轨</a></div>
+              <div class="update-desc">导演陈令仪逐场讲解闽南语对白的取舍，总时长47分钟。</div>
+            </div>
+            <span class="update-badge">花絮</span>
+          </div>
+          <div class="update-item">
+            <span class="update-time">11-05</span>
+            <div class="update-content">
+              <div class="update-title"><a href="/#featured">《微都》全12集完结</a></div>
+              <div class="update-desc">大结局单集播放量破42万，编剧在社交账号回应第二季尚无计划。</div>
+            </div>
+            <span class="update-badge">完结</span>
+          </div>
+          <div class="update-item">
+            <span class="update-time">11-05</span>
+            <div class="update-content">
+              <div class="update-title"><a href="/#news">“命题创作季”公布首批评委名单</a></div>
+              <div class="update-desc">包括金爵短片奖得主赵弋和摄影师李维桢，初审结果11月20日公布。</div>
+            </div>
+            <span class="update-badge">赛事</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 分类入口 -->
+      <section class="section" id="categories">
+        <div class="section-header">
+          <h2>按类型找片</h2>
+        </div>
+        <div class="category-grid">
+          <a href="/#featured" class="category-item">
+            <span class="category-icon">🎭</span>
+            <span class="category-name">悬疑反转</span>
+            <span class="category-count">34部</span>
+          </a>
+          <a href="/#featured" class="category-item">
+            <span class="category-icon">🏙️</span>
+            <span class="category-name">都市情感</span>
+            <span class="category-count">28部</span>
+          </a>
+          <a href="/#featured" class="category-item">
+            <span class="category-icon">🚀</span>
+            <span class="category-name">科幻设定</span>
+            <span class="category-count">19部</span>
+          </a>
+          <a href="/#featured" class="category-item">
+            <span class="category-icon">🏠</span>
+            <span class="category-name">家庭伦理</span>
+            <span class="category-count">16部</span>
+          </a>
+          <a href="/#featured" class="category-item">
+            <span class="category-icon">🎨</span>
+            <span class="category-name">实验动画</span>
+            <span class="category-count">12部</span>
+          </a>
+          <a href="/#featured" class="category-item">
+            <span class="category-icon">😂</span>
+            <span class="category-name">黑色喜剧</span>
+            <span class="category-count">11部</span>
+          </a>
+          <a href="/#featured" class="category-item">
+            <span class="category-icon">📹</span>
+            <span class="category-name">伪纪录片</span>
+            <span class="category-count">9部</span>
+          </a>
+          <a href="/#featured" class="category-item">
+            <span class="category-icon">🎞️</span>
+            <span class="category-name">幕后纪录</span>
+            <span class="category-count">8部</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- 深度解析 -->
+      <section class="section" id="deep">
+        <div class="deep-analysis">
+          <h2>原创短片的三重门槛：剧本、表演与声音</h2>
+          <p class="lead">从近三个月上架的47部新片中，可以拆出一些可核对的判断依据。</p>
+
+          <h3>剧本完整度比反转次数更决定评分</h3>
+          <p>统计10月1日至11月7日上架的31部悬疑类短片，评分8.5以上的共6部。这6部的共同点不是反转数量多，而是前3分钟内建立了完整的“日常—异常—选择”链条。《暗房来信》第1集用2分40秒交代了冲洗店的工作流程、老板的习惯动作和那卷底片的来历，之后才进入异常事件。评分低于7.5的9部作品中，有7部在开场90秒内就抛出核心悬念，观众缺少判断人物行为的基准线。</p>
+          <div class="callout">可核对的结构：高评分悬疑短片的前3分钟，平均出现3.2个具体生活细节（道具、动作、空间特征）；低评分组平均只有1.4个。</div>
+
+          <h3>非职业演员的表演依赖场景设计</h3>
+          <p>《海岸线以北》的母女对手戏大量发生在厨房和阳台，导演陈令仪在评论音轨里提到，她让两位非职业演员在开拍前三天只做一件事：一起做饭、晾衣服、整理出租屋。片中母亲削苹果的镜头拍了7条，最后用的是第6条，因为那条里她削断了一次皮，没有重来。</p>
+          <p>对比同期的《归途快车》，职业演员占比更高，但场景设计偏功能化，餐桌对话的调度基本是正反打。评分8.1，低于《海岸线以北》的9.1。表演自然度这个变量的背后，其实是场景给了多少可操作的具体动作。台词写“你从来不管我”是一回事，让演员在说这句话时手里有活干是另一回事。</p>
+
+          <h3>声音设计的分水岭在环境音保留率</h3>
+          <p>随机抽取20部时长在15—25分钟的短片，按是否保留完整环境音分为两组。保留组（12部）平均评分8.3，消音组（8部）平均评分7.6。差异最明显的是《夜航船》，全片没有配乐，江面风声、船体金属声和三人脚步声构成了大部分节奏。导演在幕后短片中解释，混音时曾尝试加一段低频铺底，试映后有观众反馈“听不清谁在说话”，最后全部撤掉。</p>
+          <ul>
+            <li>环境音保留率高的作品，观众评论中“真实感”一词出现频率是另一组的2.7倍。</li>
+            <li>但环境音不是越多越好：《暗房来信》第2集药水冲洗声过大，有17条评论提到“耳朵累”。</li>
+            <li>声音设计的具体判断标准：台词清晰度优先于氛围感，尤其是在没有字幕的情况下。</li>
+          </ul>
+
+          <h3>“已公开事实”与“推测”的边界案例</h3>
+          <p>11月4日有用户在讨论区发帖称《时空修补员》第5集片尾彩蛋暗示第二个循环者是修表匠的徒弟。该帖列举了三处画面细节：徒弟手腕上的表、背景墙上的日历、以及一句被环境音盖住的台词。导演在11月5日的直播中回应“有些是对的，但不止一个”，没有逐条确认。目前可以确认的事实是：第5集片尾字幕表中新增了“循环者B”的演员署名；推测部分是具体身份指向。在官方设定集出版前，这三处细节属于可讨论但不可定论的信息层级。</p>
+        </div>
+      </section>
+
+      <!-- 体验指南 -->
+      <section class="section" id="guide">
+        <div class="section-header">
+          <h2>观看顺序与投入判断</h2>
+        </div>
+        <div class="guide-steps">
+          <div class="guide-step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h3>先看单集完结的短片，建立类型基准</h3>
+              <p>15—25分钟的单集作品最适合用来判断自己偏好哪类叙事。《王者不加班》《夜航船》都是一集结束，不需要追更，试错成本低。看完再决定要不要进入多集微短剧。</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h3>多集作品看前两集是否建立完整人物动机</h3>
+              <p>《暗房来信》第1集结尾已经给出主角为什么要继续查下去。如果两集之后主角的行为仍然只靠“好奇”驱动，后续大概率靠反转硬撑。可以对照《时空修补员》第1集和第2集，修表匠的动机从“想结束循环”变成“想知道谁在改表”，具体欲望有递进。</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h3>比较同类型作品时，看评论里有没有具体场景描述</h3>
+              <p>有价值的评论通常会提到某一场戏的调度、某句台词的处理或某个道具的用法。只写“好看”“反转绝了”的评论参考价值有限。以《海岸线以北》为例，评分9.1，高赞评论中三分之二提到了厨房削苹果那场戏，说明观众被具体场景击中，而非泛泛喜欢。</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h3>优先选有导演评论音轨或幕后纪录的作品</h3>
+              <p>目前站内带评论音轨的作品有14部，集中在悬疑和家庭题材。音轨里通常会讲清楚某场戏为什么这样拍、哪些是即兴、哪些是补拍。对于想自己拍片的人，这些信息比正片更有参考价值。收听顺序建议先看正片，再听音轨。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" id="faq">
+        <div class="section-header">
+          <h2>关于原创短片与微短剧的常见问题</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>微短剧和普通短片的核心区别是什么？</summary>
+            <div class="faq-answer">单集时长和叙事节奏。微短剧单集通常在3—5分钟，每集结尾必须留一个钩子让观众点下一集，所以结构上更接近连续剧。普通短片一般15—25分钟，一集讲完一个完整故事，结尾不依赖悬念。制作周期上，微短剧通常整季一起拍，短片多为单部制作。</div>
+          </details>
+          <details class="faq-item">
+            <summary>没有专业设备能拍出可看的短片吗？</summary>
+            <div class="faq-answer">手机拍摄的短片在2026年投稿中占比约27%。关键变量是收音和光线，不是分辨率。《夜航船》的江面镜头用手机外接麦克风完成，混音时保留了风声。如果只能做一件事，优先保证台词录清楚。光线方面，阴天户外和台灯加白纸柔光是最低成本的两个方案。</div>
+          </details>
+          <details class="faq-item">
+            <summary>怎么判断一部原创短片值不值得花时间？</summary>
+            <div class="faq-answer">看前90秒有没有给出具体的人物目标和障碍。《暗房来信》第1集前90秒里，老板接了一卷来路不明的底片，同时接到房东催租的电话。两个具体信息叠加，观众立刻知道这个人有麻烦。如果前90秒只有氛围空镜和旁白抒情，后续大概率节奏偏慢。</div>
+          </details>
+          <details class="faq-item">
+            <summary>“48小时短片挑战”的评审标准是什么？</summary>
+            <div class="faq-answer">初审看是否在时限内完成命题关键词的有机嵌入，而不是生硬贴标签。复审看剧本完整度和声音清晰度。2025年的评审记录显示，因台词听不清被扣分的作品占初审淘汰量的31%。决赛轮会增加现场展映的观众投票。</div>
+          </details>
+          <details class="faq-item">
+            <summary>为什么有些短片评分很高但讨论很少？</summary>
+            <div class="faq-answer">评分和讨论量是两套逻辑。高评分通常来自剧本完成度和表演自然度，讨论量则受题材是否容易引发站队影响。比如《海岸线以北》评分9.1但评论只有23条，因为家庭题材不容易吵起来。悬疑类作品只要留下可推测的空间，讨论量就会上去，哪怕评分只有8.0左右。</div>
+          </details>
+          <details class="faq-item">
+            <summary>原创短片投稿后多久能上线？</summary>
+            <div class="faq-answer">初审一般在5个工作日内完成，主要核查版权和内容合规。通过后进入排期，通常2—3周内上线。如果是竞赛单元投稿，上线时间会配合活动节点。加急通道只对合作创作者开放，普通投稿没有加急选项。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 用户评论 -->
+      <section class="section" id="community">
+        <div class="section-header">
+          <h2>观众在聊什么</h2>
+          <span class="section-intro">近7天评论摘录</span>
+        </div>
+        <div class="comment-grid">
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">林</span><span class="comment-name">林中鹿</span></div>
+            <p class="comment-text">《暗房来信》第4集那个火灾时间线对上了第1集底片上的日期，我去翻了截图，确实一致。但第3集那个邻居的动机还是没讲清楚。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">麦</span><span class="comment-name">麦子熟了</span></div>
+            <p class="comment-text">《海岸线以北》削苹果那段我看了三遍。我妈以前也是这样，削断了就自己吃掉，不吭声。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">老</span><span class="comment-name">老白干</span></div>
+            <p class="comment-text">《微都》前6集还行，后面保安那条线越写越飞，第10集直接变成谍战了，有点接不住。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">阿</span><span class="comment-name">阿喀琉斯</span></div>
+            <p class="comment-text">《时空修补员》第5集彩蛋，徒弟手腕上那块表是第2集修表匠修好的那只，编号对得上。导演说“不止一个”，我猜还有第三个人。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">南</span><span class="comment-name">南瓜马车</span></div>
+            <p class="comment-text">最近这类短片声音普遍有问题，台词混响太重，戴耳机听更明显。不知道是录音还是后期的问题。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">铁</span><span class="comment-name">铁蛋儿</span></div>
+            <p class="comment-text">《王者不加班》一镜到底真的假的？我看着像剪辑点藏在打印机响的那一下。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">苏</span><span class="comment-name">苏打水</span></div>
+            <p class="comment-text">《夜航船》那个结尾有点故弄玄虚了，前面铺垫不够，突然来一句船沉了，我第一反应是“啊？”。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">周</span><span class="comment-name">周末不加班</span></div>
+            <p class="comment-text">48小时挑战今年命题是“门”和“回声”，已经想到好几个方向了，就是时间太紧，11月8号就截止。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">半</span><span class="comment-name">半糖去冰</span></div>
+            <p class="comment-text">家庭题材短片普遍评分偏高，可能是因为看的人少，打分的都是目标受众。悬疑那边评分就卷多了。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">大</span><span class="comment-name">大橘为重</span></div>
+            <p class="comment-text">陈令仪导演的评论音轨哪里还能听到？《海岸线以北》那个我听完又看了一遍正片，完全不一样的感觉。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">一</span><span class="comment-name">一只鱼</span></div>
+            <p class="comment-text">实验动画这块《时空修补员》算比较友好的了，有些作品真的看不懂，看了五分钟不知道在干嘛。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">宁</span><span class="comment-name">宁宁</span></div>
+            <p class="comment-text">《暗房来信》第2集那个冲洗声确实有点大，我是摘了耳机用外放看的，好一些。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">西</span><span class="comment-name">西瓜霜</span></div>
+            <p class="comment-text">有没有人觉得最近都市情感类短片标题都特别长，带括号那种，看了就不想点。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">沉</span><span class="comment-name">沉默的螺旋</span></div>
+            <p class="comment-text">《夜航船》才18分钟，我看了两遍才把三人对话的逻辑理清楚。剧本确实扎实，但第一遍容易懵。</p>
+          </div>
+          <div class="comment-card">
+            <div class="comment-user"><span class="comment-avatar">小</span><span class="comment-name">小满</span></div>
+            <p class="comment-text">投稿了两次都没过初审，说版权材料不全。背景音乐用的是无版权网站上的，但那个网站授权书要另外下载，我补上去试试。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 相关资讯 -->
+      <section class="section" id="news">
+        <div class="section-header">
+          <h2>近期行业动态</h2>
+        </div>
+        <div class="news-list">
+          <div class="news-item">
+            <span class="news-date">11-07</span>
+            <div class="news-body">
+              <h3><a href="/#news">“48小时短片挑战”报名作品已达213部</a></h3>
+              <p>比去年同期多出47部。组委会临时增加10个入围名额，初审时间提前至11月10日开始。</p>
+            </div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">11-06</span>
+            <div class="news-body">
+              <h3><a href="/#news">导演陈令仪确认新片《回南天》进入后期</a></h3>
+              <p>片长预计38分钟，延续闽南语对白，取景地从海岸线转到城中村。预计2027年春季上线。</p>
+            </div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">11-05</span>
+            <div class="news-body">
+              <h3><a href="/#news">微短剧分账规则调整：有效播放时长门槛从30秒提至60秒</a></h3>
+              <p>影响主要在3分钟以内的竖屏短剧。部分制作方已表示会重新剪辑前两集，把钩子提前。</p>
+            </div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">11-04</span>
+            <div class="news-body">
+              <h3><a href="/#news">“命题创作季”公布评委：赵弋、李维桢等五人</a></h3>
+              <p>赵弋去年凭《归途快车》获金爵短片奖提名。初审结果11月20日公布，决赛展映定在12月6日。</p>
+            </div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">11-03</span>
+            <div class="news-body">
+              <h3><a href="/#news">《暗房来信》制片方公布衍生广播剧计划</a></h3>
+              <p>共6集，补完洗照片老板的前史，预计12月中旬上线音频平台。原班配音阵容尚未确认。</p>
+            </div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">11-02</span>
+            <div class="news-body">
+              <h3><a href="/#news">高校影视联展公布入围名单：27部学生作品入选</a></h3>
+              <p>其中12部为毕业设计。展映分三个单元，11月15日起在三个城市轮流放映，免费入场。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 相关推荐 -->
+      <section class="section" id="rec">
+        <div class="section-header">
+          <h2>你可能还想看</h2>
+        </div>
+        <div class="rec-tags">
+          <a href="/#featured" class="rec-tag">单场景悬疑短片</a>
+          <a href="/#featured" class="rec-tag">闽南语对白作品</a>
+          <a href="/#featured" class="rec-tag">无配乐短片</a>
+          <a href="/#featured" class="rec-tag">竖屏微短剧</a>
+          <a href="/#featured" class="rec-tag">手绘实验动画</a>
+          <a href="/#featured" class="rec-tag">一镜到底</a>
+          <a href="/#featured" class="rec-tag">伪纪录片恐怖</a>
+          <a href="/#featured" class="rec-tag">导演评论音轨</a>
+        </div>
+      </section>
+
+      <!-- 热门榜单 -->
+      <section class="section" id="rank">
+        <div class="section-header">
+          <h2>本周热度榜</h2>
+          <span class="section-intro">按播放与互动综合排序</span>
+        </div>
+        <div class="rank-list">
+          <div class="rank-item">
+            <span class="rank-num top1">1</span>
+            <div class="rank-info"><span class="rank-name">暗房来信</span><span class="rank-meta">悬疑 / 更新至第4集</span></div>
+            <span class="rank-score">9.2</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-num top2">2</span>
+            <div class="rank-info"><span class="rank-name">微都</span><span class="rank-meta">都市 / 全12集完结</span></div>
+            <span class="rank-score">8.9</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-num top3">3</span>
+            <div class="rank-info"><span class="rank-name">海岸线以北</span><span class="rank-meta">家庭 / 22分钟</span></div>
+            <span class="rank-score">8.7</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-num">4</span>
+            <div class="rank-info"><span class="rank-name">时空修补员</span><span class="rank-meta">动画 / 更新至第5集</span></div>
+            <span class="rank-score">8.5</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-num">5</span>
+            <div class="rank-info"><span class="rank-name">夜航船</span><span class="rank-meta">悬疑 / 18分钟</span></div>
+            <span class="rank-score">8.4</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-num">6</span>
+            <div class="rank-info"><span class="rank-name">王者不加班</span><span class="rank-meta">喜剧 / 15分钟</span></div>
+            <span class="rank-score">8.1</span>
+          </div>
+          <div class="rank-item">
+            <span class="rank-num">7</span>
+            <div class="rank-info"><span class="rank-name">归途快车</span><span class="rank-meta">剧情 / 24分钟</span></div>
+            <span class="rank-score">7.8</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 投稿互动 -->
+      <section class="section" id="submit">
+        <div class="section-header">
+          <h2>投稿与交流</h2>
+        </div>
+        <div class="submit-cta" style="text-align:left; padding: 28px 26px;">
+          <h2 style="font-size:20px; margin-bottom:8px;">把你的原创短片放进来</h2>
+          <p style="font-size:14px; margin-bottom:16px; color:rgba(255,255,255,0.85);">接受15分钟以内剧情短片、5分钟以内微短剧单集、以及实验动画。初审5个工作日，通过后排期2—3周。需要准备：成片文件、剧本梗概（200字以内）、版权声明。</p>
+          <a href="/#submit" class="btn-white">了解投稿要求</a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 右辅助栏 -->
+    <aside class="aux-col" aria-label="辅助信息">
+      <div class="aux-card">
+        <h2>热榜速览</h2>
+        <ol class="hot-list">
+          <li><span class="hot-num">1</span><a href="/#featured">暗房来信 第4集</a></li>
+          <li><span class="hot-num">2</span><a href="/#featured">微都 大结局</a></li>
+          <li><span class="hot-num">3</span><a href="/#featured">海岸线以北 导演音轨</a></li>
+          <li><span class="hot-num">4</span><a href="/#featured">时空修补员 第5集</a></li>
+          <li><span class="hot-num">5</span><a href="/#featured">夜航船</a></li>
+        </ol>
+      </div>
+      <div class="aux-card">
+        <h2>更新流</h2>
+        <ul class="update-stream">
+          <li>《暗房来信》第4集上线<span class="stream-time">11月7日 20:00</span></li>
+          <li>《时空修补员》第5集更新<span class="stream-time">11月7日 18:30</span></li>
+          <li>48小时挑战投稿截止提醒<span class="stream-time">11月6日 10:00</span></li>
+          <li>《海岸线以北》评论音轨<span class="stream-time">11月6日 15:00</span></li>
+          <li>《微都》全12集完结<span class="stream-time">11月5日 21:00</span></li>
+        </ul>
+      </div>
+      <div class="submit-cta">
+        <h2>有作品想被看到？</h2>
+        <p>短片、微短剧、动画均可投稿。初审5个工作日。</p>
+        <a href="/#submit" class="btn-white">去投稿</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- 页尾 -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo-text">艾彩原创视频</span>
+        <p>聚焦15分钟以内的原创剧情短片与微短剧，覆盖悬疑、都市、家庭、实验动画等方向。每周更新片单与幕后内容，收录2026年9月至11月新上架作品47部。</p>
+      </div>
+      <div class="footer-col">
+        <h3>浏览</h3>
+        <ul>
+          <li><a href="/#featured">精选片单</a></li>
+          <li><a href="/#updates">最新更新</a></li>
+          <li><a href="/#categories">分类导航</a></li>
+          <li><a href="/#rank">热门榜单</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>内容</h3>
+        <ul>
+          <li><a href="/#deep">深度解析</a></li>
+          <li><a href="/#guide">观看指南</a></li>
+          <li><a href="/#faq">常见问答</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>参与</h3>
+        <ul>
+          <li><a href="/#submit">投稿作品</a></li>
+          <li><a href="/#community">观众评论</a></li>
+          <li><a href="/#submit">48小时挑战</a></li>
+          <li><a href="/#rec">相关推荐</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 艾彩原创视频 · 内容聚合示例页面</span>
+      <span class="update-note">最近更新：2026年11月7日 · 《暗房来信》第4集上线</span>
+    </div>
+  </div>
+</footer>
+
+<!-- 回到顶部 -->
+<button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+
+<script>
+(function() {
+  // 回到顶部
+  var backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > window.innerHeight) {
+      backTop.classList.add('show');
+    } else {
+      backTop.classList.remove('show');
+    }
+  }, { passive: true });
+  backTop.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 移动端菜单
+  var hamburger = document.getElementById('hamburgerBtn');
+  var headerNav = document.getElementById('headerNav');
+  var overlay = document.getElementById('mobileOverlay');
+
+  function closeMenu() {
+    headerNav.classList.remove('mobile-open');
+    overlay.classList.remove('show');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  hamburger.addEventListener('click', function() {
+    var isOpen = headerNav.classList.contains('mobile-open');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      headerNav.classList.add('mobile-open');
+      overlay.classList.add('show');
+      hamburger.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  overlay.addEventListener('click', closeMenu);
+
+  headerNav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  // 搜索筛选
+  var searchInput = document.getElementById('searchInput');
+  var searchBtn = document.getElementById('searchBtn');
+  var cardGrid = document.getElementById('cardGrid');
+  var noResult = document.getElementById('noResult');
+  var cards = cardGrid.querySelectorAll('.card');
+
+  function doSearch() {
+    var q = searchInput.value.trim().toLowerCase();
+    var visible = 0;
+    cards.forEach(function(card) {
+      var text = card.textContent.toLowerCase();
+      if (!q || text.indexOf(q) !== -1) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    if (visible === 0) {
+      noResult.classList.add('show');
+    } else {
+      noResult.classList.remove('show');
+    }
+  }
+
+  searchBtn.addEventListener('click', doSearch);
+  searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') doSearch();
+  });
+
+  // 侧栏导航高亮
+  var channelLinks = document.querySelectorAll('.channel-list a');
+  var sections = [];
+  channelLinks.forEach(function(link) {
+    var href = link.getAttribute('href');
+    if (href && href.startsWith('/#')) {
+      var id = href.slice(2);
+      var el = document.getElementById(id);
+      if (el) sections.push({ el: el, link: link });
+    }
+  });
+
+  if (sections.length > 0) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          channelLinks.forEach(function(l) { l.classList.remove('active'); });
+          var match = sections.find(function(s) { return s.el === entry.target; });
+          if (match) match.link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-120px 0px -60% 0px', threshold: 0.1 });
+
+    sections.forEach(function(s) { observer.observe(s.el); });
+  }
+})();
+</script>
+
+<!-- 结构化数据 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "艾彩原创视频",
+  "description": "汇集独立剧情短片、微短剧、实验动画与幕后纪录，覆盖悬疑、科幻、家庭、女性叙事等方向。",
+  "about": {
+    "@type": "Thing",
+    "name": "原创短片与微短剧"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "微短剧和普通短片的核心区别是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "单集时长和叙事节奏。微短剧单集通常在3—5分钟，每集结尾必须留一个钩子让观众点下一集，所以结构上更接近连续剧。普通短片一般15—25分钟，一集讲完一个完整故事，结尾不依赖悬念。制作周期上，微短剧通常整季一起拍，短片多为单部制作。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "没有专业设备能拍出可看的短片吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "手机拍摄的短片在2026年投稿中占比约27%。关键变量是收音和光线，不是分辨率。《夜航船》的江面镜头用手机外接麦克风完成，混音时保留了风声。如果只能做一件事，优先保证台词录清楚。光线方面，阴天户外和台灯加白纸柔光是最低成本的两个方案。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "怎么判断一部原创短片值不值得花时间？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "看前90秒有没有给出具体的人物目标和障碍。《暗房来信》第1集前90秒里，老板接了一卷来路不明的底片，同时接到房东催租的电话。两个具体信息叠加，观众立刻知道这个人有麻烦。如果前90秒只有氛围空镜和旁白抒情，后续大概率节奏偏慢。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "“48小时短片挑战”的评审标准是什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "初审看是否在时限内完成命题关键词的有机嵌入，而不是生硬贴标签。复审看剧本完整度和声音清晰度。2025年的评审记录显示，因台词听不清被扣分的作品占初审淘汰量的31%。决赛轮会增加现场展映的观众投票。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "为什么有些短片评分很高但讨论很少？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "评分和讨论量是两套逻辑。高评分通常来自剧本完成度和表演自然度，讨论量则受题材是否容易引发站队影响。比如《海岸线以北》评分9.1但评论只有23条，因为家庭题材不容易吵起来。悬疑类作品只要留下可推测的空间，讨论量就会上去，哪怕评分只有8.0左右。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "原创短片投稿后多久能上线？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "初审一般在5个工作日内完成，主要核查版权和内容合规。通过后进入排期，通常2—3周内上线。如果是竞赛单元投稿，上线时间会配合活动节点。加急通道只对合作创作者开放，普通投稿没有加急选项。"
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+  </html>
