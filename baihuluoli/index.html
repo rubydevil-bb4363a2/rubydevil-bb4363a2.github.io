@@ -1,0 +1,1317 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>白虎萝莉水晶棒 - 角色与特效内容聚合</title>
+  <meta name="description" content="白虎萝莉水晶棒内容聚合，收录角色立绘、水晶特效、同人短片、战斗场景与设定解析。适合关注二次元角色设计、魔法少女视觉表现与同人创作方向的读者浏览。">
+  <meta name="keywords" content="白虎萝莉水晶棒">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2318172b'/%3E%3Cpath d='M32 8l7 18 18 7-18 7-7 18-7-18-18-7 18-7z' fill='%23a78bfa' opacity='.9'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23f0abfc'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --c-primary: #7c3aed;
+      --c-primary-light: #a78bfa;
+      --c-primary-dark: #5b21b6;
+      --c-accent: #f0abfc;
+      --c-bg: #f7f5ff;
+      --c-panel: #ffffff;
+      --c-text-1: #1e1b2e;
+      --c-text-2: #4c4763;
+      --c-text-3: #7a7591;
+      --c-line: #e6e1f5;
+      --c-tag-bg: #f1ecff;
+      --radius-card: 14px;
+      --radius-btn: 10px;
+      --radius-tag: 999px;
+      --radius-banner: 18px;
+      --shadow-1: 0 1px 3px rgba(40, 20, 90, .06), 0 4px 14px rgba(40, 20, 90, .05);
+      --shadow-2: 0 4px 10px rgba(40, 20, 90, .10), 0 12px 30px rgba(40, 20, 90, .10);
+      --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+      --sticky-offset: 108px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      color: var(--c-text-1);
+      background: var(--c-bg);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    a { color: var(--c-primary-dark); text-decoration: none; }
+    a:hover { color: var(--c-primary); }
+    img { display: block; max-width: 100%; height: auto; }
+    h1, h2, h3, h4 { line-height: 1.35; margin: 0 0 .6em; }
+    h2 { font-size: 1.45rem; }
+    h3 { font-size: 1.1rem; }
+    p { margin: 0 0 1em; }
+    ul { margin: 0 0 1em; padding-left: 1.2em; }
+    li { margin-bottom: .35em; }
+    .container { max-width: 1340px; margin: 0 auto; padding: 0 22px; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+    /* ===== 吸顶公告条 + 页头 ===== */
+    .sticky-wrap {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--c-line);
+    }
+    .notice-bar {
+      background: linear-gradient(90deg, var(--c-primary-dark), var(--c-primary) 60%, #9d5cf6);
+      color: #fff;
+      font-size: .84rem;
+      padding: 7px 0;
+    }
+    .notice-bar .container { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .notice-brand {
+      font-weight: 700; letter-spacing: .5px; flex-shrink: 0;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .notice-brand svg { width: 16px; height: 16px; }
+    .notice-items { display: flex; gap: 22px; flex-wrap: wrap; }
+    .notice-items span { display: inline-flex; gap: 6px; align-items: baseline; }
+    .notice-items b { font-weight: 600; opacity: .9; }
+    .site-header { padding: 12px 0; }
+    .header-inner { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 11px; flex-shrink: 0; }
+    .brand-logo { width: 42px; height: 42px; flex-shrink: 0; }
+    .brand-text { font-size: 1.22rem; font-weight: 800; letter-spacing: .5px; color: var(--c-text-1); }
+    .main-nav { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
+    .main-nav a {
+      padding: 6px 11px; border-radius: 8px; font-size: .92rem; color: var(--c-text-2);
+      font-weight: 500; transition: background .2s, color .2s;
+    }
+    .main-nav a:hover, .main-nav a:focus-visible { background: var(--c-tag-bg); color: var(--c-primary-dark); }
+    .search-box { display: flex; align-items: center; gap: 0; flex-shrink: 0; }
+    .search-box input {
+      width: 170px; padding: 7px 11px; border: 1px solid var(--c-line);
+      border-right: none; border-radius: 9px 0 0 9px; font-size: .88rem;
+      font-family: inherit; outline: none; background: #fff;
+    }
+    .search-box input:focus { border-color: var(--c-primary-light); }
+    .search-box button {
+      padding: 7px 13px; border: 1px solid var(--c-primary); background: var(--c-primary);
+      color: #fff; border-radius: 0 9px 9px 0; cursor: pointer; font-size: .88rem;
+      font-family: inherit; font-weight: 600;
+    }
+    .search-box button:hover { background: var(--c-primary-dark); border-color: var(--c-primary-dark); }
+    .search-feedback { font-size: .82rem; color: var(--c-text-3); flex-basis: 100%; display: none; }
+    .search-feedback.show { display: block; }
+    .hamburger {
+      display: none; background: none; border: 1px solid var(--c-line);
+      border-radius: 8px; padding: 6px 9px; cursor: pointer;
+    }
+    .hamburger span { display: block; width: 20px; height: 2px; background: var(--c-text-1); margin: 4px 0; border-radius: 2px; }
+    /* ===== 首屏 ===== */
+    .hero {
+      position: relative; overflow: hidden;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(240,171,252,.35), transparent 42%),
+        radial-gradient(circle at 12% 82%, rgba(167,139,250,.30), transparent 46%),
+        linear-gradient(135deg, #1e1433 0%, #2c1a4d 48%, #3b1f66 100%);
+      color: #f4f0ff;
+      padding: 46px 0 50px;
+    }
+    .hero .container { display: grid; grid-template-columns: 1.15fr .85fr; gap: 44px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px; font-size: .8rem;
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22);
+      padding: 4px 12px; border-radius: var(--radius-tag); margin-bottom: 16px;
+      letter-spacing: .5px;
+    }
+    .hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--c-accent); animation: pulse 2.4s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+    .hero h1 {
+      font-size: clamp(1.9rem, 3.4vw, 2.7rem); font-weight: 800;
+      color: #fff; margin-bottom: 16px; letter-spacing: .5px;
+    }
+    .hero-desc { font-size: 1rem; color: #d6cdf5; max-width: 540px; margin-bottom: 24px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary, .btn-ghost {
+      display: inline-block; padding: 9px 20px; border-radius: var(--radius-btn);
+      font-weight: 600; font-size: .92rem; transition: transform .18s, box-shadow .18s, background .18s;
+    }
+    .btn-primary { background: var(--c-accent); color: #2a1140; }
+    .btn-primary:hover { background: #fbcffd; color: #2a1140; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(240,171,252,.32); }
+    .btn-ghost { border: 1px solid rgba(255,255,255,.38); color: #f4f0ff; }
+    .btn-ghost:hover { background: rgba(255,255,255,.10); color: #fff; transform: translateY(-2px); }
+    .hero-visual { position: relative; min-height: 280px; }
+    .hero-visual svg { width: 100%; height: auto; filter: drop-shadow(0 12px 34px rgba(0,0,0,.35)); }
+    .hero-stats { display: flex; gap: 26px; margin-top: 28px; flex-wrap: wrap; }
+    .hero-stats div { font-size: .82rem; color: #bcb0e6; }
+    .hero-stats strong { display: block; font-size: 1.35rem; color: #fff; font-weight: 800; }
+    /* ===== 三栏布局 ===== */
+    .layout-3col {
+      display: grid;
+      grid-template-columns: 178px minmax(0, 1fr) 244px;
+      gap: 30px;
+      padding: 40px 0 20px;
+      align-items: start;
+    }
+    .col-left { position: sticky; top: var(--sticky-offset); }
+    .channel-index {
+      background: var(--c-panel); border: 1px solid var(--c-line);
+      border-radius: var(--radius-card); padding: 16px 12px; box-shadow: var(--shadow-1);
+    }
+    .channel-index h2 { font-size: .92rem; color: var(--c-text-3); font-weight: 700; padding: 0 6px; margin-bottom: 10px; letter-spacing: .5px; }
+    .channel-index ul { list-style: none; padding: 0; margin: 0; }
+    .channel-index li { margin: 0; }
+    .channel-index a {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 7px 9px; border-radius: 8px; font-size: .88rem; color: var(--c-text-2);
+      transition: background .18s, color .18s;
+    }
+    .channel-index a:hover, .channel-index a:focus-visible { background: var(--c-tag-bg); color: var(--c-primary-dark); }
+    .channel-index a.active { background: var(--c-primary); color: #fff; font-weight: 600; }
+    .channel-index .count { font-size: .74rem; opacity: .7; }
+    .col-right { position: sticky; top: var(--sticky-offset); display: flex; flex-direction: column; gap: 20px; }
+    .side-panel {
+      background: var(--c-panel); border: 1px solid var(--c-line);
+      border-radius: var(--radius-card); padding: 16px; box-shadow: var(--shadow-1);
+    }
+    .side-panel h2 { font-size: .95rem; margin-bottom: 12px; color: var(--c-text-1); }
+    .side-panel h2 .bar { display: inline-block; width: 4px; height: 14px; background: var(--c-primary); border-radius: 2px; margin-right: 7px; vertical-align: -1px; }
+    .rank-list { list-style: none; padding: 0; margin: 0; counter-reset: rank; }
+    .rank-list li {
+      display: flex; gap: 9px; padding: 7px 0; border-bottom: 1px dashed var(--c-line);
+      font-size: .86rem; align-items: baseline; counter-increment: rank;
+    }
+    .rank-list li:last-child { border-bottom: none; }
+    .rank-list li::before {
+      content: counter(rank); flex-shrink: 0; width: 18px; height: 18px; border-radius: 5px;
+      background: var(--c-tag-bg); color: var(--c-primary-dark); font-size: .72rem;
+      font-weight: 700; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .rank-list li:nth-child(-n+3)::before { background: var(--c-primary); color: #fff; }
+    .rank-list a { color: var(--c-text-2); }
+    .rank-list a:hover { color: var(--c-primary-dark); }
+    .update-stream { list-style: none; padding: 0; margin: 0; }
+    .update-stream li { font-size: .84rem; padding: 7px 0; border-bottom: 1px dashed var(--c-line); color: var(--c-text-2); }
+    .update-stream li:last-child { border-bottom: none; }
+    .update-stream time { display: block; font-size: .74rem; color: var(--c-text-3); margin-top: 2px; }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag-cloud a {
+      font-size: .8rem; padding: 3px 10px; border-radius: var(--radius-tag);
+      background: var(--c-tag-bg); color: var(--c-primary-dark);
+    }
+    .tag-cloud a:hover { background: var(--c-primary); color: #fff; }
+    /* ===== 主内容区块 ===== */
+    .col-main { min-width: 0; display: flex; flex-direction: column; gap: 42px; }
+    section.block { scroll-margin-top: var(--sticky-offset); }
+    .block-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 16px; flex-wrap: wrap; }
+    .block-head h2 { margin: 0; font-size: 1.32rem; position: relative; padding-left: 13px; }
+    .block-head h2::before {
+      content: ""; position: absolute; left: 0; top: .18em; width: 4px; height: 1em;
+      background: linear-gradient(var(--c-primary), var(--c-accent)); border-radius: 3px;
+    }
+    .block-head .lead { font-size: .86rem; color: var(--c-text-3); margin: 0; }
+    /* 概览 */
+    .overview-box {
+      background: var(--c-panel); border: 1px solid var(--c-line);
+      border-radius: var(--radius-card); padding: 22px 24px; box-shadow: var(--shadow-1);
+      font-size: .95rem; color: var(--c-text-2);
+    }
+    .overview-box p:last-child { margin-bottom: 0; }
+    .overview-box strong { color: var(--c-text-1); }
+    /* 精选卡片网格 */
+    .card-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px;
+    }
+    .feature-card {
+      background: var(--c-panel); border: 1px solid var(--c-line);
+      border-radius: var(--radius-card); overflow: hidden; box-shadow: var(--shadow-1);
+      display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s;
+    }
+    .feature-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); }
+    .feature-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+    .fc-body { padding: 13px 14px 15px; display: flex; flex-direction: column; flex: 1; }
+    .fc-type {
+      font-size: .72rem; font-weight: 700; color: var(--c-primary-dark);
+      background: var(--c-tag-bg); align-self: flex-start; padding: 2px 9px;
+      border-radius: var(--radius-tag); margin-bottom: 8px;
+    }
+    .fc-title { font-size: 1rem; margin-bottom: 7px; font-weight: 700; }
+    .fc-title a { color: var(--c-text-1); }
+    .fc-title a:hover { color: var(--c-primary-dark); }
+    .fc-desc { font-size: .84rem; color: var(--c-text-2); margin-bottom: 11px; flex: 1; }
+    .fc-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+    .fc-tags span { font-size: .72rem; color: var(--c-text-3); background: #f4f1fc; padding: 1px 8px; border-radius: var(--radius-tag); }
+    .fc-meta { display: flex; justify-content: space-between; font-size: .76rem; color: var(--c-text-3); border-top: 1px dashed var(--c-line); padding-top: 9px; }
+    .fc-meta .hot { color: #d9480f; font-weight: 600; }
+    /* 最新更新列表 */
+    .update-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0; }
+    .update-list li {
+      display: flex; gap: 14px; padding: 13px 4px; border-bottom: 1px solid var(--c-line);
+      align-items: flex-start;
+    }
+    .update-list li:last-child { border-bottom: none; }
+    .update-list time { flex-shrink: 0; font-size: .78rem; color: var(--c-text-3); width: 72px; padding-top: 2px; }
+    .update-list .u-title { font-weight: 600; font-size: .94rem; }
+    .update-list .u-title a { color: var(--c-text-1); }
+    .update-list .u-title a:hover { color: var(--c-primary-dark); }
+    .update-list .u-sum { font-size: .84rem; color: var(--c-text-2); }
+    /* 分类入口 */
+    .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 12px; }
+    .cat-item {
+      display: flex; flex-direction: column; gap: 4px; padding: 13px 15px;
+      background: var(--c-panel); border: 1px solid var(--c-line); border-radius: var(--radius-btn);
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .cat-item:hover { border-color: var(--c-primary-light); box-shadow: var(--shadow-1); transform: translateY(-2px); }
+    .cat-item b { font-size: .93rem; color: var(--c-text-1); }
+    .cat-item span { font-size: .76rem; color: var(--c-text-3); }
+    /* 深度解析正文 */
+    .deep-read {
+      background: var(--c-panel); border: 1px solid var(--c-line);
+      border-radius: var(--radius-card); padding: 26px 28px; box-shadow: var(--shadow-1);
+      font-size: .95rem; color: var(--c-text-2);
+    }
+    .deep-read h3 { color: var(--c-text-1); margin-top: 1.5em; padding-bottom: .3em; border-bottom: 1px solid var(--c-line); }
+    .deep-read h3:first-of-type { margin-top: .4em; }
+    .deep-read strong { color: var(--c-text-1); }
+    .deep-read ul { padding-left: 1.3em; }
+    .deep-read .callout {
+      background: linear-gradient(90deg, #f6f1ff, #fbf8ff);
+      border-left: 3px solid var(--c-primary); padding: 12px 16px;
+      border-radius: 0 8px 8px 0; margin: 1em 0; font-size: .9rem;
+    }
+    .check-table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: .86rem; }
+    .check-table th, .check-table td { border: 1px solid var(--c-line); padding: 7px 10px; text-align: left; }
+    .check-table th { background: var(--c-tag-bg); color: var(--c-text-1); font-weight: 700; }
+    /* 指南 */
+    .guide-steps { display: grid; gap: 14px; counter-reset: step; }
+    .guide-step {
+      background: var(--c-panel); border: 1px solid var(--c-line); border-radius: var(--radius-btn);
+      padding: 15px 18px 15px 52px; position: relative; box-shadow: var(--shadow-1);
+    }
+    .guide-step::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; left: 16px; top: 16px; width: 24px; height: 24px;
+      border-radius: 50%; background: var(--c-primary); color: #fff;
+      font-size: .8rem; font-weight: 700; display: flex; align-items: center; justify-content: center;
+    }
+    .guide-step b { color: var(--c-text-1); }
+    .guide-step p { margin: 4px 0 0; font-size: .87rem; color: var(--c-text-2); }
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-list details {
+      background: var(--c-panel); border: 1px solid var(--c-line);
+      border-radius: var(--radius-btn); padding: 0 16px; box-shadow: var(--shadow-1);
+    }
+    .faq-list summary {
+      cursor: pointer; padding: 13px 0; font-weight: 600; font-size: .94rem;
+      color: var(--c-text-1); list-style: none; display: flex; justify-content: space-between; gap: 12px;
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "＋"; color: var(--c-primary); font-weight: 700; flex-shrink: 0; }
+    .faq-list details[open] summary::after { content: "－"; }
+    .faq-list details p { margin: 0 0 14px; font-size: .88rem; color: var(--c-text-2); }
+    /* 评论 */
+    .comment-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+    .comment-card {
+      background: var(--c-panel); border: 1px solid var(--c-line); border-radius: var(--radius-btn);
+      padding: 13px 15px; box-shadow: var(--shadow-1); font-size: .87rem; color: var(--c-text-2);
+    }
+    .comment-card .who { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .avatar {
+      width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .72rem; font-weight: 700; color: #fff;
+    }
+    .comment-card .nick { font-size: .82rem; font-weight: 600; color: var(--c-text-1); }
+    .comment-card .cmt-time { font-size: .72rem; color: var(--c-text-3); margin-left: auto; }
+    /* 资讯 */
+    .news-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0; }
+    .news-list li { padding: 15px 0; border-bottom: 1px solid var(--c-line); }
+    .news-list li:last-child { border-bottom: none; }
+    .news-title { font-weight: 700; font-size: .98rem; margin-bottom: 4px; }
+    .news-title a { color: var(--c-text-1); }
+    .news-title a:hover { color: var(--c-primary-dark); }
+    .news-meta { font-size: .76rem; color: var(--c-text-3); margin-bottom: 4px; }
+    .news-sum { font-size: .86rem; color: var(--c-text-2); margin: 0; }
+    /* 相关推荐标签 */
+    .rec-tag-list { display: flex; flex-wrap: wrap; gap: 9px; }
+    .rec-tag-list a {
+      font-size: .87rem; padding: 6px 15px; border-radius: var(--radius-tag);
+      background: var(--c-panel); border: 1px solid var(--c-line); color: var(--c-text-2);
+      transition: all .18s;
+    }
+    .rec-tag-list a:hover { background: var(--c-primary); color: #fff; border-color: var(--c-primary); }
+    /* 补充：创作者证言 + 时间线 */
+    .creator-quote {
+      background: linear-gradient(135deg, #241738, #3a2160); color: #ebe5fb;
+      border-radius: var(--radius-banner); padding: 24px 26px; position: relative; overflow: hidden;
+    }
+    .creator-quote::after {
+      content: "“"; position: absolute; right: 22px; top: -18px; font-size: 7rem;
+      color: rgba(240,171,252,.18); font-family: Georgia, serif; line-height: 1;
+    }
+    .creator-quote .cq-text { font-size: 1rem; margin-bottom: 12px; max-width: 92%; }
+    .creator-quote .cq-by { font-size: .82rem; color: #b9a8e6; }
+    .timeline { list-style: none; padding: 0; margin: 0; position: relative; }
+    .timeline::before {
+      content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px;
+      width: 2px; background: var(--c-line);
+    }
+    .timeline li { position: relative; padding: 0 0 16px 30px; }
+    .timeline li::before {
+      content: ""; position: absolute; left: 0; top: 6px; width: 14px; height: 14px;
+      border-radius: 50%; background: #fff; border: 3px solid var(--c-primary-light);
+    }
+    .timeline li b { font-size: .92rem; color: var(--c-text-1); display: block; }
+    .timeline li span { font-size: .82rem; color: var(--c-text-2); }
+    .timeline li time { font-size: .74rem; color: var(--c-text-3); display: block; margin-top: 2px; }
+    /* 投稿互动 */
+    .interact-panel {
+      background: var(--c-panel); border: 1px dashed var(--c-primary-light);
+      border-radius: var(--radius-card); padding: 22px 24px; display: flex;
+      gap: 22px; align-items: center; flex-wrap: wrap;
+    }
+    .interact-panel .ip-text { flex: 1; min-width: 220px; }
+    .interact-panel h3 { margin-bottom: 6px; }
+    .interact-panel p { font-size: .87rem; color: var(--c-text-2); margin: 0; }
+    .interact-panel .btn-primary { flex-shrink: 0; }
+    /* 页尾 */
+    .site-footer { background: #1d1530; color: #c9bee8; margin-top: 56px; padding: 40px 0 26px; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+    .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .footer-brand .brand-text { color: #fff; font-size: 1.08rem; }
+    .footer-pos { font-size: .84rem; color: #a99ad1; line-height: 1.7; }
+    .footer-col h3 { font-size: .92rem; color: #fff; margin-bottom: 11px; }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; }
+    .footer-col li { margin-bottom: 7px; }
+    .footer-col a { font-size: .84rem; color: #b3a6d8; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.10); padding-top: 18px;
+      font-size: .78rem; color: #8d7fb5; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    }
+    /* 返回顶部 */
+    .to-top {
+      position: fixed; right: 22px; bottom: 26px; width: 42px; height: 42px;
+      border-radius: 50%; border: none; background: var(--c-primary); color: #fff;
+      font-size: 1.1rem; cursor: pointer; box-shadow: var(--shadow-2);
+      opacity: 0; visibility: hidden; transform: translateY(10px);
+      transition: opacity .25s, transform .25s, visibility .25s; z-index: 90;
+    }
+    .to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .to-top:hover { background: var(--c-primary-dark); }
+    /* 遮罩 */
+    .mobile-mask {
+      display: none; position: fixed; inset: 0; background: rgba(20,10,40,.45); z-index: 95;
+    }
+    .mobile-mask.show { display: block; }
+    /* ===== 响应式 ===== */
+    @media (max-width: 1100px) {
+      .layout-3col { grid-template-columns: minmax(0, 1fr) 244px; }
+      .col-left { display: none; }
+      .hero .container { grid-template-columns: 1fr; gap: 26px; }
+      .hero-visual { max-width: 420px; }
+    }
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 820px) {
+      .main-nav { display: none; }
+      .hamburger { display: block; }
+      .main-nav.open {
+        display: flex; position: absolute; top: 100%; left: 0; right: 0;
+        background: #fff; flex-direction: column; padding: 12px 20px 18px;
+        border-bottom: 1px solid var(--c-line); box-shadow: var(--shadow-2);
+        z-index: 99; gap: 2px;
+      }
+      .main-nav.open a { padding: 10px 8px; font-size: 1rem; }
+      .header-inner { position: relative; }
+      .layout-3col { grid-template-columns: minmax(0, 1fr); }
+      .col-right { position: static; order: 2; }
+      .col-main { order: 1; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .search-box input { width: 120px; }
+      .hero { padding: 34px 0 38px; }
+      .hero-stats { gap: 18px; }
+      .update-list li { flex-direction: column; gap: 3px; }
+      .update-list time { width: auto; }
+      .footer-grid { grid-template-columns: 1fr; gap: 22px; }
+      .deep-read { padding: 20px 18px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .cat-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶公告条 + 页头 -->
+<div class="sticky-wrap">
+  <div class="notice-bar">
+    <div class="container">
+      <span class="notice-brand">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 6.2L21 10l-6.6 1.8L12 18l-2.4-6.2L3 10l6.6-1.8z" fill="#f0abfc"/></svg>
+        白虎萝莉水晶棒
+      </span>
+      <div class="notice-items">
+        <span><b>11月7日</b>《霜晶回廊》第四话更新</span>
+        <span><b>11月5日</b>新增 12 组水晶棒特效预设</span>
+        <span><b>11月3日</b>同人赛「晶芒祭」投稿突破 240 件</span>
+      </div>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/#top" aria-label="返回首页">
+        <svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="lgA" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#f0abfc"/>
+            </linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="16" fill="#1d1530"/>
+          <path d="M32 7l6.4 17.6L56 31l-17.6 6.4L32 55l-6.4-17.6L8 31l17.6-6.4z" fill="url(#lgA)" opacity=".92"/>
+          <circle cx="32" cy="31" r="5.4" fill="#fff" opacity=".92"/>
+        </svg>
+        <span class="brand-text">白虎萝莉水晶棒</span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="主题导航">
+        <a href="/#overview">领域概览</a>
+        <a href="/#featured">精选条目</a>
+        <a href="/#updates">最新更新</a>
+        <a href="/#categories">分类检索</a>
+        <a href="/#deep-read">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问答</a>
+        <a href="/#comments">用户评论</a>
+        <a href="/#news">相关资讯</a>
+        <a href="/#contribute">投稿互动</a>
+      </nav>
+      <form class="search-box" id="searchForm" role="search" aria-label="站内条目搜索">
+        <input type="search" id="searchInput" placeholder="搜条目 / 类型 / 标签" aria-label="搜索条目、类型或标签">
+        <button type="submit">搜索</button>
+      </form>
+      <button class="hamburger" id="hamburger" aria-label="展开导航菜单" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+      <p class="search-feedback" id="searchFeedback" role="status" aria-live="polite"></p>
+    </div>
+  </header>
+</div>
+<div class="mobile-mask" id="mobileMask"></div>
+
+<!-- 首屏 -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-copy">
+      <span class="hero-badge"><span class="dot"></span>角色 · 特效 · 同人创作聚合</span>
+      <h1>白虎萝莉水晶棒</h1>
+      <p class="hero-desc">围绕白发虎耳少女与水晶魔法棒展开的角色设定、动态特效、同人短片与战斗场景合集。收录立绘拆解、光效参数、分镜拆稿和画师访谈，适合角色设计、魔法演出与同人动画方向的创作者与观众。</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="/#featured">浏览精选条目</a>
+        <a class="btn-ghost" href="/#deep-read">阅读深度解析</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>186</strong>收录条目</div>
+        <div><strong>24</strong>特效预设</div>
+        <div><strong>11月7日</strong>最近更新</div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 360 300" role="img" aria-label="白发虎耳少女手持水晶棒的光效插画">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="42%" r="52%">
+            <stop offset="0" stop-color="#f0abfc" stop-opacity=".85"/>
+            <stop offset="1" stop-color="#7c3aed" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="rod" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#c4b5fd"/><stop offset="1" stop-color="#f0abfc"/>
+          </linearGradient>
+        </defs>
+        <circle cx="188" cy="132" r="118" fill="url(#glow)"/>
+        <g opacity=".9">
+          <path d="M180 40l9 24 25 9-25 9-9 24-9-24-25-9 25-9z" fill="#f0abfc" opacity=".75"/>
+          <path d="M282 176l5 13 14 5-14 5-5 13-5-13-14-5 14-5z" fill="#c4b5fd" opacity=".8"/>
+          <path d="M96 206l4 10 11 4-11 4-4 10-4-10-11-4 11-4z" fill="#ddd6fe" opacity=".7"/>
+        </g>
+        <ellipse cx="188" cy="258" rx="86" ry="13" fill="#0f0820" opacity=".45"/>
+        <g>
+          <path d="M158 78c-10-16-20-22-30-24 4 14 10 24 20 34z" fill="#e9e4f7"/>
+          <path d="M218 78c10-16 20-22 30-24-4 14-10 24-20 34z" fill="#e9e4f7"/>
+          <circle cx="188" cy="104" r="38" fill="#f6f2ff"/>
+          <path d="M156 96c8-20 56-26 68 0 6 14-4 26-10 30-10 6-44 6-54 0-8-4-12-18-4-30z" fill="#fdfbff"/>
+          <circle cx="175" cy="108" r="5" fill="#6d28d9"/>
+          <circle cx="203" cy="108" r="5" fill="#6d28d9"/>
+          <path d="M180 122q8 6 16 0" stroke="#b39ddb" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M150 84l10 16-16 4z" fill="#ddd6fe"/>
+          <path d="M226 84l-10 16 16 4z" fill="#ddd6fe"/>
+        </g>
+        <g>
+          <rect x="182" y="140" width="13" height="86" rx="6" fill="url(#rod)"/>
+          <circle cx="188" cy="138" r="17" fill="#f5d0fe" opacity=".85"/>
+          <path d="M188 118l7 14-7 6-7-6z" fill="#fff" opacity=".95"/>
+          <circle cx="188" cy="134" r="5" fill="#fff"/>
+        </g>
+        <g opacity=".55">
+          <circle cx="112" cy="92" r="3" fill="#f0abfc"/>
+          <circle cx="270" cy="110" r="2.5" fill="#c4b5fd"/>
+          <circle cx="252" cy="62" r="2" fill="#fff"/>
+          <circle cx="132" cy="152" r="2" fill="#f0abfc"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 主内容三栏 -->
+<div class="container layout-3col">
+
+  <!-- 左频道索引 -->
+  <aside class="col-left" aria-label="频道索引">
+    <nav class="channel-index">
+      <h2>频道索引</h2>
+      <ul>
+        <li><a href="/#overview" class="active">领域概览 <span class="count">01</span></a></li>
+        <li><a href="/#featured">精选条目 <span class="count">12</span></a></li>
+        <li><a href="/#updates">最新更新 <span class="count">10</span></a></li>
+        <li><a href="/#categories">分类检索 <span class="count">08</span></a></li>
+        <li><a href="/#deep-read">深度解析 <span class="count">04</span></a></li>
+        <li><a href="/#guide">体验指南 <span class="count">05</span></a></li>
+        <li><a href="/#faq">常见问答 <span class="count">06</span></a></li>
+        <li><a href="/#comments">用户评论 <span class="count">16</span></a></li>
+        <li><a href="/#news">相关资讯 <span class="count">06</span></a></li>
+        <li><a href="/#recommend">相关推荐 <span class="count">08</span></a></li>
+        <li><a href="/#contribute">投稿互动 <span class="count">—</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- 中主内容 -->
+  <main class="col-main">
+
+    <!-- 1 领域概览 -->
+    <section class="block" id="overview">
+      <div class="block-head">
+        <h2>白发虎耳少女与水晶棒的内容版图</h2>
+        <p class="lead">从角色设定到光效演出</p>
+      </div>
+      <div class="overview-box">
+        <p><strong>“白虎萝莉”</strong>在二次元创作里通常指白发、虎耳、体态娇小的少女形象，常与冰雪、月光、守护灵等题材绑定；<strong>“水晶棒”</strong>则是这类角色最常持的魔法道具，棒体多由透明晶簇构成，施法时产生折射光斑与环形粒子。两者组合形成的视觉符号，在近两年的同人插画、短动画和虚拟摄影中反复出现。</p>
+        <p>围绕这个组合，内容大致分为四类。一是<strong>角色设定稿</strong>：发色层次、虎耳毛流、瞳孔高光、棒体握持角度都有约定俗成的画法；二是<strong>动态特效</strong>：水晶棒挥舞时的拖尾、爆闪、晶片碎裂三类光效最常被拆分研究；三是<strong>同人短片</strong>：多集中在 15 秒到 90 秒的竖屏格式，讲一次施法或一次失败施法；四是<strong>设定考据</strong>：从“白虎”神话原型到“晶棒”在魔法少女谱系里的位置，讨论帖在 2026 年 10 月明显增多。</p>
+        <p>值得关注的具体条目包括：《霜晶回廊》连载第四话的冰晶绽放镜头、画师「雪见灯」的虎耳毛流三视图、特效团队「棱镜工房」公开的 12 组光效预设，以及 11 月 3 日开启的「晶芒祭」同人赛投稿。这些条目分别对应角色、技法、素材和活动四个入口，也是近期搜索量集中的方向。</p>
+      </div>
+    </section>
+
+    <!-- 2 精选内容推荐 -->
+    <section class="block" id="featured">
+      <div class="block-head">
+        <h2>值得先看的十二个条目</h2>
+        <p class="lead">立绘 · 短片 · 特效预设</p>
+      </div>
+      <div class="card-grid">
+        <article class="feature-card">
+          <img src="https://picsum.photos/seed/bhll_crystal01/400/300" width="400" height="300" loading="lazy" alt="白发虎耳少女手持水晶棒的立绘缩略图">
+          <div class="fc-body">
+            <span class="fc-type">角色立绘</span>
+            <h3 class="fc-title"><a href="/#featured">雪见灯《霜耳三视图》</a></h3>
+            <p class="fc-desc">正面、侧面、背面三张设定稿，虎耳内侧绒毛用三层叠色处理，棒体握持位标出 4 个受力点，适合临摹。</p>
+            <div class="fc-tags"><span>三视图</span><span>毛流</span><span>握持位</span></div>
+            <div class="fc-meta"><span class="hot">热度 9.6</span><span>10月28日</span></div>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img src="https://picsum.photos/seed/bhll_short02/400/300" width="400" height="300" loading="lazy" alt="竖屏同人短片的施法瞬间截图">
+          <div class="fc-body">
+            <span class="fc-type">同人短片</span>
+            <h3 class="fc-title"><a href="/#featured">《霜晶回廊》第四话</a></h3>
+            <p class="fc-desc">90 秒竖屏，冰晶从棒尖螺旋展开共 7 层，第 3 层有轻微过曝。评论区集中在第 52 秒的晶片碎裂音效。</p>
+            <div class="fc-tags"><span>竖屏动画</span><span>冰晶展开</span><span>音效</span></div>
+            <div class="fc-meta"><span class="hot">热度 9.4</span><span>11月7日</span></div>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img src="https://picsum.photos/seed/bhll_vfx03/400/300" width="400" height="300" loading="lazy" alt="水晶棒光效预设的对比展示图">
+          <div class="fc-body">
+            <span class="fc-type">特效预设</span>
+            <h3 class="fc-title"><a href="/#featured">棱镜工房 12 组光效包</a></h3>
+            <p class="fc-desc">拖尾、爆闪、晶尘三类共 12 组，附 AE 工程与参数表。第 7 组「月弧」用椭圆遮罩做出棒尖滞后感。</p>
+            <div class="fc-tags"><span>AE 工程</span><span>拖尾</span><span>晶尘</span></div>
+            <div class="fc-meta"><span class="hot">热度 9.1</span><span>11月5日</span></div>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img src="https://picsum.photos/seed/bhll_story04/400/300" width="400" height="300" loading="lazy" alt="黑白线稿风格的水晶棒战斗分镜">
+          <div class="fc-body">
+            <span class="fc-type">分镜拆稿</span>
+            <h3 class="fc-title"><a href="/#featured">《一次失败的施法》分镜</a></h3>
+            <p class="fc-desc">14 格黑白分镜，讲少女第一次用晶棒失败后把棒子插进雪堆。第 9 格用大留白表现沉默，节奏比多数同类短片慢。</p>
+            <div class="fc-tags"><span>分镜</span><span>留白</span><span>失败叙事</span></div>
+            <div class="fc-meta"><span class="hot">热度 8.8</span><span>10月30日</span></div>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img src="https://picsum.photos/seed/bhll_char05/400/300" width="400" height="300" loading="lazy" alt="虚拟摄影风格的白发虎耳角色写真">
+          <div class="fc-body">
+            <span class="fc-type">虚拟摄影</span>
+            <h3 class="fc-title"><a href="/#featured">「月下晶尘」写真组</a></h3>
+            <p class="fc-desc">8 张 3D 渲染写真，主光位在角色右后 45 度，晶棒作为柔光棒补脸。第 6 张刻意压暗耳尖高光制造背光感。</p>
+            <div class="fc-tags"><span>3D 渲染</span><span>布光</span><span>写真</span></div>
+            <div class="fc-meta"><span class="hot">热度 8.7</span><span>11月2日</span></div>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img src="https://picsum.photos/seed/bhll_myth06/400/300" width="400" height="300" loading="lazy" alt="白虎神话原型与角色设定对照图">
+          <div class="fc-body">
+            <span class="fc-type">设定考据</span>
+            <h3 class="fc-title"><a href="/#featured">白虎原型与虎耳画法对照</a></h3>
+            <p class="fc-desc">梳理《山海经》白虎记载到现代兽耳设定的演变，指出虎耳位置比猫耳更靠上、耳间距更宽，附 6 组对比图。</p>
+            <div class="fc-tags"><span>神话原型</span><span>兽耳比例</span><span>考据</span></div>
+            <div class="fc-meta"><span class="hot">热度 8.5</span><span>10月26日</span></div>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img src="https://picsum.photos/seed/bhll_vfx07/400/300" width="400" height="300" loading="lazy" alt="粒子拖尾光效的逐帧拆解图">
+          <div class="fc-body">
+            <span class="fc-type">特效拆解</span>
+            <h3 class="fc-title"><a href="/#featured">晶棒拖尾逐帧拆解</a></h3>
+            <p class="fc-desc">把 0.8 秒拖尾拆成 24 帧，标出哪几帧该加运动模糊、哪几帧保持锐利。第 12 帧的滞后感来自复制层偏移 2px。</p>
+            <div class="fc-tags"><span>逐帧</span><span>运动模糊</span><span>复制层</span></div>
+            <div class="fc-meta"><span class="hot">热度 8.4</span><span>11月1日</span></div>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img src="https://picsum.photos/seed/bhll_voice08/400/300" width="400" height="300" loading="lazy" alt="角色配音与施法音效的波形对照截图">
+          <div class="fc-body">
+            <span class="fc-type">音效设计</span>
+            <h3 class="fc-title"><a href="/#featured">施法音效三层叠加法</a></h3>
+            <p class="fc-desc">用玻璃敲击、风铃尾音、低频嗡鸣三层叠加合成一次施法音。作者给出各层 -6dB、-12dB、-18dB 的比例参考。</p>
+            <div class="fc-tags"><span>音效</span><span>分层</span><span>dB 比例</span></div>
+            <div class="fc-meta"><span class="hot">热度 8.2</span><span>10月29日</span></div>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img src="https://picsum.photos/seed/bhll_color09/400/300" width="400" height="300" loading="lazy" alt="水晶棒配色方案的色卡展示">
+          <div class="fc-body">
+            <span class="fc-type">配色方案</span>
+            <h3 class="fc-title"><a href="/#featured">晶棒六套配色卡</a></h3>
+            <p class="fc-desc">从冷紫、冰蓝到淡金共 6 套，每套给主色、高光色、环境反光色三档。冷紫套在深色背景下最不容易糊成一片。</p>
+            <div class="fc-tags"><span>色卡</span><span>高光色</span><span>环境光</span></div>
+            <div class="fc-meta"><span class="hot">热度 8.0</span><span>10月25日</span></div>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img src="https://picsum.photos/seed/bhll_event10/400/300" width="400" height="300" loading="lazy" alt="晶芒祭同人赛投稿作品墙截图">
+          <div class="fc-body">
+            <span class="fc-type">同人活动</span>
+            <h3 class="fc-title"><a href="/#featured">「晶芒祭」投稿墙</a></h3>
+            <p class="fc-desc">11 月 3 日开启，截至 11 月 7 日收到 240 件投稿，插画占 63%、短片占 22%。评审维度公开为构图、光效、叙事三项。</p>
+            <div class="fc-tags"><span>同人赛</span><span>投稿</span><span>评审维度</span></div>
+            <div class="fc-meta"><span class="hot">热度 9.0</span><span>11月7日</span></div>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img src="https://picsum.photos/seed/bhll_rod11/400/300" width="400" height="300" loading="lazy" alt="不同款式水晶棒棒体结构的对比图">
+          <div class="fc-body">
+            <span class="fc-type">道具设定</span>
+            <h3 class="fc-title"><a href="/#featured">晶棒结构四种流派</a></h3>
+            <p class="fc-desc">单晶柱、簇状、环状、悬浮碎片四种结构。簇状最费建模时间，悬浮碎片最考验绑定，环状在动画里最省事。</p>
+            <div class="fc-tags"><span>道具结构</span><span>建模</span><span>绑定</span></div>
+            <div class="fc-meta"><span class="hot">热度 7.9</span><span>10月27日</span></div>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img src="https://picsum.photos/seed/bhll_combo12/400/300" width="400" height="300" loading="lazy" alt="角色与水晶棒组合演出的合成画面">
+          <div class="fc-body">
+            <span class="fc-type">合成演出</span>
+            <h3 class="fc-title"><a href="/#featured">角色与晶棒的六种构图</a></h3>
+            <p class="fc-desc">低角度仰拍、过肩、棒体前景虚化等 6 种构图，逐一说明各自适合的情绪。前景虚化最容易让角色显得小。</p>
+            <div class="fc-tags"><span>构图</span><span>前景虚化</span><span>情绪</span></div>
+            <div class="fc-meta"><span class="hot">热度 7.8</span><span>10月24日</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3 最新更新 -->
+    <section class="block" id="updates">
+      <div class="block-head">
+        <h2>十一月第一周的条目更新</h2>
+        <p class="lead">按发布时间倒序</p>
+      </div>
+      <ul class="update-list">
+        <li>
+          <time datetime="2026-11-08">11月8日</time>
+          <div>
+            <div class="u-title"><a href="/#updates">「晶芒祭」初审名单公布</a></div>
+            <div class="u-sum">240 件投稿筛出 60 件，插画 38 件、短片 14 件、3D 渲染 8 件。落选理由中「光效遮挡主体」占 21 条。</div>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-11-07">11月7日</time>
+          <div>
+            <div class="u-title"><a href="/#updates">《霜晶回廊》第四话上线</a></div>
+            <div class="u-sum">时长 92 秒，冰晶展开增至 7 层。制作组在简介里写明第 3 层过曝是刻意保留的胶片感。</div>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-11-06">11月6日</time>
+          <div>
+            <div class="u-title"><a href="/#updates">棱镜工房追加第 13 组预设</a></div>
+            <div class="u-sum">新增「碎光回弹」，模拟晶棒击中目标后碎片二次弹射。参数表里回弹初速设为 320px/s。</div>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-11-05">11月5日</time>
+          <div>
+            <div class="u-title"><a href="/#updates">雪见灯发布虎耳毛流教程</a></div>
+            <div class="u-sum">12 分钟视频，演示三层叠色画法。弹幕集中在第 4 分钟「耳尖留白到底留多少」的演示段。</div>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-11-04">11月4日</time>
+          <div>
+            <div class="u-title"><a href="/#updates">「月下晶尘」写真组补图</a></div>
+            <div class="u-sum">追加 4 张夜景版本，主光改成角色左后方的冷蓝光，晶棒从柔光棒变为轮廓灯。</div>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-11-03">11月3日</time>
+          <div>
+            <div class="u-title"><a href="/#updates">「晶芒祭」投稿通道开启</a></div>
+            <div class="u-sum">分插画、短片、3D 渲染三组，截稿 11 月 20 日。评审团 5 人，其中 2 人为上一届获奖作者。</div>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-11-02">11月2日</time>
+          <div>
+            <div class="u-title"><a href="/#updates">晶棒配色卡更新至第六版</a></div>
+            <div class="u-sum">新增淡金套，主色 #f5e6b8、高光 #fff8e0。作者注明淡金在浅色背景下容易与皮肤色相撞。</div>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-10-30">10月30日</time>
+          <div>
+            <div class="u-title"><a href="/#updates">《一次失败的施法》分镜公开</a></div>
+            <div class="u-sum">14 格完整分镜加上作者批注。第 9 格大留白旁写着「这里什么都不画比画什么都难」。</div>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-10-28">10月28日</time>
+          <div>
+            <div class="u-title"><a href="/#updates">雪见灯三视图开放临摹授权</a></div>
+            <div class="u-sum">允许非商用临摹与二次上色，需标注原作者。转载到外站则需单独申请。</div>
+          </div>
+        </li>
+        <li>
+          <time datetime="2026-10-26">10月26日</time>
+          <div>
+            <div class="u-title"><a href="/#updates">白虎原型考据帖转入精编</a></div>
+            <div class="u-sum">原帖 400 余楼，精编后保留 6 组对比图与 3 条争议点，其中「虎耳该不该有内耳褶」仍在讨论。</div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 4 分类入口 -->
+    <section class="block" id="categories">
+      <div class="block-head">
+        <h2>按内容类型进入</h2>
+        <p class="lead">八个常用检索方向</p>
+      </div>
+      <div class="cat-grid">
+        <a class="cat-item" href="/#featured"><b>角色立绘</b><span>三视图、毛流、握持位</span></a>
+        <a class="cat-item" href="/#featured"><b>同人短片</b><span>竖屏 15—90 秒</span></a>
+        <a class="cat-item" href="/#featured"><b>水晶棒光效</b><span>拖尾、爆闪、晶尘</span></a>
+        <a class="cat-item" href="/#featured"><b>分镜与拆稿</b><span>逐格批注、节奏分析</span></a>
+        <a class="cat-item" href="/#featured"><b>配色与材质</b><span>色卡、折射、高光</span></a>
+        <a class="cat-item" href="/#featured"><b>音效设计</b><span>分层、dB 比例</span></a>
+        <a class="cat-item" href="/#featured"><b>设定考据</b><span>神话原型、兽耳比例</span></a>
+        <a class="cat-item" href="/#featured"><b>同人活动</b><span>晶芒祭、投稿规则</span></a>
+      </div>
+    </section>
+
+    <!-- 5 深度解析 -->
+    <section class="block" id="deep-read">
+      <div class="block-head">
+        <h2>晶棒光效为什么在竖屏里更好看</h2>
+        <p class="lead">从画幅、层数到评审维度</p>
+      </div>
+      <div class="deep-read">
+        <p>把同一段施法动画放进横屏和竖屏，观感差异往往比预期大。以《霜晶回廊》第四话为例，制作组最初做的是 16:9 横版，冰晶展开到第 7 层时，画面两侧各留出约 18% 的空白，光效显得散。改成 9:16 后，晶体的螺旋被压缩进角色身体与棒尖之间的窄条区域，视觉密度直接翻倍。这个改动没有增加任何特效层，只换了画幅。</p>
+
+        <h3>画幅改变的是光效的「收束感」</h3>
+        <p>竖屏的窄宽度让棒尖到画面顶部的距离变短，拖尾往上冲时更容易出画面，形成一种「没画完」的余韵。横屏则相反，拖尾有足够横向空间铺开，反而容易显得平。这不是竖屏更好，而是光效的方向性要和画幅匹配。</p>
+        <ul>
+          <li>向上冲的拖尾、螺旋展开：竖屏占优，出画即收束。</li>
+          <li>横向爆闪、左右对称展开：横屏占优，左右留白能撑住气势。</li>
+          <li>环形扩散：两种画幅都行，关键看环心是否落在角色胸口或棒尖。</li>
+        </ul>
+
+        <h3>层数不是越多越好，关键看叠加速度</h3>
+        <p>棱镜工房公开的 12 组预设里，层数从 3 层到 11 层都有。实测下来，90 秒以内的短片用 5—7 层最稳，超过 9 层时如果每层都做完整动画，渲染时间会翻倍，观感上却未必更好——第 8 层以后基本被前面的亮部盖住。他们第 7 组「月弧」只用了 4 层，靠椭圆遮罩做出棒尖滞后 2px 的错觉，播放时反而比 11 层的版本更有呼吸感。</p>
+
+        <div class="callout">可核对的判断：光效「显得高级」通常来自三个可拆环节——<strong>层间透明度差</strong>（相邻两层不超过 15% 差异）、<strong>运动模糊帧数</strong>（24 帧里不超过 6 帧）、<strong>出画时机</strong>（拖尾尖端在画面边缘前 3—5 帧消失）。三项里缺一项，观感就会掉一档。</div>
+
+        <h3>评审维度暴露了创作偏好</h3>
+        <p>「晶芒祭」公开的三项评审维度是构图、光效、叙事，各占 40%、35%、25%。截至 11 月 8 日初审落选的 180 件里，光效项得分低于 6 分的占 41%，其中「光效遮挡主体」被单独列出 21 条。这个数据说明评审并不排斥亮，排斥的是亮到看不清角色表情。反过来，构图项拿高分但叙事项低于 4 分的作品也有 17 件，说明只靠一张好看的立绘走不远。</p>
+
+        <table class="check-table">
+          <thead>
+            <tr><th>维度</th><th>权重</th><th>易失分点</th><th>可核对依据</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>构图</td><td>40%</td><td>棒体与角色头部重叠</td><td>初审评语中出现 9 次</td></tr>
+            <tr><td>光效</td><td>35%</td><td>遮挡主体、层数堆叠无层次</td><td>落选理由 21 条</td></tr>
+            <tr><td>叙事</td><td>25%</td><td>只有施法没有前因后果</td><td>低于 4 分的 17 件</td></tr>
+          </tbody>
+        </table>
+
+        <h3>「白虎」标识与水晶棒的关系常被误读</h3>
+        <p>不少设定把虎耳和水晶棒当成两个独立卖点，画的时候各画各的。实际上，两者在叙事上往往是绑定的：白虎在神话里主西方、主金、主杀伐，水晶棒在魔法少女谱系里主守护、主治愈。一个主攻一个主守，放在同一角色身上天然有张力。10 月 26 日那篇考据帖里，有 3 条争议都绕不开这个点——虎耳该不该有内耳褶、晶棒该不该有金属护手、少女施法时该不该闭眼。这些问题没有标准答案，但每一条都直接改变画面气质。</p>
+        <p>画师雪见灯的做法是让虎耳在施法时轻微后压，晶棒则向前伸，一退一进，把「攻守同体」直接画在姿态里。这个处理在她的三视图里标得很清楚，棒体握持位 4 个受力点中，靠近虎口那个点被刻意画得最紧。</p>
+      </div>
+    </section>
+
+    <!-- 6 体验指南 -->
+    <section class="block" id="guide">
+      <div class="block-head">
+        <h2>看这类内容，先看什么后看什么</h2>
+        <p class="lead">五步消费路径</p>
+      </div>
+      <div class="guide-steps">
+        <div class="guide-step">
+          <b>先看三视图，别看成品短片</b>
+          <p>三视图信息密度最高，发色层次、虎耳位置、棒体握持角度一次看全。短片是成品，细节被光效盖住了。雪见灯那组三视图适合作为判断基准。</p>
+        </div>
+        <div class="guide-step">
+          <b>再看光效拆解，确认是不是「堆层」</b>
+          <p>逐帧拆解类内容能看出作者是理解光效还是只会叠层。棱镜工房第 7 组「月弧」只用了 4 层，比 11 层的版本更耐看，这类对比最有参考价值。</p>
+        </div>
+        <div class="guide-step">
+          <b>接着看分镜，判断叙事有没有前因后果</b>
+          <p>《一次失败的施法》用 14 格讲完一次失败，第 9 格大留白是关键。只有施法没有失败、没有后果的短片，看两条就够了，信息重复。</p>
+        </div>
+        <div class="guide-step">
+          <b>音效单独听一遍</b>
+          <p>把音量调到平时的一半，听施法音有几层。三层以上且各层不打架的，制作投入通常更高。只有一声「叮」的，大多直接用了素材库。</p>
+        </div>
+        <div class="guide-step">
+          <b>最后才看同人活动和评审意见</b>
+          <p>「晶芒祭」的评审维度和落选理由，是判断当前圈子审美偏好的直接材料。光效遮挡主体被列了 21 条，说明评审更看重角色可读性，而不是亮度。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 FAQ -->
+    <section class="block" id="faq">
+      <div class="block-head">
+        <h2>搜索里问得最多的六个问题</h2>
+        <p class="lead">点击展开</p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>白虎萝莉和水晶棒是怎么绑到一起的？</summary>
+          <p>绑定关系主要来自 2024 年后的同人设定潮：白虎在神话里属金、主杀伐，水晶棒在魔法少女谱系里主守护与治愈，一攻一守放在同一角色身上形成反差。霜晶回廊第四话让少女用晶棒冰封而非攻击，就是把「守」的一面推到前面。</p>
+        </details>
+        <details>
+          <summary>虎耳的画法和猫耳到底差在哪？</summary>
+          <p>虎耳位置更靠上，耳间距更宽，耳尖圆钝而不是尖。内耳褶是常见的争议点——雪见灯的三视图保留了两道浅褶，理由是白虎成年个体耳内绒毛厚，褶会被遮住大半；另一派则主张完全去掉，让耳朵更「萌」。两种画法在晶芒祭投稿里都能看到。</p>
+        </details>
+        <details>
+          <summary>水晶棒光效做到几层算比较完整？</summary>
+          <p>90 秒以内的短片，5—7 层是常见区间，层间透明度差控制在 15% 以内。超过 9 层如果每层都做完整动画，渲染时间翻倍而观感提升有限，第 8 层以后基本被亮部覆盖。棱镜工房第 7 组只用了 4 层加椭圆遮罩，播放效果反而更好。</p>
+        </details>
+        <details>
+          <summary>「晶芒祭」的评审是不是更看重构图？</summary>
+          <p>构图权重 40%，是三项里最高的，但光效项的落选理由最多——180 件落选作品里有 21 条写的是「光效遮挡主体」。这说明评审不是不喜欢亮，是不喜欢亮到看不清角色表情。构图高分但叙事低于 4 分的也有 17 件，只靠一张好看的立绘确实走不远。</p>
+        </details>
+        <details>
+          <summary>为什么竖屏短片比横屏多？</summary>
+          <p>竖屏的窄画幅让棒尖到顶部的距离变短，向上冲的拖尾更容易出画，形成收束感。横屏横向空间太宽，同一条拖尾铺开反而显得平。环形扩散类光效两种画幅都成立，关键看环心是否落在角色胸口或棒尖。</p>
+        </details>
+        <details>
+          <summary>淡金色晶棒是不是很难画？</summary>
+          <p>淡金在浅色背景下容易和皮肤色相撞，主色 #f5e6b8、高光 #fff8e0 这组尤其明显。解决办法是把环境反光色往冷调偏，让晶棒边缘带一点淡蓝，拉开与皮肤的差距。冷紫套在深色背景下最不容易糊，但浅色场景里会显得脏。</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- 8 用户评论 -->
+    <section class="block" id="comments">
+      <div class="block-head">
+        <h2>十六条随手写下的评论</h2>
+        <p class="lead">含中性评价与吐槽</p>
+      </div>
+      <div class="comment-grid">
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#7c3aed">霜</span><span class="nick">霜降之后</span><span class="cmt-time">11月7日</span></div>霜晶回廊第四话第 52 秒那个碎裂音效，我拖回去听了五遍，玻璃碴子掉进雪里的感觉。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#db2777">灯</span><span class="nick">灯下补番</span><span class="cmt-time">11月7日</span></div>三视图的虎耳毛流确实顶，但棒子握持位标四个受力点，临摹的时候手会自己抖，太细了。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#0891b2">棱</span><span class="nick">棱镜拆解员</span><span class="cmt-time">11月6日</span></div>月弧那组 4 层我用了，遮罩偏移 2px 是真的有效，比堆到 11 层省一半渲染时间。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#65a30d">雪</span><span class="nick">雪堆里插棒</span><span class="cmt-time">11月6日</span></div>第 9 格留白那句批注看得我有点鼻酸。动画做久了总觉得不画满就亏，其实留白才是本事。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#d97706">晶</span><span class="nick">晶尘收集癖</span><span class="cmt-time">11月5日</span></div>棱镜工房新加的碎光回弹，320px/s 初速实测偏快，我调到 260 才顺眼。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#6366f1">耳</span><span class="nick">耳尖留白</span><span class="cmt-time">11月5日</span></div>雪见灯教程第 4 分钟那个耳尖留白，到底留多少还是没说死，各人各画吧。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#be185d">白</span><span class="nick">白虎不白</span><span class="cmt-time">11月4日</span></div>考据帖里内耳褶那三条吵得有点久，画得好看就行了，非得论个对错。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#0f766e">配</span><span class="nick">配色卡住手</span><span class="cmt-time">11月4日</span></div>淡金套确实和皮肤撞，我在浅背景里试了一下午，最后还是换回冷紫。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#9333ea">月</span><span class="nick">月下晶尘</span><span class="cmt-time">11月3日</span></div>写真组补的夜景版，晶棒当轮廓灯那几张比柔光棒版本好看多了，脸不那么平。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#0284c7">评</span><span class="nick">评审不重要</span><span class="cmt-time">11月3日</span></div>光效遮挡主体被列 21 条，说明大家真的爱把角色埋进光里。笑不出来，我也干过。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#ca8a04">竖</span><span class="nick">竖屏党</span><span class="cmt-time">11月2日</span></div>横屏拖尾铺开显得平这个说法我认。之前做 16:9 怎么都不对，改 9:16 一下就通了。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#e11d48">音</span><span class="nick">音效听一半</span><span class="cmt-time">11月2日</span></div>三层叠加那个 -6、-12、-18 的比例，我照抄过，低频那层稍微重了点，闷。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#7e22ce">投</span><span class="nick">投稿前夜</span><span class="cmt-time">11月1日</span></div>晶芒祭截稿 11 月 20 日，现在动笔还来得及，就是短发虎耳我没画过几回。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#16a34a">随</span><span class="nick">随便看看</span><span class="cmt-time">10月31日</span></div>这题材最近是不是有点多，刷到好几组差不多的构图。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#0891b2">构</span><span class="nick">构图六选一</span><span class="cmt-time">10月30日</span></div>前景虚化确实让角色显小，我试了低角度仰拍，晶棒往上一举，气场立刻不一样。</div>
+        <div class="comment-card"><div class="who"><span class="avatar" style="background:#b45309">晚</span><span class="nick">晚睡补帧</span><span class="cmt-time">10月29日</span></div>逐帧拆解里第 12 帧复制层偏移 2px，这个细节不说根本看不出来，说了才觉得妙。</div>
+      </div>
+    </section>
+
+    <!-- 9 相关资讯 -->
+    <section class="block" id="news">
+      <div class="block-head">
+        <h2>近两周的六条动态</h2>
+        <p class="lead">带具体数字与当事方</p>
+      </div>
+      <ul class="news-list">
+        <li>
+          <div class="news-title"><a href="/#news">晶芒祭初审筛出 60 件，光效遮挡成主要落选理由</a></div>
+          <div class="news-meta">2026年11月8日 · 同人活动</div>
+          <p class="news-sum">240 件投稿中插画 38 件、短片 14 件、3D 渲染 8 件进入复审。落选理由里「光效遮挡主体」21 条，「叙事无前因后果」13 条，两组数据均由主办方在投稿页公示。</p>
+        </li>
+        <li>
+          <div class="news-title"><a href="/#news">棱镜工房追加第 13 组预设「碎光回弹」</a></div>
+          <div class="news-meta">2026年11月6日 · 特效素材</div>
+          <p class="news-sum">回弹初速设为 320px/s，碎片数量 18—24 片可调。作者在说明里提醒，初速超过 300 时需同步加运动模糊，否则碎片会有拖影。</p>
+        </li>
+        <li>
+          <div class="news-title"><a href="/#news">雪见灯开放三视图非商用临摹授权</a></div>
+          <div class="news-meta">2026年10月28日 · 角色设定</div>
+          <p class="news-sum">允许二次上色与临摹，需标注原作者；转载到外站需单独申请。授权说明同步更新在作品页顶部，附 3 条禁止事项。</p>
+        </li>
+        <li>
+          <div class="news-title"><a href="/#news">《霜晶回廊》制作组回应第三层过曝争议</a></div>
+          <div class="news-meta">2026年11月7日 · 同人短片</div>
+          <p class="news-sum">简介中写明刻意保留胶片感，第四话冰晶展开增至 7 层，第 3 层过曝持续 11 帧。制作组称下一话会提供降低曝光的备用版本。</p>
+        </li>
+        <li>
+          <div class="news-title"><a href="/#news">白虎原型考据帖转入精编，争议点剩三条</a></div>
+          <div class="news-meta">2026年10月26日 · 设定考据</div>
+          <p class="news-sum">原帖 400 余楼，精编保留 6 组对比图。剩余争议为内耳褶、金属护手、施法闭眼三项，其中内耳褶一条新增 37 条回复。</p>
+        </li>
+        <li>
+          <div class="news-title"><a href="/#news">「月下晶尘」写真组补 4 张夜景版</a></div>
+          <div class="news-meta">2026年11月4日 · 虚拟摄影</div>
+          <p class="news-sum">主光由晶棒柔光改为左后方冷蓝轮廓光，8 张原图加 4 张补图共 12 张。作者注明夜景版脸部落差控制在 1.5 档以内。</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 10 相关推荐 -->
+    <section class="block" id="recommend">
+      <div class="block-head">
+        <h2>换个角度还能看这些</h2>
+        <p class="lead">八个具体方向</p>
+      </div>
+      <div class="rec-tag-list">
+        <a href="/#featured">簇状晶棒建模</a>
+        <a href="/#featured">虎耳内褶画法</a>
+        <a href="/#featured">竖屏拖尾出画时机</a>
+        <a href="/#featured">施法音三层叠加</a>
+        <a href="/#featured">晶棒环状结构绑定</a>
+        <a href="/#featured">浅背景下淡金避撞色</a>
+        <a href="/#featured">过肩构图与棒体前景</a>
+        <a href="/#featured">晶芒祭叙事评分拆解</a>
+      </div>
+    </section>
+
+    <!-- 11 补充：创作者证言 + 时间线 -->
+    <section class="block" id="creator">
+      <div class="block-head">
+        <h2>创作者怎么说</h2>
+        <p class="lead">证言与条目时间线</p>
+      </div>
+      <div class="creator-quote">
+        <p class="cq-text">「光效最难的不是加，是减。第 7 组月弧砍掉 7 层的时候，组里吵了两天。最后成片出来，说砍对了的人是当初反对最凶的那个。」</p>
+        <p class="cq-by">—— 棱镜工房 · 光效组，2026 年 11 月 5 日预设发布说明</p>
+      </div>
+      <ul class="timeline" style="margin-top:22px;">
+        <li><b>「晶芒祭」投稿开启</b><span>插画、短片、3D 渲染三组，截稿 11 月 20 日</span><time datetime="2026-11-03">11月3日</time></li>
+        <li><b>棱镜工房 12 组光效包发布</b><span>含 AE 工程与参数表，第 7 组月弧为代表作</span><time datetime="2026-11-05">11月5日</time></li>
+        <li><b>《霜晶回廊》第四话上线</b><span>92 秒竖屏，冰晶展开 7 层</span><time datetime="2026-11-07">11月7日</time></li>
+        <li><b>晶芒祭初审名单公布</b><span>240 件投稿筛出 60 件进入复审</span><time datetime="2026-11-08">11月8日</time></li>
+      </ul>
+    </section>
+
+    <!-- 12 投稿互动 -->
+    <section class="block" id="contribute">
+      <div class="block-head">
+        <h2>投稿与互动</h2>
+        <p class="lead">作品、交流、比赛入口</p>
+      </div>
+      <div class="interact-panel">
+        <div class="ip-text">
+          <h3>「晶芒祭」投稿通道开放中</h3>
+          <p>插画、短片、3D 渲染三组，截稿 2026 年 11 月 20 日。评审维度为构图 40%、光效 35%、叙事 25%。投稿作品可在交流区接受公开点评，优秀条目将进入精选推荐。</p>
+        </div>
+        <a class="btn-primary" href="/#contribute">查看投稿规则</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 右辅助栏 -->
+  <aside class="col-right" aria-label="辅助信息">
+    <div class="side-panel">
+      <h2><span class="bar"></span>本周热度榜</h2>
+      <ol class="rank-list">
+        <li><a href="/#featured">雪见灯《霜耳三视图》</a></li>
+        <li><a href="/#featured">《霜晶回廊》第四话</a></li>
+        <li><a href="/#featured">棱镜工房 12 组光效包</a></li>
+        <li><a href="/#featured">「晶芒祭」投稿墙</a></li>
+        <li><a href="/#featured">《一次失败的施法》分镜</a></li>
+        <li><a href="/#featured">「月下晶尘」写真组</a></li>
+      </ol>
+    </div>
+    <div class="side-panel">
+      <h2><span class="bar"></span>更新动态</h2>
+      <ul class="update-stream">
+        <li>初审名单公布 <time datetime="2026-11-08">11月8日</time></li>
+        <li>第四话上线 <time datetime="2026-11-07">11月7日</time></li>
+        <li>第 13 组预设追加 <time datetime="2026-11-06">11月6日</time></li>
+        <li>虎耳毛流教程发布 <time datetime="2026-11-05">11月5日</time></li>
+        <li>夜景版写真补图 <time datetime="2026-11-04">11月4日</time></li>
+      </ul>
+    </div>
+    <div class="side-panel">
+      <h2><span class="bar"></span>常用标签</h2>
+      <div class="tag-cloud">
+        <a href="/#featured">三视图</a>
+        <a href="/#featured">拖尾</a>
+        <a href="/#featured">竖屏动画</a>
+        <a href="/#featured">虎耳毛流</a>
+        <a href="/#featured">色卡</a>
+        <a href="/#featured">分镜留白</a>
+        <a href="/#featured">音效分层</a>
+        <a href="/#featured">晶芒祭</a>
+        <a href="/#featured">簇状结构</a>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<!-- 页尾 -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg width="32" height="32" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="16" fill="#2c1a4d"/>
+            <path d="M32 8l6 17 17 6-17 6-6 17-6-17-17-6 17-6z" fill="#a78bfa"/>
+            <circle cx="32" cy="31" r="5" fill="#f0abfc"/>
+          </svg>
+          <span class="brand-text">白虎萝莉水晶棒</span>
+        </div>
+        <p class="footer-pos">内容覆盖 2024 年 6 月至 2026 年 11 月，条目类型为角色立绘、光效预设、竖屏短片、分镜拆稿、设定考据与同人活动。每周三、周五集中更新，重大活动期间加密至每日一更。</p>
+      </div>
+      <div class="footer-col">
+        <h3>内容频道</h3>
+        <ul>
+          <li><a href="/#featured">角色立绘</a></li>
+          <li><a href="/#featured">同人短片</a></li>
+          <li><a href="/#featured">水晶棒光效</a></li>
+          <li><a href="/#featured">分镜拆稿</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>解析与指南</h3>
+        <ul>
+          <li><a href="/#deep-read">晶棒光效解析</a></li>
+          <li><a href="/#guide">消费路径指南</a></li>
+          <li><a href="/#faq">常见问答</a></li>
+          <li><a href="/#categories">分类检索</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>参与互动</h3>
+        <ul>
+          <li><a href="/#contribute">晶芒祭投稿</a></li>
+          <li><a href="/#comments">用户评论</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#creator">创作者证言</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>页面内容为示例条目，日期与数据以 2026 年 11 月 8 日为基准。</span>
+      <span>© 2026 白虎萝莉水晶棒 · 内容聚合示例</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="回到顶部">↑</button>
+
+<script>
+(function () {
+  // 移动端菜单
+  var hamburger = document.getElementById('hamburger');
+  var mainNav = document.getElementById('mainNav');
+  var mask = document.getElementById('mobileMask');
+
+  function closeMenu() {
+    mainNav.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mask.classList.remove('show');
+  }
+  function openMenu() {
+    mainNav.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mask.classList.add('show');
+  }
+  hamburger.addEventListener('click', function () {
+    if (mainNav.classList.contains('open')) closeMenu(); else openMenu();
+  });
+  mask.addEventListener('click', closeMenu);
+  mainNav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A' && window.innerWidth <= 820) closeMenu();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  // 返回顶部
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > window.innerHeight) toTop.classList.add('show');
+    else toTop.classList.remove('show');
+  }, { passive: true });
+  toTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 搜索筛选
+  var form = document.getElementById('searchForm');
+  var input = document.getElementById('searchInput');
+  var feedback = document.getElementById('searchFeedback');
+  var blocks = document.querySelectorAll('.col-main .block');
+  var cards = document.querySelectorAll('.feature-card');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var q = input.value.trim().toLowerCase();
+    if (!q) {
+      feedback.classList.remove('show');
+      feedback.textContent = '';
+      cards.forEach(function (c) { c.style.display = ''; });
+      return;
+    }
+    var found = 0;
+    cards.forEach(function (card) {
+      var text = card.textContent.toLowerCase();
+      if (text.indexOf(q) > -1) {
+        card.style.display = '';
+        found++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    feedback.classList.add('show');
+    if (found === 0) {
+      feedback.textContent = '没有找到包含「' + input.value.trim() + '」的精选条目，可尝试虎耳、光效、竖屏、分镜等关键词。';
+    } else {
+      feedback.textContent = '在精选条目中找到 ' + found + ' 条与「' + input.value.trim() + '」相关的内容。';
+    }
+    if (found > 0) {
+      document.getElementById('featured').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "白虎萝莉水晶棒",
+  "description": "白虎萝莉水晶棒内容聚合，收录角色立绘、水晶特效、同人短片、战斗场景与设定解析。",
+  "inLanguage": "zh-CN",
+  "about": {
+    "@type": "Thing",
+    "name": "白虎萝莉水晶棒"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "白虎萝莉和水晶棒是怎么绑到一起的？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "绑定关系主要来自 2024 年后的同人设定潮：白虎在神话里属金、主杀伐，水晶棒在魔法少女谱系里主守护与治愈，一攻一守放在同一角色身上形成反差。霜晶回廊第四话让少女用晶棒冰封而非攻击，就是把「守」的一面推到前面。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "虎耳的画法和猫耳到底差在哪？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "虎耳位置更靠上，耳间距更宽，耳尖圆钝而不是尖。内耳褶是常见的争议点——雪见灯的三视图保留了两道浅褶，理由是白虎成年个体耳内绒毛厚，褶会被遮住大半；另一派则主张完全去掉，让耳朵更「萌」。两种画法在晶芒祭投稿里都能看到。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "水晶棒光效做到几层算比较完整？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "90 秒以内的短片，5—7 层是常见区间，层间透明度差控制在 15% 以内。超过 9 层如果每层都做完整动画，渲染时间翻倍而观感提升有限，第 8 层以后基本被亮部覆盖。棱镜工房第 7 组只用了 4 层加椭圆遮罩，播放效果反而更好。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "「晶芒祭」的评审是不是更看重构图？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "构图权重 40%，是三项里最高的，但光效项的落选理由最多——180 件落选作品里有 21 条写的是「光效遮挡主体」。这说明评审不是不喜欢亮，是不喜欢亮到看不清角色表情。构图高分但叙事低于 4 分的也有 17 件，只靠一张好看的立绘确实走不远。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "为什么竖屏短片比横屏多？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "竖屏的窄画幅让棒尖到顶部的距离变短，向上冲的拖尾更容易出画，形成收束感。横屏横向空间太宽，同一条拖尾铺开反而显得平。环形扩散类光效两种画幅都成立，关键看环心是否落在角色胸口或棒尖。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "淡金色晶棒是不是很难画？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "淡金在浅色背景下容易和皮肤色相撞，主色 #f5e6b8、高光 #fff8e0 这组尤其明显。解决办法是把环境反光色往冷调偏，让晶棒边缘带一点淡蓝，拉开与皮肤的差距。冷紫套在深色背景下最不容易糊，但浅色场景里会显得脏。"
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+            </html>
