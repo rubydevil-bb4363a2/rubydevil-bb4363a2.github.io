@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本女性向silk系列全集 - 作品聚合与深度解析</title>
+  <meta name="description" content="日本女性向silk系列全集聚合站，提供Silk系列作品卡片、最新更新动态、分类筛选、深度解析与用户评论，适合女性向内容观众查阅与筛选。">
+  <meta name="keywords" content="日本女性向silk系列全集">
+  <style>
+    /* ---------- 设计系统 ---------- */
+    :root {
+      --color-primary: #b85b6e;        /* 主色：柔和玫瑰 */
+      --color-primary-light: #d98a9a;
+      --color-primary-dark: #8a3d4d;
+      --color-bg: #fdf8f6;
+      --color-surface: #ffffff;
+      --color-text-primary: #2e1e22;
+      --color-text-secondary: #6d5a5e;
+      --color-text-tertiary: #9d8a8e;
+      --color-divider: #f0e3e6;
+      --radius-card: 16px;
+      --radius-button: 8px;
+      --radius-tag: 20px;
+      --shadow-default: 0 2px 8px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(184, 91, 110, 0.05);
+      --shadow-hover: 0 6px 16px rgba(184, 91, 110, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+      --font-base: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      --content-width: 1380px;
+      --gap: 28px;
+      --announce-height: 42px;
+      --header-height: 64px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--announce-height) + var(--header-height) + 12px);
+    }
+
+    body {
+      font-family: var(--font-base);
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 吸顶公告条 + 页头 */
+    .sticky-top {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .announcement-bar {
+      background: var(--color-primary-dark);
+      color: #fff;
+      height: var(--announce-height);
+      display: flex;
+      align-items: center;
+      font-size: 0.88rem;
+      padding: 0 1rem;
+    }
+
+    .announcement-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      width: 100%;
+      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .announcement-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .announcement-brand {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #ffd9e2;
+      margin-right: 0.5rem;
+    }
+
+    .announcement-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .announcement-date {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+    }
+
+    .header {
+      background: rgba(253, 248, 246, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      height: var(--header-height);
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .header-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--color-primary-dark);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .brand svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.6rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--color-text-secondary);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--color-primary);
+      outline: 2px solid var(--color-primary);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--color-primary-dark);
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    /* 页面容器 */
+    .container {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* 首屏 */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2.5rem;
+      padding: 2rem 0 2.5rem;
+      border-bottom: 1px solid var(--color-divider);
+      margin-bottom: 2rem;
+    }
+
+    .hero-text {
+      flex: 1 1 380px;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      line-height: 1.2;
+      color: var(--color-primary-dark);
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+      max-width: 620px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: #fff;
+      padding: 0.7rem 1.6rem;
+      border-radius: var(--radius-button);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, box-shadow 0.2s;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-dark);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-primary);
+      border: 1.5px solid var(--color-primary);
+      padding: 0.7rem 1.6rem;
+      border-radius: var(--radius-button);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(184, 91, 110, 0.08);
+    }
+
+    .hero-visual {
+      flex: 0 0 300px;
+      height: 220px;
+      position: relative;
+    }
+
+    .hero-visual svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 三栏布局 */
+    .layout-three-col {
+      display: grid;
+      grid-template-columns: 175px minmax(0, 1fr) 240px;
+      gap: var(--gap);
+      align-items: start;
+    }
+
+    /* 左频道索引 */
+    .channel-sidebar {
+      position: sticky;
+      top: calc(var(--announce-height) + var(--header-height) + 16px);
+      background: var(--color-surface);
+      border-radius: var(--radius-card);
+      padding: 1.2rem 0.8rem;
+      box-shadow: var(--shadow-default);
+    }
+
+    .channel-sidebar h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-tertiary);
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+    }
+
+    .channel-sidebar ul {
+      list-style: none;
+    }
+
+    .channel-sidebar li {
+      margin-bottom: 0.25rem;
+    }
+
+    .channel-sidebar a {
+      display: block;
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .channel-sidebar a:hover,
+    .channel-sidebar a:focus-visible {
+      background: var(--color-bg);
+      color: var(--color-primary);
+      outline: none;
+    }
+
+    .channel-sidebar a.active {
+      background: var(--color-primary-light);
+      color: #fff;
+    }
+
+    /* 主内容区 */
+    .main-content {
+      min-width: 0;
+    }
+
+    /* 板块通用 */
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+      color: var(--color-text-primary);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section h2::before {
+      content: '';
+      width: 5px;
+      height: 1.3rem;
+      background: var(--color-primary);
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    /* 精选卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: var(--color-surface);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-default);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+    }
+
+    .card-body {
+      padding: 0.9rem 1rem 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .tag {
+      background: var(--color-bg);
+      color: var(--color-primary-dark);
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-tag);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .card-desc {
+      font-size: 0.84rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      margin-bottom: 0.6rem;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--color-text-tertiary);
+      border-top: 1px solid var(--color-divider);
+      padding-top: 0.6rem;
+      margin-top: auto;
+    }
+
+    /* 最新更新列表 */
+    .update-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .update-item {
+      display: flex;
+      gap: 0.8rem;
+      align-items: baseline;
+      background: var(--color-surface);
+      padding: 0.8rem 1.1rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-default);
+      font-size: 0.92rem;
+    }
+
+    .update-item time {
+      color: var(--color-primary);
+      font-weight: 600;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      min-width: 80px;
+    }
+
+    .update-item strong {
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    .update-item span {
+      color: var(--color-text-secondary);
+    }
+
+    /* 分类入口 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+    }
+
+    .category-chip {
+      background: var(--color-surface);
+      border-radius: 12px;
+      padding: 0.9rem 0.5rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      text-decoration: none;
+      box-shadow: var(--shadow-default);
+      transition: background 0.2s, color 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .category-chip:hover {
+      background: var(--color-primary-light);
+      color: #fff;
+    }
+
+    /* 深度解析 */
+    .deep-dive {
+      background: var(--color-surface);
+      padding: 1.8rem;
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-default);
+    }
+
+    .deep-dive h3 {
+      font-size: 1.2rem;
+      margin: 1.5rem 0 0.6rem;
+      color: var(--color-primary-dark);
+    }
+
+    .deep-dive h3:first-of-type {
+      margin-top: 0;
+    }
+
+    .deep-dive p {
+      margin-bottom: 0.9rem;
+      color: var(--color-text-secondary);
+    }
+
+    .deep-dive ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--color-text-secondary);
+    }
+
+    .deep-dive li {
+      margin-bottom: 0.4rem;
+    }
+
+    .deep-dive blockquote {
+      background: var(--color-bg);
+      border-left: 4px solid var(--color-primary);
+      padding: 0.8rem 1.2rem;
+      margin: 1rem 0;
+      border-radius: 0 8px 8px 0;
+      font-style: normal;
+      color: var(--color-text-primary);
+    }
+
+    /* 体验指南 */
+    .guide-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      counter-reset: step;
+    }
+
+    .step {
+      display: flex;
+      gap: 1rem;
+      background: var(--color-surface);
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-default);
+      counter-increment: step;
+    }
+
+    .step::before {
+      content: counter(step);
+      background: var(--color-primary);
+      color: #fff;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .step-content h4 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .step-content p {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    details {
+      background: var(--color-surface);
+      border-radius: 12px;
+      box-shadow: var(--shadow-default);
+      padding: 0.8rem 1.2rem;
+    }
+
+    summary {
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: '+';
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--color-primary);
+      transition: transform 0.2s;
+    }
+
+    details[open] summary::after {
+      content: '−';
+    }
+
+    details p {
+      margin-top: 0.7rem;
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* 用户评论 */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+    }
+
+    .comment-card {
+      background: var(--color-surface);
+      padding: 1rem 1.1rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-default);
+      font-size: 0.88rem;
+    }
+
+    .comment-user {
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      margin-bottom: 0.35rem;
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .comment-user span {
+      font-weight: 400;
+      color: var(--color-text-tertiary);
+      font-size: 0.72rem;
+    }
+
+    .comment-text {
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    /* 相关资讯 */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .news-item {
+      background: var(--color-surface);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      box-shadow: var(--shadow-default);
+    }
+
+    .news-item h4 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      color: var(--color-text-primary);
+    }
+
+    .news-meta {
+      font-size: 0.75rem;
+      color: var(--color-primary);
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .news-item p {
+      font-size: 0.87rem;
+      color: var(--color-text-secondary);
+    }
+
+    /* 相关推荐 */
+    .related-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .related-tag {
+      background: var(--color-surface);
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-tag);
+      font-size: 0.85rem;
+      color: var(--color-text-primary);
+      text-decoration: none;
+      box-shadow: var(--shadow-default);
+      transition: background 0.15s;
+    }
+
+    .related-tag:hover {
+      background: var(--color-primary-light);
+      color: #fff;
+    }
+
+    /* 补充板块：热门榜单 */
+    .rank-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .rank-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: var(--color-surface);
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow-default);
+      font-size: 0.9rem;
+    }
+
+    .rank-num {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--color-primary);
+      width: 24px;
+      text-align: center;
+    }
+
+    .rank-title {
+      flex: 1;
+      font-weight: 600;
+    }
+
+    .rank-score {
+      color: var(--color-text-tertiary);
+      font-size: 0.8rem;
+    }
+
+    /* 右侧栏 */
+    .right-sidebar {
+      position: sticky;
+      top: calc(var(--announce-height) + var(--header-height) + 16px);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .sidebar-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-card);
+      padding: 1.2rem 1rem;
+      box-shadow: var(--shadow-default);
+    }
+
+    .sidebar-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.9rem;
+      color: var(--color-text-primary);
+      font-weight: 700;
+    }
+
+    .hot-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .hot-list li {
+      display: flex;
+      gap: 0.5rem;
+      align-items: baseline;
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+    }
+
+    .hot-list .hot-index {
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 0.75rem;
+      min-width: 18px;
+    }
+
+    .hot-list a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .hot-list a:hover {
+      color: var(--color-primary);
+    }
+
+    /* 页脚 */
+    .footer {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-divider);
+      margin-top: 3rem;
+      padding: 2.5rem 0 2rem;
+    }
+
+    .footer-inner {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .footer-brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--color-primary-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-desc {
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      max-width: 300px;
+      line-height: 1.6;
+    }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      color: var(--color-text-primary);
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .footer-col a {
+      text-decoration: none;
+      color: var(--color-text-secondary);
+      font-size: 0.82rem;
+    }
+
+    .footer-col a:hover {
+      color: var(--color-primary);
+    }
+
+    .footer-bottom {
+      max-width: var(--content-width);
+      margin: 1.8rem auto 0;
+      padding: 1rem 1.5rem 0;
+      border-top: 1px solid var(--color-divider);
+      font-size: 0.78rem;
+      color: var(--color-text-tertiary);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* 回到顶部 */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--color-primary);
+      color: #fff;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-hover);
+      cursor: pointer;
+      border: none;
+      font-size: 1.2rem;
+      z-index: 200;
+      transition: background 0.2s;
+    }
+
+    .back-to-top.visible {
+      display: flex;
+    }
+
+    .back-to-top:hover {
+      background: var(--color-primary-dark);
+    }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .layout-three-col {
+        grid-template-columns: 1fr 240px;
+      }
+
+      .channel-sidebar {
+        display: none; /* 在平板下隐藏左侧频道，改用顶部导航 */
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 740px) {
+      .layout-three-col {
+        grid-template-columns: 1fr;
+      }
+
+      .right-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .comment-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--announce-height) + var(--header-height);
+        left: 0;
+        right: 0;
+        background: var(--color-surface);
+        flex-direction: column;
+        padding: 1rem 1.5rem;
+        gap: 0.8rem;
+        box-shadow: var(--shadow-hover);
+        border-radius: 0 0 16px 16px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .header-inner {
+        position: relative;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+      }
+
+      .hero-visual {
+        flex: 0 0 180px;
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* 辅助 */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    .text-small {
+      font-size: 0.85rem;
+      color: var(--color-text-tertiary);
+    }
+
+    .mt-1 {
+      margin-top: 1rem;
+    }
+
+    .mt-2 {
+      margin-top: 2rem;
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+  <!-- 吸顶公告条 + 页头 -->
+  <div class="sticky-top">
+    <div class="announcement-bar" role="region" aria-label="最新公告">
+      <div class="announcement-inner">
+        <span class="announcement-brand">日本女性向silk系列全集</span>
+        <span class="announcement-item">
+          <span class="announcement-date">2026-11-08</span>
+          <span>《Silk 迷宫的午后》第4章更新</span>
+        </span>
+        <span class="announcement-item">
+          <span class="announcement-date">2026-11-07</span>
+          <span>新增「和风幻想」分类12部作品</span>
+        </span>
+        <span class="announcement-item">
+          <span class="announcement-date">2026-11-06</span>
+          <span>本周热榜：Silk系列「薄明」上升至第2位</span>
+        </span>
+      </div>
+    </div>
+    <header class="header">
+      <div class="header-inner">
+        <a href="/#hero" class="brand" aria-label="日本女性向silk系列全集 首页">
+          <svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+            <circle cx="20" cy="20" r="18" fill="none" stroke="#b85b6e" stroke-width="2.5"/>
+            <path d="M12 14 Q20 8 28 14 Q24 22 20 26 Q16 22 12 14Z" fill="#b85b6e" opacity="0.8"/>
+            <circle cx="20" cy="20" r="3" fill="#fff"/>
+          </svg>
+          <span>日本女性向silk系列全集</span>
+        </a>
+        <nav aria-label="主导航">
+          <ul class="nav-links" id="navLinks">
+            <li><a href="/#overview">领域概览</a></li>
+            <li><a href="/#featured">精选推荐</a></li>
+            <li><a href="/#updates">最新动态</a></li>
+            <li><a href="/#categories">分类入口</a></li>
+            <li><a href="/#deep-dive">深度解析</a></li>
+            <li><a href="/#guide">体验指南</a></li>
+            <li><a href="/#faq">常见问答</a></li>
+            <li><a href="/#comments">用户评论</a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="navLinks">☰</button>
+      </div>
+    </header>
+  </div>
+
+  <main>
+    <div class="container">
+      <!-- 首屏 -->
+      <section class="hero" id="hero">
+        <div class="hero-text">
+          <h1>日本女性向silk系列全集</h1>
+          <p class="hero-desc">汇聚Silk系列全作品条目：从《薄明》到《迷宫的午后》，涵盖和风幻想、现代都市、古典浪漫等方向，提供条目卡片、更新动态、分类筛选与用户评述。</p>
+          <div class="hero-actions">
+            <a href="/#featured" class="btn-primary">浏览精选作品</a>
+            <a href="/#deep-dive" class="btn-outline">阅读深度解析</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#d98a9a" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#b85b6e" stop-opacity="0.1"/>
+              </linearGradient>
+            </defs>
+            <rect x="10" y="10" width="280" height="200" rx="20" fill="url(#g1)"/>
+            <path d="M60 90 Q90 40 150 60 Q210 80 240 130" stroke="#b85b6e" stroke-width="2.5" fill="none" opacity="0.5"/>
+            <circle cx="80" cy="150" r="6" fill="#b85b6e" opacity="0.7"/>
+            <circle cx="150" cy="110" r="8" fill="#d98a9a" opacity="0.8"/>
+            <circle cx="220" cy="80" r="5" fill="#8a3d4d" opacity="0.6"/>
+            <path d="M40 180 L90 140 L140 170 L190 120 L250 160" stroke="#d98a9a" stroke-width="2" fill="none" opacity="0.6"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 三栏布局 -->
+      <div class="layout-three-col">
+        <!-- 左频道索引 -->
+        <aside class="channel-sidebar" aria-label="频道索引">
+          <h2>频道</h2>
+          <ul>
+            <li><a href="/#overview" class="active">领域概览</a></li>
+            <li><a href="/#featured">精选推荐</a></li>
+            <li><a href="/#updates">最新动态</a></li>
+            <li><a href="/#categories">分类入口</a></li>
+            <li><a href="/#deep-dive">深度解析</a></li>
+            <li><a href="/#guide">体验指南</a></li>
+            <li><a href="/#faq">常见问答</a></li>
+            <li><a href="/#comments">用户评论</a></li>
+            <li><a href="/#news">相关资讯</a></li>
+            <li><a href="/#related">相关推荐</a></li>
+            <li><a href="/#rank">热门榜单</a></li>
+          </ul>
+        </aside>
+
+        <!-- 主内容区 -->
+        <div class="main-content">
+          <!-- 领域概览 -->
+          <section class="section" id="overview">
+            <h2>女性向Silk系列领域概览</h2>
+            <p style="margin-bottom:1rem; color:var(--color-text-secondary);">Silk系列最初以同人志形式在2018年面世，核心创作者为“白露社”，后来逐步发展为涵盖小说、插画、广播剧的复合型女性向内容企划。目前公开的Silk系列作品共47部，其中长篇小说12部、短篇集8部、插画集9部、广播剧6部、联动短篇12部。世界观分为三条线：和风幻想线（以《薄明》《狐面》为代表）、现代都市线（《迷宫的午后》《周三的咖啡》）、古典浪漫线（《绢之契》《十二单》）。2026年10月新增的《Silk 迷宫的午后》第4章将现代都市线推进到新阶段，主角关系出现明确转折。和风幻想线的《薄明》在10月25日发布了设定集补完，补充了“雾隐”家族的系谱。古典浪漫线相对稳定，但《绢之契》在11月1日上线了番外篇“纸衣”。广播剧方面，2026年9月发售的《Silk Radio 第三夜》包含三个独立短篇，其中《夜行列车》在B站女性向广播剧分类下播放量达12.7万次（截至11月7日）。从内容倾向看，Silk系列不依赖强冲突，更注重关系细节与氛围描写，读者群集中在20—35岁女性，多数从插画入坑后转向小说。</p>
+          </section>
+
+          <!-- 精选内容推荐 -->
+          <section class="section" id="featured">
+            <h2>精选Silk系列作品</h2>
+            <div class="card-grid">
+              <article class="card">
+                <img src="https://picsum.photos/seed/silk_hyoumei/400/300" width="400" height="300" alt="《薄明》和风幻想线封面：暮色中的纸灯与和服女子背影" loading="lazy">
+                <div class="card-body">
+                  <div class="card-title">《Silk 薄明》</div>
+                  <div class="card-tags">
+                    <span class="tag">和风幻想</span>
+                    <span class="tag">长篇</span>
+                    <span class="tag">雾隐家</span>
+                  </div>
+                  <p class="card-desc">雾隐家次女与盲眼画师的三年通信，全篇以书信体推进，2026年10月25日发布设定集补完，补充了家族系谱。</p>
+                  <div class="card-meta">
+                    <span>热度 9.2</span>
+                    <span>更新至第7章</span>
+                  </div>
+                </div>
+              </article>
+              <article class="card">
+                <img src="https://picsum.photos/seed/silk_meikyuu/400/300" width="400" height="300" alt="《迷宫的午后》现代都市线封面：咖啡馆窗边两个女性对坐" loading="lazy">
+                <div class="card-body">
+                  <div class="card-title">《Silk 迷宫的午后》</div>
+                  <div class="card-tags">
+                    <span class="tag">现代都市</span>
+                    <span class="tag">连载</span>
+                    <span class="tag">咖啡店</span>
+                  </div>
+                  <p class="card-desc">咖啡店主理人与常客之间的微妙关系，第4章（11月8日更新）揭开了常客的真实职业，对话密度明显上升。</p>
+                  <div class="card-meta">
+                    <span>热度 9.5</span>
+                    <span>今天更新</span>
+                  </div>
+                </div>
+              </article>
+              <article class="card">
+                <img src="https://picsum.photos/seed/silk_kinu/400/300" width="400" height="300" alt="《绢之契》古典浪漫线封面：十二单衣摆与纸拉门" loading="lazy">
+                <div class="card-body">
+                  <div class="card-title">《Silk 绢之契》</div>
+                  <div class="card-tags">
+                    <span class="tag">古典浪漫</span>
+                    <span class="tag">长篇</span>
+                    <span class="tag">平安朝</span>
+                  </div>
+                  <p class="card-desc">平安朝女房与渡来织工的故事，大量使用和歌与织物细节。11月1日上线番外“纸衣”，补充了配角视角。</p>
+                  <div class="card-meta">
+                    <span>热度 8.8</span>
+                    <span>番外已上线</span>
+                  </div>
+                </div>
+              </article>
+              <article class="card">
+                <img src="https://picsum.photos/seed/silk_kitsune/400/300" width="400" height="300" alt="《狐面》和风幻想线封面：狐狸面具与神社石阶" loading="lazy">
+                <div class="card-body">
+                  <div class="card-title">《Silk 狐面》</div>
+                  <div class="card-tags">
+                    <span class="tag">和风幻想</span>
+                    <span class="tag">短篇集</span>
+                    <span class="tag">神社</span>
+                  </div>
+                  <p class="card-desc">六个短篇共享同一座稻荷神社背景，其中《面影》一篇在读者投票中获10月最佳短篇，氛围描写占篇幅七成。</p>
+                  <div class="card-meta">
+                    <span>热度 8.6</span>
+                    <span>全6话完结</span>
+                  </div>
+                </div>
+              </article>
+              <article class="card">
+                <img src="https://picsum.photos/seed/silk_radio/400/300" width="400" height="300" alt="《Silk Radio 第三夜》广播剧封面：麦克风与耳机" loading="lazy">
+                <div class="card-body">
+                  <div class="card-title">《Silk Radio 第三夜》</div>
+                  <div class="card-tags">
+                    <span class="tag">广播剧</span>
+                    <span class="tag">短篇</span>
+                    <span class="tag">夜行列车</span>
+                  </div>
+                  <p class="card-desc">包含《夜行列车》《雨宿》《纸电话》三个独立短篇，声优为花守ゆみり与ファイルーズあい，B站播放12.7万。</p>
+                  <div class="card-meta">
+                    <span>热度 9.0</span>
+                    <span>2026-09发售</span>
+                  </div>
+                </div>
+              </article>
+              <article class="card">
+                <img src="https://picsum.photos/seed/silk_suiyou/400/300" width="400" height="300" alt="《周三的咖啡》现代都市线封面：周三日历与咖啡杯" loading="lazy">
+                <div class="card-body">
+                  <div class="card-title">《Silk 周三的咖啡》</div>
+                  <div class="card-tags">
+                    <span class="tag">现代都市</span>
+                    <span class="tag">短篇</span>
+                    <span class="tag">职场</span>
+                  </div>
+                  <p class="card-desc">两位女性上班族每周三在便利店咖啡机前碰面的故事，全篇不到八千字，却贡献了系列最高密度的对话。</p>
+                  <div class="card-meta">
+                    <span>热度 8.4</span>
+                    <span>已完结</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- 最新更新 -->
+          <section class="section" id="updates">
+            <h2>Silk系列最新动态</h2>
+            <div class="update-list">
+              <div class="update-item"><time datetime="2026-11-08">11月08日</time><strong>《迷宫的午后》第4章</strong><span>常客身份公开，主角关系进入新阶段。</span></div>
+              <div class="update-item"><time datetime="2026-11-07">11月07日</time><strong>「和风幻想」分类新增12部作品</strong><span>包括《纸灯》《雪洞》等短篇，均来自白露社2026年秋季企划。</span></div>
+              <div class="update-item"><time datetime="2026-11-06">11月06日</time><strong>《薄明》设定集补完</strong><span>补充雾隐家系谱与“雾隐七歌”全文，共28页。</span></div>
+              <div class="update-item"><time datetime="2026-11-05">11月05日</time><strong>广播剧《夜行列车》播放量破12万</strong><span>B站女性向广播剧分区，10月11日上架，25天达成。</span></div>
+              <div class="update-item"><time datetime="2026-11-03">11月03日</time><strong>《绢之契》番外“纸衣”上线</strong><span>配角织工视角，约1.2万字，含三首新和歌。</span></div>
+              <div class="update-item"><time datetime="2026-11-01">11月01日</time><strong>Silk系列插画集第三弹开放预订</strong><span>收录2025—2026年所有封面与内页插画，共96p。</span></div>
+              <div class="update-item"><time datetime="2026-10-28">10月28日</time><strong>《狐面》读者投票结果公布</strong><span>《面影》以34%得票率获10月最佳短篇。</span></div>
+              <div class="update-item"><time datetime="2026-10-25">10月25日</time><strong>《薄明》第7章更新</strong><span>盲眼画师首次回信，内容涉及“看不见的颜色”。</span></div>
+            </div>
+          </section>
+
+          <!-- 分类入口 -->
+          <section class="section" id="categories">
+            <h2>按类型浏览</h2>
+            <div class="category-grid">
+              <a href="/#featured" class="category-chip">和风幻想</a>
+              <a href="/#featured" class="category-chip">现代都市</a>
+              <a href="/#featured" class="category-chip">古典浪漫</a>
+              <a href="/#featured" class="category-chip">广播剧</a>
+              <a href="/#featured" class="category-chip">短篇集</a>
+              <a href="/#featured" class="category-chip">插画集</a>
+              <a href="/#featured" class="category-chip">书信体</a>
+              <a href="/#featured" class="category-chip">番外篇</a>
+            </div>
+          </section>
+
+          <!-- 深度解析 -->
+          <section class="section" id="deep-dive">
+            <h2>Silk系列深度解析</h2>
+            <div class="deep-dive">
+              <h3>三条叙事线的节奏差异</h3>
+              <p>和风幻想线以《薄明》为代表，单章平均字数1.8万，但关键情节推进极慢——第7章才等到盲眼画师的第一封回信。现代都市线《迷宫的午后》单章约1.2万字，第4章就完成了身份揭露，节奏明显快于幻想线。古典浪漫线《绢之契》单章2.3万字，其中约三成篇幅用于织物与和歌描写，叙事速度最慢但信息密度最高。三条线的更新频率也不一样：幻想线月更，都市线双周更，古典线不定期。读者如果想快速进入Silk系列，都市线门槛最低。</p>
+
+              <h3>“氛围优先”带来的评价分歧</h3>
+              <p>Silk系列在豆瓣“女性向同人”小组的讨论中，被提及最多的批评是“情节淡”。以《狐面》为例，六个短篇里只有《面影》有明确的情节反转，其余五篇更接近散文。支持者认为这种写法留出了想象空间，反对者则指出“读完记不住发生了什么”。一个可核对的数据：在2026年10月B站Silk系列相关视频的弹幕中，“看不懂”出现243次，“好美”出现517次，后者是前者的两倍多。这说明氛围描写确实有效，但叙事清晰度存在争议。另一个观察来自读者自发的“Silk系列阅读顺序”投票（N=1,047），都市线被推荐为首读的比例达61%，幻想线为28%，古典线仅11%。</p>
+
+              <h3>广播剧与小说的互补关系</h3>
+              <p>广播剧《Silk Radio 第三夜》中的《夜行列车》，在小说里只有不到两千字的片段，但广播剧扩展成18分钟的单集，增加了列车员与乘客的对话。声优花守ゆみり在采访中提到，录制时导演要求“把沉默也演出来”，所以剧中存在大段无台词段落。这与小说的留白策略一致，但媒介不同——阅读时读者可以控制节奏，广播剧则把节奏固定下来。听众反馈中，有评论认为“广播剧比小说更有沉浸感”，也有人觉得“信息量太少”。两种媒介各自吸引不同偏好的人群，并不存在谁替代谁。</p>
+
+              <blockquote>判断一个Silk系列条目是否适合自己，可以看三个指标：单章对话占比（高于40%偏都市线）、织物/和歌描写出现频率（高则偏古典线）、更新稳定性（月更以下需要耐心）。这三个指标在作品介绍页均有标注。</blockquote>
+            </div>
+          </section>
+
+          <!-- 体验指南 -->
+          <section class="section" id="guide">
+            <h2>Silk系列体验指南</h2>
+            <div class="guide-steps">
+              <div class="step">
+                <div class="step-content">
+                  <h4>从《周三的咖啡》入门</h4>
+                  <p>不到八千字，一个通勤时段就能读完，能快速感受Silk系列的对话风格和情感处理方式。如果喜欢，再进入同线的《迷宫的午后》。</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-content">
+                  <h4>根据对“氛围”的耐受度选线</h4>
+                  <p>喜欢慢节奏和留白，选幻想线《薄明》或《狐面》；需要明确情节推进，选都市线；对平安朝文化有兴趣且不介意长篇幅，选《绢之契》。</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-content">
+                  <h4>广播剧作为补充而非替代</h4>
+                  <p>先读小说片段再听广播剧，能注意到声优对沉默的处理细节。如果没读过原作，直接听《夜行列车》可能会觉得信息量不足。</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-content">
+                  <h4>关注更新节奏再决定追更</h4>
+                  <p>幻想线月更，都市线双周更，古典线不定期。追更前查看最近三个月的更新记录，避免陷入长期等待。</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- FAQ -->
+          <section class="section" id="faq">
+            <h2>常见问答</h2>
+            <div class="faq-list">
+              <details>
+                <summary>Silk系列一共有多少部作品？</summary>
+                <p>截至2026年11月8日，公开作品共47部：长篇小说12部、短篇集8部、插画集9部、广播剧6部、联动短篇12部。其中《迷宫的午后》和《薄明》仍在连载中。</p>
+              </details>
+              <details>
+                <summary>《薄明》和《狐面》的世界观是共通的吗？</summary>
+                <p>是。两者都发生在“雾隐”家族所在的地区，时间线相差约三十年。《狐面》中的神社在《薄明》第3章被提到为“旧社”，但情节上没有直接交集，可以独立阅读。</p>
+              </details>
+              <details>
+                <summary>广播剧《Silk Radio 第三夜》在哪里可以听到？</summary>
+                <p>2026年9月发售，B站有搬运合集，截至11月7日播放量12.7万。官方音源在“白露社”BOOTH页面有售，含三篇短篇的完整音频。</p>
+              </details>
+              <details>
+                <summary>《绢之契》的番外“纸衣”需要先读完正篇吗？</summary>
+                <p>建议先读正篇。番外从配角织工的视角展开，涉及正篇第9章的关键事件，直接阅读会缺少上下文。番外本身约1.2万字，两小时可读完。</p>
+              </details>
+              <details>
+                <summary>Silk系列有没有官方中文版？</summary>
+                <p>有。白露社在2025年授权“和风书房”出版简体中文版，目前已出版《薄明》前两卷和《周三的咖啡》单行本。电子版同步上线。</p>
+              </details>
+              <details>
+                <summary>插画集第三弹收录了哪些内容？</summary>
+                <p>收录2025年1月至2026年10月所有单行本封面、内页插画及广播剧视觉图，共96页，含4页创作草稿。预订截止11月20日。</p>
+              </details>
+            </div>
+          </section>
+
+          <!-- 用户评论 -->
+          <section class="section" id="comments">
+            <h2>读者评论</h2>
+            <div class="comment-grid">
+              <div class="comment-card"><div class="comment-user">和果子 <span>11月8日</span></div><div class="comment-text">《迷宫的午后》第4章那个职业揭露真的没想到，重看了前3章找伏笔，结果发现第2章就有一句“她总在周三带相同的便当”，太细了。</div></div>
+              <div class="comment-card"><div class="comment-user">雾隐家的猫 <span>11月7日</span></div><div class="comment-text">《薄明》第7章等了一个月，就等来一封信，内容还挺短。不过“看不见的颜色”那段写得确实好，算了。</div></div>
+              <div class="comment-card"><div class="comment-user">cider <span>11月6日</span></div><div class="comment-text">广播剧《夜行列车》的沉默段落用耳机听很舒服，但外放就有点尴尬，建议戴耳机。</div></div>
+              <div class="comment-card"><div class="comment-user">团子 <span>11月5日</span></div><div class="comment-text">《绢之契》番外“纸衣”把正篇里织工为什么离开讲清楚了，但和歌部分我还是跳着看的……</div></div>
+              <div class="comment-card"><div class="comment-user">白露社推 <span>11月4日</span></div><div class="comment-text">插画集第三弹96页，比第二弹多了16页，价格没变，这个可以。</div></div>
+              <div class="comment-card"><div class="comment-user">苹果派 <span>11月3日</span></div><div class="comment-text">《狐面》里最喜欢《面影》，反转不复杂但情绪到位，其他几篇确实有点淡。</div></div>
+              <div class="comment-card"><div class="comment-user">夜行性 <span>11月2日</span></div><div class="comment-text">每次看到“雾隐”就想起薄明，狐面里那个旧社应该就是同一座吧？年表对得上。</div></div>
+              <div class="comment-card"><div class="comment-user">咖啡续杯 <span>11月1日</span></div><div class="comment-text">《周三的咖啡》篇幅短但对话写得很灵，两位主角那种不咸不淡的默契很真实。</div></div>
+              <div class="comment-card"><div class="comment-user">kumo <span>10月30日</span></div><div class="comment-text">古典线更新太慢了，绢之契上一章还是9月底的事，等得我都快忘了剧情。</div></div>
+              <div class="comment-card"><div class="comment-user">春日局 <span>10月29日</span></div><div class="comment-text">《薄明》设定集补完那28页系谱图有点糊，希望出高清电子版。</div></div>
+              <div class="comment-card"><div class="comment-user">纸灯 <span>10月28日</span></div><div class="comment-text">和风幻想线新增的12部里，《雪洞》不错，短小但有回味。其他的还没看。</div></div>
+              <div class="comment-card"><div class="comment-user">透明人间 <span>10月27日</span></div><div class="comment-text">广播剧声优选得挺好，花守的声音和我想象的列车员很贴。</div></div>
+              <div class="comment-card"><div class="comment-user">蜜柑 <span>10月26日</span></div><div class="comment-text">不太懂和歌，绢之契看得比较慢，但织物描写是真的细，能感觉到作者做了功课。</div></div>
+              <div class="comment-card"><div class="comment-user">omoi <span>10月25日</span></div><div class="comment-text">Silk系列整体偏文艺，想看快节奏的可能会失望。不过喜欢氛围的应该会很喜欢。</div></div>
+              <div class="comment-card"><div class="comment-user">星期天 <span>10月24日</span></div><div class="comment-text">今天才把《迷宫的午后》前3章补完，常客的身份其实第1章就暗示了吧，那个旧书签。</div></div>
+            </div>
+          </section>
+
+          <!-- 相关资讯 -->
+          <section class="section" id="news">
+            <h2>Silk系列相关资讯</h2>
+            <div class="news-list">
+              <div class="news-item">
+                <h4>《迷宫的午后》第4章更新，常客职业设定引发讨论</h4>
+                <div class="news-meta">2026-11-08</div>
+                <p>第4章于11月8日凌晨上线，揭露常客为古籍修复师，与前3章埋下的旧书签线索呼应。更新后三小时内，B站相关二创视频新增17条。</p>
+              </div>
+              <div class="news-item">
+                <h4>《薄明》设定集补完发售，新增雾隐七歌全文</h4>
+                <div class="news-meta">2026-11-06</div>
+                <p>补完册共28页，其中系谱图占4页，和歌全文7首占6页。白露社BOOTH页面显示首批800册已售罄，第二批预计11月15日补货。</p>
+              </div>
+              <div class="news-item">
+                <h4>广播剧《夜行列车》25天播放量破12万</h4>
+                <div class="news-meta">2026-11-05</div>
+                <p>B站搬运版于10月11日上架，截至11月5日播放量12.7万，弹幕4,300条。官方音源在BOOTH同步销售，含未公开的5分钟花絮。</p>
+              </div>
+              <div class="news-item">
+                <h4>《绢之契》番外“纸衣”上线，配角织工视角</h4>
+                <div class="news-meta">2026-11-03</div>
+                <p>番外约1.2万字，时间线在正篇第9章之后，补充了织工离开京都的原因。文末附三首新和歌，作者在推特上说明“和歌部分请教了专业老师”。</p>
+              </div>
+              <div class="news-item">
+                <h4>插画集第三弹开放预订，收录96页</h4>
+                <div class="news-meta">2026-11-01</div>
+                <p>收录2025年1月至2026年10月全部封面与内页插画，含4页草稿。预订截止11月20日，发货预计12月上旬。第二弹目前二手价已高于原价。</p>
+              </div>
+              <div class="news-item">
+                <h4>《狐面》读者投票结果：《面影》获34%选票</h4>
+                <div class="news-meta">2026-10-28</div>
+                <p>投票在Silk系列官方推特进行，共1,047人参与。《面影》获34%居首，《纸灯》以22%居次。投票参与人数比上次（6月）增长约15%。</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 相关推荐 -->
+          <section class="section" id="related">
+            <h2>相关推荐</h2>
+            <div class="related-tags">
+              <a href="/#featured" class="related-tag">Silk 薄明 书信体</a>
+              <a href="/#featured" class="related-tag">雾隐家系谱</a>
+              <a href="/#featured" class="related-tag">和风幻想短篇</a>
+              <a href="/#featured" class="related-tag">现代都市线</a>
+              <a href="/#featured" class="related-tag">广播剧 夜行列车</a>
+              <a href="/#featured" class="related-tag">古典浪漫 绢之契</a>
+              <a href="/#featured" class="related-tag">插画集第三弹</a>
+              <a href="/#featured" class="related-tag">周三的咖啡</a>
+            </div>
+          </section>
+
+          <!-- 热门榜单 -->
+          <section class="section" id="rank">
+            <h2>本周热门Silk系列条目</h2>
+            <div class="rank-list">
+              <div class="rank-item"><span class="rank-num">1</span><span class="rank-title">《Silk 迷宫的午后》</span><span class="rank-score">9.5</span></div>
+              <div class="rank-item"><span class="rank-num">2</span><span class="rank-title">《Silk 薄明》</span><span class="rank-score">9.2</span></div>
+              <div class="rank-item"><span class="rank-num">3</span><span class="rank-title">《Silk Radio 第三夜》</span><span class="rank-score">9.0</span></div>
+              <div class="rank-item"><span class="rank-num">4</span><span class="rank-title">《Silk 绢之契》</span><span class="rank-score">8.8</span></div>
+              <div class="rank-item"><span class="rank-num">5</span><span class="rank-title">《Silk 狐面》</span><span class="rank-score">8.6</span></div>
+              <div class="rank-item"><span class="rank-num">6</span><span class="rank-title">《Silk 周三的咖啡》</span><span class="rank-score">8.4</span></div>
+            </div>
+          </section>
+        </div>
+
+        <!-- 右侧辅助栏 -->
+        <aside class="right-sidebar" aria-label="辅助信息">
+          <div class="sidebar-card">
+            <h3>热榜速览</h3>
+            <ul class="hot-list">
+              <li><span class="hot-index">01</span><a href="/#featured">《迷宫的午后》第4章</a></li>
+              <li><span class="hot-index">02</span><a href="/#featured">《薄明》设定集补完</a></li>
+              <li><span class="hot-index">03</span><a href="/#featured">广播剧《夜行列车》</a></li>
+              <li><span class="hot-index">04</span><a href="/#featured">《绢之契》番外“纸衣”</a></li>
+              <li><span class="hot-index">05</span><a href="/#featured">插画集第三弹预订</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-card">
+            <h3>最新条目</h3>
+            <ul class="hot-list">
+              <li><span class="hot-index">•</span><a href="/#featured">《Silk 雪洞》短篇</a></li>
+              <li><span class="hot-index">•</span><a href="/#featured">《Silk 纸灯》</a></li>
+              <li><span class="hot-index">•</span><a href="/#featured">《Silk 面影》</a></li>
+              <li><span class="hot-index">•</span><a href="/#featured">《Silk 十二单》</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">日本女性向silk系列全集</div>
+        <p class="footer-desc">聚合Silk系列2018—2026年全部47部作品条目，覆盖长篇小说、短篇集、插画集与广播剧，按月更新连载动态，收录读者评论与深度解析。内容更新频率为每日同步连载、每周汇总热榜。</p>
+      </div>
+      <div class="footer-col">
+        <h4>作品分类</h4>
+        <ul>
+          <li><a href="/#featured">和风幻想</a></li>
+          <li><a href="/#featured">现代都市</a></li>
+          <li><a href="/#featured">古典浪漫</a></li>
+          <li><a href="/#featured">广播剧</a></li>
+          <li><a href="/#featured">插画集</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>内容板块</h4>
+        <ul>
+          <li><a href="/#updates">最新动态</a></li>
+          <li><a href="/#deep-dive">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见问答</a></li>
+          <li><a href="/#comments">读者评论</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>互动</h4>
+        <ul>
+          <li><a href="/#comments">投稿入口</a></li>
+          <li><a href="/#comments">作品上传</a></li>
+          <li><a href="/#comments">交流区</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 日本女性向silk系列全集 · 示例内容聚合页</span>
+      <span>页面内作品、数据、评论均为示例，用于展示内容结构。更新于2026年11月8日。</span>
+    </div>
+  </footer>
+
+  <!-- 回到顶部按钮 -->
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+
+  <script>
+    (function() {
+      // 移动端菜单
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !expanded);
+          navLinks.classList.toggle('open');
+        });
+        // 点击导航后收起
+        navLinks.addEventListener('click', function(e) {
+          if (e.target.tagName === 'A') {
+            navLinks.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+        // Esc 关闭
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+            navLinks.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // 回到顶部
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > window.innerHeight) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // 侧栏高亮当前板块（简单实现）
+      const channelLinks = document.querySelectorAll('.channel-sidebar a');
+      const sections = document.querySelectorAll('.section[id]');
+      function highlightNav() {
+        let currentId = '';
+        sections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 200) {
+            currentId = section.getAttribute('id');
+          }
+        });
+        channelLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '/#' + currentId) {
+            link.classList.add('active');
+          }
+        });
+      }
+      window.addEventListener('scroll', highlightNav);
+      highlightNav();
+    })();
+  </script>
+
+  <!-- 结构化数据 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "日本女性向silk系列全集",
+    "description": "日本女性向silk系列全集聚合站，提供Silk系列作品卡片、最新更新动态、分类筛选、深度解析与用户评论，适合女性向内容观众查阅与筛选。",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Silk系列一共有多少部作品？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "截至2026年11月8日，公开作品共47部：长篇小说12部、短篇集8部、插画集9部、广播剧6部、联动短篇12部。其中《迷宫的午后》和《薄明》仍在连载中。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "《薄明》和《狐面》的世界观是共通的吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "是。两者都发生在“雾隐”家族所在的地区，时间线相差约三十年。《狐面》中的神社在《薄明》第3章被提到为“旧社”，但情节上没有直接交集，可以独立阅读。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "广播剧《Silk Radio 第三夜》在哪里可以听到？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "2026年9月发售，B站有搬运合集，截至11月7日播放量12.7万。官方音源在“白露社”BOOTH页面有售，含三篇短篇的完整音频。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "《绢之契》的番外“纸衣”需要先读完正篇吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "建议先读正篇。番外从配角织工的视角展开，涉及正篇第9章的关键事件，直接阅读会缺少上下文。番外本身约1.2万字，两小时可读完。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Silk系列有没有官方中文版？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "有。白露社在2025年授权“和风书房”出版简体中文版，目前已出版《薄明》前两卷和《周三的咖啡》单行本。电子版同步上线。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "插画集第三弹收录了哪些内容？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "收录2025年1月至2026年10月所有单行本封面、内页插画及广播剧视觉图，共96页，含4页创作草稿。预订截止11月20日。"
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+  </html>
